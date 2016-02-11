@@ -1,2 +1,8 @@
 # ship-full-of-ghosts
-User Interface Programming
+**User Interface Programming**
+
+To start the server, run
+
+```
+npm start
+```
