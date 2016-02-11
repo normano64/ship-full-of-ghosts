@@ -1,0 +1,23 @@
+{
+  "name": "ship-full-of-ghosts",
+  "version": "1.0.0",
+  "description": "Pub ordering system for The Flying Dutchman",
+  "main": "app/app.js",
+  "scripts": {
+    "start": "http-server -a localhost -p 8001 -o -c-1 app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/normano64/ship-full-of-ghosts.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/normano64/ship-full-of-ghosts/issues"
+  },
+  "homepage": "https://github.com/normano64/ship-full-of-ghosts#readme",
+  "dependencies": {
+    "bower": "^1.7.7",
+    "http-server": "^0.8.5"
+  }
+}
