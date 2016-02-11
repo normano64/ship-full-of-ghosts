@@ -1,0 +1,20 @@
+{
+  "name": "ship-full-of-ghosts",
+  "description": "Pub ordering system for The Flying Dutchman",
+  "main": "app/app.js",
+  "license": "ISC",
+  "homepage": "https://github.com/normano64/ship-full-of-ghosts",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.0"
+  }
+}
