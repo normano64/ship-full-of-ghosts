@@ -2,6 +2,7 @@
 
 angular
   .module('shipFullOfGhosts', [
-    'ngRoute'
+    'ngRoute',
+    'ui.bootstrap'
   ])
   .constant('API', 'http://pub.jamaica-inn.net/fpdb/api.php');
