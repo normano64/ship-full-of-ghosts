@@ -14,10 +14,10 @@ angular
   .constant('API', 'http://pub.jamaica-inn.net/fpdb/api.php')
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
-      .when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl',
-        controllerAs: 'login'
+      .when('/signin', {
+        templateUrl: 'views/signin.html',
+        controller: 'SigninCtrl',
+        controllerAs: 'signin'
       })
       .when('/', {
         templateUrl: 'views/home.html',

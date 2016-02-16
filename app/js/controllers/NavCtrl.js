@@ -4,7 +4,7 @@ angular
   .module('shipFullOfGhosts.controllers')
   .controller('NavCtrl', ['$scope', 'AccountSvc', function($scope, AccountSvc) {
     $scope.signOut = function() {
-      console.log('sign out');
+      AccountSvc.signOut();
     };
 
     $scope.user = AccountSvc.getUser();

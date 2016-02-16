@@ -21,12 +21,12 @@
           The Flying Dutchman
         </a>
         <li data-ng-if="!user.isSignedIn">
-          <a href="#/login">
+          <a href="#/signin">
             Sign in
           </a>
         </li>
         <li data-ng-if="user.isSignedIn">
-          <a data-ng-click="signOut()">
+          <a href="#/" data-ng-click="signOut()">
             Sign out
           </a>
         </li>
@@ -35,14 +35,14 @@
     <nav class="visible-xs collapse" uib-collapse="isCollapsed" style="height: 0px;">
       <ul class="nav navbar-nav" data-ng-if="!user.isSignedIn">
         <li>
-          <a data-ng-click="isCollapsed=!isCollapsed">
+          <a href="#/signin" data-ng-click="isCollapsed=!isCollapsed">
             Sign in
           </a>
         </li>
       </ul>
       <ul class="nav navbar-nav" data-ng-if="user.isSignedIn">
         <li>
-          <a data-ng-click="isCollapsed=!isCollapsed; signOut()">
+          <a href="#/" data-ng-click="isCollapsed=!isCollapsed; signOut()">
             Sign out
           </a>
         </li>

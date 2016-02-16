@@ -1,12 +1,12 @@
 @import 'constant';
 
-.container-login {
+.container-signin {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: $height-content;
 
-  .form-login {
+  .form-signin {
     max-width: 300px;
     margin-bottom: 50px;
 
@@ -18,13 +18,13 @@
       text-align: center;
     }
 
-    .slogan-login {
+    .slogan-signin {
       width: 100%;
       text-align: center;
       font-size: 30px;
     }
 
-    .login-button {
+    .signin-button {
       width: 100%;
     }
   }
