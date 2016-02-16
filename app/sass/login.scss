@@ -8,7 +8,7 @@
 
   .form-login {
     max-width: 300px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 
     &>* {
       margin: 5px 0px;
@@ -16,6 +16,12 @@
 
     input {
       text-align: center;
+    }
+
+    .slogan-login {
+      width: 100%;
+      text-align: center;
+      font-size: 30px;
     }
 
     .login-button {
