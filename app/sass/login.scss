@@ -1,0 +1,25 @@
+@import 'constant';
+
+.container-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - #{$height-header} - #{$height-footer});
+
+  .form-login {
+    max-width: 300px;
+    margin-bottom: 40px;
+
+    &>* {
+      margin: 5px 0px;
+    }
+
+    input {
+      text-align: center;
+    }
+
+    .login-button {
+      width: 100%;
+    }
+  }
+}
