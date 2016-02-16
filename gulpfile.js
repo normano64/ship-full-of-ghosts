@@ -1,10 +1,13 @@
 var gulp = require('gulp');
 var webserver = require('gulp-webserver');
 var sass = require('gulp-sass');
+var inject = require('gulp-inject');
 
 var paths = {
   sass: 'app/sass/**/*.scss',
-  js: 'app/js/**/*.js'
+  css: 'app/css/**/*.css',
+  js: 'app/js/**/*.js',
+  index: 'app/index.html'
 };
 
 gulp.task('serve', function() {
@@ -23,4 +26,16 @@ gulp.task('sass', function() {
 
 gulp.task('sass:watch', function() {
   gulp.watch(paths.sass, ['sass']);
+});
+
+gulp.task('index', function() {
+  var target = gulp.src(paths.index);
+  var sources = gulp.src([paths.js, paths.css], {read: false});
+
+  return target.pipe(inject(sources, {relative: true}))
+    .pipe(gulp.dest('app'));
+});
+
+gulp.task('default', ['sass', 'sass:watch', 'index', 'serve'], function() {
+  console.log('it\'s running!');
 });
