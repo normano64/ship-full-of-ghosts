@@ -1,5 +1,10 @@
 var gulp = require('gulp');
+var webserver = require('gulp-webserver');
 
-gulp.task('default', function() {
-  console.log("gulp is running");
+gulp.task('serve', function() {
+  gulp.src('app')
+    .pipe(webserver({
+        liveload: true,
+        open: true
+      }));
 });

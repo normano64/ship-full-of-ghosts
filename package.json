@@ -21,6 +21,7 @@
     "http-server": "^0.8.5"
   },
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-webserver": "^0.9.1"
   }
 }
