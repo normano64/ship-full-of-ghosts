@@ -1,4 +1,9 @@
+@import 'constant';
+
 .navbar {
+  background-color: $primary-color-1;
+  border-color: $primary-color-2;
+
   .navbar-nav {
     width: 100%;
 
