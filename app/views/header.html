@@ -1,4 +1,4 @@
-<header class="navbar navbar-default navbar-fixed-top navbar-inner">
+<header class="navbar navbar-default navbar-fixed-top navbar-inner" data-ng-controller="NavCtrl">
   <div class="container">
     <div class="navbar-header">
       <button 
@@ -20,12 +20,32 @@
         <a href="#/" role="button" class="navbar-brand">
           The Flying Dutchman
         </a>
-        <li><a href="#/login">Log in</a></li>
+        <li data-ng-if="!user.isSignedIn">
+          <a href="#/login">
+            Sign in
+          </a>
+        </li>
+        <li data-ng-if="user.isSignedIn">
+          <a data-ng-click="signOut()">
+            Sign out
+          </a>
+        </li>
       </ul>
     </nav>
     <nav class="visible-xs collapse" uib-collapse="isCollapsed" style="height: 0px;">
-      <ul class="nav navbar-nav">
-        <li><a href="#" ng-click="isCollapsed = !isCollapsed">Login</a></li>
+      <ul class="nav navbar-nav" data-ng-if="!user.isSignedIn">
+        <li>
+          <a data-ng-click="isCollapsed=!isCollapsed">
+            Sign in
+          </a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav" data-ng-if="user.isSignedIn">
+        <li>
+          <a data-ng-click="isCollapsed=!isCollapsed; signOut()">
+            Sign out
+          </a>
+        </li>
       </ul>
     </nav>
   </div>
