@@ -1,8 +1,15 @@
 # ship-full-of-ghosts
 **User Interface Programming**
 
-To start the server, run
+Install all the dependencies.
 
 ```
-npm start
+npm install
+bower install
+```
+
+Start the server.
+
+```
+gulp
 ```
