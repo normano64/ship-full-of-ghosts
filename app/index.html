@@ -6,8 +6,9 @@
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css"/>
     <!-- inject:css -->
+    <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
     <!-- endinject -->
   </head>
   <body data-ng-app="shipFullOfGhosts">
@@ -15,7 +16,7 @@
       <div data-ng-include src="'views/header.html'">
       </div>
 
-      <div ng-view></div>
+      <div ng-view class="main-container"></div>
 
       <div data-ng-include src="'views/footer.html'">
       </div>
