@@ -36,6 +36,10 @@ gulp.task('index', function() {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('default', ['sass', 'sass:watch', 'index', 'serve'], function() {
+gulp.task('index:watch', function() {
+  gulp.watch([paths.sass, paths.js], ['index']);
+});
+
+gulp.task('default', ['sass', 'sass:watch', 'index', 'index:watch', 'serve'], function() {
   console.log('it\'s running!');
 });
