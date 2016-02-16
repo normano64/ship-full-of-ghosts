@@ -4,7 +4,6 @@
   "description": "Pub ordering system for The Flying Dutchman",
   "main": "app/app.js",
   "scripts": {
-    "start": "npm install; bower install; http-server -a localhost -p 8001 -o -c-1 app"
   },
   "repository": {
     "type": "git",
