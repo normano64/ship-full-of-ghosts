@@ -30,6 +30,11 @@
             <i class="fa fa-sign-out"></i> Sign out
           </a>
         </li>
+        <li data-ng-if="user.isSignedIn">
+          <a href="#/" data-ng-click="">
+            <i class="fa fa-user"></i> {{user.username}} <span class="caret"></span>
+          </a>
+        </li>
       </ul>
     </nav>
     <nav class="visible-xs collapse" uib-collapse="isCollapsed" style="height: 0px;">
