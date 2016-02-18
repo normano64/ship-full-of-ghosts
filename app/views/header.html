@@ -22,12 +22,12 @@
         </a>
         <li data-ng-if="!user.isSignedIn">
           <a href="#/signin">
-            Sign in
+            <i class="fa fa-sign-in"></i> Sign in
           </a>
         </li>
         <li data-ng-if="user.isSignedIn">
           <a href="#/" data-ng-click="signOut()">
-            Sign out
+            <i class="fa fa-sign-out"></i> Sign out
           </a>
         </li>
       </ul>
@@ -36,14 +36,14 @@
       <ul class="nav navbar-nav" data-ng-if="!user.isSignedIn">
         <li>
           <a href="#/signin" data-ng-click="isCollapsed=!isCollapsed">
-            Sign in
+            <i class="fa fa-sign-in"></i> Sign in
           </a>
         </li>
       </ul>
       <ul class="nav navbar-nav" data-ng-if="user.isSignedIn">
         <li>
           <a href="#/" data-ng-click="isCollapsed=!isCollapsed; signOut()">
-            Sign out
+            <i class="fa fa-sign-out"></i> Sign out
           </a>
         </li>
       </ul>
