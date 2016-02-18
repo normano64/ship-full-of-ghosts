@@ -3,10 +3,10 @@
     <div class="slogan-signin">
       Some slogan here?
     </div>
-    <input type="string" class="form-control" data-ng-model="username" placeholder="user name">
-    <input type="password" class="form-control" data-ng-model="password" placeholder="password">
-    <button class="btn btn-primary signin-button" data-ng-click="signIn(username, password)">
-      Log in
-    </button>
+    <form ng-submit="signIn(username, password)">
+      <input type="string" class="form-control" data-ng-model="username" placeholder="user name">
+      <input type="password" class="form-control" data-ng-model="password" placeholder="password">
+      <input type="submit" class="btn btn-primary signin-button" value="Log in">
+    </form>
   </div>
 </div>
