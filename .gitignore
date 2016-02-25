@@ -1,4 +1,4 @@
 app/bower_components/
 node_modules/
 app/css/*.css
-.DS_Store
+**/.DS_Store
