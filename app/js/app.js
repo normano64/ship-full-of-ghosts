@@ -19,6 +19,11 @@ angular
         controller: 'SigninCtrl',
         controllerAs: 'signin'
       })
+      .when('/products', {
+        templateUrl: 'views/products.html',
+        controller: 'ProductsCtrl',
+        controllerAs: 'products'
+      })
       .when('/', {
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl',

@@ -17,7 +17,7 @@ angular
       AccountSvc.user.username = username;
       AccountSvc.user.isSignedIn = true;
 
-      $location.path('#/');
+      $location.path('/products');
     };
 
     AccountSvc.signOut = function() {
