@@ -1,0 +1,9 @@
+@import 'constant';
+
+.cart {
+  height: $height-content;
+  background-color: grey;
+  position: fixed;
+  left: calc(100vw - 20px);
+  top: $height-header;
+}
