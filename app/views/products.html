@@ -31,10 +31,18 @@
     </div>
   </div>
 
-  <div class="cart-wrapper" data-ng-if="user.isSignedIn" data-ng-controller="CartCtrl">
+  <div 
+    class="cart-wrapper" 
+    data-ng-if="!user.isSignedIn" 
+    data-ng-controller="CartCtrl" 
+    data-ng-class="{'expanded': isExpanded}"
+  >
     <div class="cart">
       <div class="cart-expand-stripe" data-ng-click="toggleCart()">
         {{ expandText }}
+      </div>
+      <div class="cart-main">
+        A cart
       </div>
     </div>
   </div>

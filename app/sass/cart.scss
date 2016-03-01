@@ -1,9 +1,37 @@
 @import 'constant';
 
+$width-stripe: 20px;
+$width-cart: 300px;
+
 .cart {
+  display: flex;
   height: $height-content;
-  background-color: grey;
+  background-color: #dddddd;
   position: fixed;
-  left: calc(100vw - 20px);
+  width: calc(#{$width-stripe} + #{$width-cart});
+  left: calc(100vw - #{$width-stripe});
   top: $height-header;
+  transition: left 0.5s;
+
+  .cart-expand-stripe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: $width-stripe;
+    cursor: pointer;
+  }
+
+  .cart-main {
+    background-color: #f2f2f2;
+    height: 100%;
+    width: $width-cart;
+    padding: 10px;
+  }
+}
+
+.cart-wrapper.expanded {
+  .cart {
+    left: calc(100vw - #{$width-cart});
+  }
 }
