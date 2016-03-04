@@ -7,11 +7,9 @@ $width-cart: 300px;
   display: flex;
   height: $height-content;
   background-color: #dddddd;
-  position: fixed;
-  width: calc(#{$width-stripe} + #{$width-cart});
-  left: calc(100vw - #{$width-stripe});
-  top: $height-header;
-  transition: left 0.5s;
+  width: $width-stripe;
+  transition: width 0.5s;
+  margin-top: -50px;
 
   .cart-expand-stripe {
     display: flex;
@@ -32,6 +30,6 @@ $width-cart: 300px;
 
 .cart-wrapper.expanded {
   .cart {
-    left: calc(100vw - #{$width-cart});
+    width: calc(#{$width-stripe} + #{$width-cart});
   }
 }

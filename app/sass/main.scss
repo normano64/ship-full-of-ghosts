@@ -1,5 +1,11 @@
 @import 'constant';
 
+.main-page {
+  height: $height-content;
+  margin: 0 -15px;
+  padding-top: 50px;
+}
+
 .main-container {
   margin-top: $height-header;
   min-height: $height-content;
