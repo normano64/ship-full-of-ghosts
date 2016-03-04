@@ -36,10 +36,40 @@
   >
     <div class="cart">
       <div class="cart-expand-stripe" data-ng-click="toggleCart()">
-        {{ expandText }}
+        <div class="stripe-content">
+          {{ expandText }}
+        </div>
       </div>
       <div class="cart-main">
-        A cart
+        <div class="cart-items">
+          <div class="cart-item" data-ng-repeat="item in items">
+            <div class="cart-item-name">
+              {{ item.name }}
+            </div>
+            <div class="cart-item-price">
+              {{ item.price }}
+            </div>
+            <div class="cart-item-quantity">
+              <button class="btn btn-primary">-</button>
+              {{ item.quantity }}
+              <button class="btn btn-primary">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cart-actions">
+          <div class="cart-redo-undo">
+            <button class="btn btn-danger">
+              Redo
+            </button>
+            <button class="btn btn-primary">
+              Undo
+            </button>
+          </div>
+          <div class="cart-checkout">
+            Checkout
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -2,6 +2,7 @@
 
 $width-stripe: 20px;
 $width-cart: 300px;
+$height-actions: 80px;
 
 .cart {
   display: flex;
@@ -12,24 +13,69 @@ $width-cart: 300px;
   margin-top: -50px;
 
   .cart-expand-stripe {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
     width: $width-stripe;
     cursor: pointer;
+
+    .stripe-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: $height-content;
+    }
   }
 
   .cart-main {
     background-color: #f2f2f2;
     height: 100%;
+    display: none;
     width: $width-cart;
-    padding: 10px;
+
+    .cart-items {
+      height: calc(100% - #{$height-actions});
+      overflow: scroll;
+      .cart-item {
+        display: flex;
+        // justify-content: space-between;
+        padding: 10px;
+
+        &>div {
+          flex: 1;
+        }
+      }
+    }
+
+    .cart-actions {
+      display: flex;
+      flex-flow: column;
+      height: $height-actions;
+
+      .cart-redo-undo {
+        flex: 1;
+        display: flex;
+
+        button {
+          flex: 1;
+          border-radius: 0;
+        }
+      }
+
+      .cart-checkout {
+        flex: 1;
+        background-color: #5cb85c;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
   }
 }
 
 .cart-wrapper.expanded {
   .cart {
     width: calc(#{$width-stripe} + #{$width-cart});
+  }
+
+  .cart-main {
+    display: block;
   }
 }
