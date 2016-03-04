@@ -42,6 +42,25 @@ angular
     $scope.toggleCart = function() {
       $scope.isExpanded = !$scope.isExpanded;
       $scope.expandText = $scope.isExpanded ? '▶' : '◀';
+    };
+
+    $scope.increaseItem = function(id) {
+      if (typeof $scope.items[id] === 'undefined') {
+        console.log('something goes wrong, no changing anything...');
+      } else {
+        $scope.items[id].quantity ++;
+      }
+    }
+
+    $scope.decreaseItem = function(id) {
+      if (typeof $scope.items[id] === 'undefined') {
+        console.log('something goes wrong, no changing anything...');
+      } else {
+        if (!(-- $scope.items[id].quantity)) {
+          // remove it from the cart
+          $scope.items[id] = undefined;
+        }
+      }
     }
 
     $scope.user = AccountSvc.getUser();
