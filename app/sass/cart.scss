@@ -1,16 +1,12 @@
 @import 'constant';
 
-$width-stripe: 20px;
-$width-cart: 300px;
-$height-actions: 80px;
-
 .cart {
   display: flex;
-  height: $height-content;
+  height: $height-cart;
   background-color: #dddddd;
   width: $width-stripe;
   transition: width 0.5s;
-  margin-top: -50px;
+  margin-top: calc(#{$height-search} - 50px);
 
   .cart-expand-stripe {
     width: $width-stripe;
@@ -20,7 +16,7 @@ $height-actions: 80px;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: $height-content;
+      height: $height-cart;
     }
   }
 

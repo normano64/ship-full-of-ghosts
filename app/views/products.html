@@ -1,29 +1,43 @@
-<div class="product main-page">
+<div class="product">
   <div class="product-wrapper" ng-class="{'is-signed-in': user.isSignedIn}">
-    Beverages
+    
+    <div class="input-group product-search">
+      <div class="input-group-btn search-panel">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          <span id="search_concept">Beverages</span> <span class="caret"></span>
+        </button>
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          <span id="search_concept">Filter by</span> <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#contains">Contains</a></li>
+          <li><a href="#its_equal">It's equal</a></li>
+          <li><a href="#greather_than">Greather than ></a></li>
+          <li><a href="#less_than">Less than < </a></li>
+          <li class="divider"></li>
+          <li><a href="#all">Anything</a></li>
+        </ul>
+      </div>
+      <input type="hidden" name="search_param" value="all" id="search_param">
+      <input type="text" class="form-control" name="x" placeholder="Search term...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+      </span>
+    </div>
+
     <div class="col products">
-      <div class="input-group">
-        <div class="input-group-btn search-panel">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            <span id="search_concept">Beverages</span> <span class="caret"></span>
-          </button>
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            <span id="search_concept">Filter by</span> <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#contains">Contains</a></li>
-            <li><a href="#its_equal">It's equal</a></li>
-            <li><a href="#greather_than">Greather than ></a></li>
-            <li><a href="#less_than">Less than < </a></li>
-            <li class="divider"></li>
-            <li><a href="#all">Anything</a></li>
-          </ul>
+      <div class="products-items">
+        <div class="products-item col-md-3 col-sm-4 col-xs-6" data-ng-repeat="item in items">
+          <div class="item-image">
+            <img src="images/beer.svg" />
+          </div>
+          <div class="item-name">
+            {{ item.name }}
+          </div>
+          <div class="item-price">
+            {{ item.price }}
+          </div>
         </div>
-        <input type="hidden" name="search_param" value="all" id="search_param">
-        <input type="text" class="form-control" name="x" placeholder="Search term...">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-        </span>
       </div>
     </div>
   </div>
