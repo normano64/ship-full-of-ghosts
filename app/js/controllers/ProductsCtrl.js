@@ -2,7 +2,7 @@
 
 angular
   .module('shipFullOfGhosts.controllers')
-  .controller('ProductsCtrl', ['$scope', 'AccountSvc', function($scope, AccountSvc) {
+  .controller('ProductsCtrl', ['$scope', 'AccountSvc', '$window', '$timeout', function($scope, AccountSvc, $window, $timeout) {
     $scope.user = AccountSvc.getUser();
 
     $scope.items = [
@@ -37,4 +37,23 @@ angular
         price: 100
       }
     ];
+
+    // $timeout adds a new event to the browser event queue 
+    // (the rendering engine is already in this queue) so it will complete the execution before the new timeout event.
+    $timeout(function() {
+      var cartElement = angular.element(document.querySelectorAll('.cart'));
+      var initialOffset = parseInt(cartElement.css('margin-top'));
+
+      angular.element(document.querySelectorAll('.products-item')).bind('dragstart', function() {
+        console.log('drag');
+      });
+
+      angular.element(document.querySelectorAll('.products-item')).bind('dragend', function() {
+        console.log('end');
+      });
+
+      angular.element($window).bind("scroll", function() {
+        cartElement.css('margin-top', initialOffset + this.pageYOffset + 'px');
+      });
+    }, 0);
   }]);
