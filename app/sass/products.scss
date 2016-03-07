@@ -34,6 +34,19 @@
   }
 }
 
+.cart-drop {
+  position: fixed;
+  top: calc(#{$height-header} + #{$height-search});
+  height: $height-content;
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 200px;
+  }
+}
+
 .products-items {
   .products-item {
     margin: 50px 0px;

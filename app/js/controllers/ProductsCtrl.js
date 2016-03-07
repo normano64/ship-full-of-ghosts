@@ -45,11 +45,17 @@ angular
       var initialOffset = parseInt(cartElement.css('margin-top'));
 
       angular.element(document.querySelectorAll('.products-item')).bind('dragstart', function() {
-        console.log('drag');
+        console.log('start');
+        angular.element(document.querySelectorAll('.products-item')).css('opacity', '0');
+        angular.element(this).css('opacity', '1');
+        angular.element(document.querySelectorAll('.cart-drop')).css('width', angular.element(document.querySelectorAll('.product-wrapper')).css('width'));
+        angular.element(document.querySelectorAll('.cart-drop')).css('display', 'flex');
       });
 
       angular.element(document.querySelectorAll('.products-item')).bind('dragend', function() {
         console.log('end');
+        angular.element(document.querySelectorAll('.products-item')).css('opacity', '1');
+        angular.element(document.querySelectorAll('.cart-drop')).css('display', 'none');
       });
 
       angular.element($window).bind("scroll", function() {

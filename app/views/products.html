@@ -25,12 +25,16 @@
       </span>
     </div>
 
+    <div class="cart-drop">
+      <img src="images/cart.svg" />
+    </div>
+      
     <div class="col products">
       <div class="products-items">
         <div class="product-item-wrapper col-md-3 col-sm-4 col-xs-6" data-ng-repeat="item in items">
           <div class="products-item" id="products-item-{{item.id}}" draggable="true" data-ng-click="start()">
             <div class="item-image">
-              <img src="images/beer.svg" />
+              <img draggable="false" src="images/beer.svg" />
             </div>
             <div class="item-name">
               {{ item.name }}
