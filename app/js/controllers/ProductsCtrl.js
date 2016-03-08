@@ -10,52 +10,60 @@ angular
 
     $scope.items = null;
     $http.get('js/drinks.json')
-        .then(function(res){
-            $scope.items = res.data.payload;
-        });
+      .then(function(res){
+          $scope.items = res.data.payload;
+      });
+
+    var selectElement = function(identifier) {
+      return angular.element(document.querySelectorAll(identifier));
+    };
 
     // $timeout adds a new event to the browser event queue 
     // (the rendering engine is already in this queue) so it will complete the execution before the new timeout event.
     $timeout(function() {
-      var cartElement = angular.element(document.querySelectorAll('.cart'));
-      var cartPhantomElement = angular.element(document.querySelectorAll('.cart-phantom'));
+      var cartElement = selectElement('.cart');
+      var cartPhantomElement = selectElement('.cart-phantom');
+      var productsItemElement = selectElement('.products-item');
+      var wrapperElement = selectElement('.product-wrapper');
+      var cartDropWrapperElement = selectElement('.cart-drop-wrapper');
+      var cartDropIconElement = selectElement('.cart-drop-icon');
+
       var initialOffset = parseInt(cartElement.css('margin-top'));
 
-      angular.element(document.querySelectorAll('.products-item')).bind('dragstart', function() {
-        angular.element(document.querySelectorAll('.products-item')).css('opacity', '0');
-        angular.element(this).css('opacity', '1');
-        angular.element(document.querySelectorAll('.cart-drop-wrapper')).css('width', '0px');
-        var wrapperElement = angular.element(document.querySelectorAll('.product-wrapper'));
+      productsItemElement.bind('dragstart', function() {
         var containerWidth = parseInt(wrapperElement.css('width')) + 2 * parseInt(wrapperElement.css('margin-left'));
         var calcLeft = containerWidth / 2 + 'px';
 
         $scope.dragging = true;
         $scope.$apply();
 
-        angular.element(document.querySelectorAll('.cart-drop-wrapper')).css('left', calcLeft);
-        angular.element(document.querySelectorAll('.cart-drop-wrapper')).css('display', 'flex');
+        productsItemElement.css('opacity', '0');
+        angular.element(this).css('opacity', '1');
+        cartDropWrapperElement.css('width', '0px');
+        cartDropWrapperElement.css('left', calcLeft);
+        cartDropWrapperElement.css('display', 'flex');
       });
 
-      angular.element(document.querySelectorAll('.products-item')).bind('dragend', function() {
+      productsItemElement.bind('dragend', function() {
         $scope.canDrop = false;
         $scope.dragging = false;
         $scope.$apply();
 
-        angular.element(document.querySelectorAll('.products-item')).css('opacity', '1');
-        angular.element(document.querySelectorAll('.cart-drop-wrapper')).css('display', 'none');
+        productsItemElement.css('opacity', '1');
+        cartDropWrapperElement.css('display', 'none');
       });
 
-      angular.element(document.querySelectorAll('.cart-drop-icon')).bind('drop', function() {
+      cartDropIconElement.bind('drop', function() {
         console.log('drop');
       });
 
-      angular.element(document.querySelectorAll('.cart-drop-icon')).bind('dragover', function() {
+      cartDropIconElement.bind('dragover', function() {
         $scope.canDrop = true;
         $scope.$apply();
         return false;
       });
 
-      angular.element(document.querySelectorAll('.cart-drop-icon')).bind('dragleave', function() {
+      cartDropIconElement.bind('dragleave', function() {
         $scope.canDrop = false;
         $scope.$apply();
         return false;
