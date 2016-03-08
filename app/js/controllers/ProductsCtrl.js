@@ -21,7 +21,10 @@ angular
         console.log('start');
         angular.element(document.querySelectorAll('.products-item')).css('opacity', '0');
         angular.element(this).css('opacity', '1');
-        angular.element(document.querySelectorAll('.cart-drop')).css('width', angular.element(document.querySelectorAll('.product-wrapper')).css('width'));
+        angular.element(document.querySelectorAll('.cart-drop')).css('width', '0px');
+        var containerWidth = angular.element(document.querySelectorAll('.product-wrapper')).css('width');
+        var calcLeft = parseInt(containerWidth) / 0.8 / 2 + 'px';
+        angular.element(document.querySelectorAll('.cart-drop')).css('left', calcLeft);
         angular.element(document.querySelectorAll('.cart-drop')).css('display', 'flex');
       });
 
@@ -29,6 +32,15 @@ angular
         console.log('end');
         angular.element(document.querySelectorAll('.products-item')).css('opacity', '1');
         angular.element(document.querySelectorAll('.cart-drop')).css('display', 'none');
+      });
+
+      angular.element(document.querySelectorAll('.cart-drop-icon')).bind('drop', function() {
+        console.log('drop');
+      });
+
+      angular.element(document.querySelectorAll('.cart-drop-icon')).bind('dragover', function() {
+        console.log('over');
+        return false;
       });
 
       angular.element($window).bind("scroll", function() {
