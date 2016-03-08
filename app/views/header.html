@@ -1,25 +1,23 @@
 <header class="navbar navbar-default navbar-fixed-top navbar-inner" data-ng-controller="NavCtrl">
   <div class="container">
     <div class="navbar-header">
-      <button 
-      type="button"
-      class="navbar-toggle"
-      data-toggle="collapse"
-      ng-click="isCollapsed = !isCollapsed"
-      >
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand visible-xs" href="#">The Flying Dutchman</a>
+        <button 
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            ng-click="isCollapsed = !isCollapsed"
+        >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand visible-xs" href="#">The Flying Dutchman</a>
     </div>
 
   <nav class="hidden-xs">
     <ul class="nav navbar-nav">
-      <a href="#/" role="button" class="navbar-brand">
-        The Flying Dutchman
-      </a>
+        <li class="left"><a href="#/" role="button" class="navbar-brand">The Flying Dutchman</a></li>
       <li>
       <div id="chooseLanguageSwedish" onclick="swedish()">
       <img src="images/Swedish.svg" />
@@ -31,20 +29,22 @@
       </div>
       </li>
       <script>
+       var obj = {"drinks":[
+           {"englishText":"Beer","swedishText":"Öl" },
+           {"englishText":"Wine","swedishText":"Vin" },
+           {"englishText":"Whiskey","swedishText":"Whisky" },
+           {"englishText":"Guest","swedishText":"Gäst" },
+           {"englishText":"Sign in","swedishText":"Logga in" },
+           {"englishText":"Beverages","swedishText":"Drycker" },
+           {"englishText":"Username","swedishText":"Användarnamn" },
+           {"englishText":"Password","swedishText":"Lösenord" },
+           {"englishText":"Anything","swedishText":"Alla" },
+           {"englishText":"Login","swedishText":"Logga in" }
+       ]};
       function english() {
 
-        var words = '{"drinks":[' +
-        '{"englishText":"Beer","swedishText":"Öl" },' +
-        '{"englishText":"Wine","swedishText":"Vin" },' +
-        '{"englishText":"Whiskey","swedishText":"Whisky" },' +
-        '{"englishText":"Guest","swedishText":"Gäst" },' +
-        '{"englishText":"Sign in","swedishText":"Logga in" },' +
-        '{"englishText":"Beverages","swedishText":"Drycker" },' +
-        '{"englishText":"Username","swedishText":"Användarnamn" },' +
-        '{"englishText":"Password","swedishText":"Lösenord" },' +
-        '{"englishText":"Login","swedishText":"Logga in" }]}';
+        
 
-        obj = JSON.parse(words);
         var x = document.getElementsByClassName("translate");
         var arr = [];
 
@@ -63,18 +63,7 @@
       </script>
       <script>
       function swedish() {
-        var words = '{"drinks":[' +
-        '{"englishText":"Beer","swedishText":"Öl" },' +
-        '{"englishText":"Wine","swedishText":"Vin" },' +
-        '{"englishText":"Whiskey","swedishText":"Whisky" },' +
-        '{"englishText":"Guest","swedishText":"Gäst" },' +
-        '{"englishText":"Sign in","swedishText":"Logga in" },' +
-        '{"englishText":"Beverages","swedishText":"Drycker" },' +
-        '{"englishText":"Username","swedishText":"Användarnamn" },' +
-        '{"englishText":"Password","swedishText":"Lösenord" },' +
-        '{"englishText":"Login","swedishText":"Logga in" }]}';
 
-        obj = JSON.parse(words);
         var x = document.getElementsByClassName("translate");
         var arr = [];
 
@@ -91,31 +80,31 @@
         }
       } 
       </script>      
-      <li data-ng-if="!user.isSignedIn">
-        <a href="#/signin">
-          <i class="fa fa-sign-in"></i> Sign in
-        </a>
-      </li>
+      <!-- <li data-ng-if="!user.isSignedIn">
+           <a href="#/signin">
+           <i class="fa fa-sign-in"></i> Sign in
+           </a>
+           </li> -->
       <li data-ng-if="user.isSignedIn">
         <a href="#/" data-ng-click="signOut()">
           <i class="fa fa-sign-out"></i> Sign out
         </a>
       </li>
       <li data-ng-if="user.isSignedIn">
-        <a href="#/" data-ng-click="">
-          <i class="fa fa-user"></i> {{user.username}} <span class="caret"></span>
+          <a href="#" ng-click="">
+              <i class="fa fa-user"></i> {{user.username}} My profile</span>
         </a>
       </li>
     </ul>
   </nav>
   <nav class="visible-xs collapse" uib-collapse="isCollapsed" style="height: 0px;">
-    <ul class="nav navbar-nav" data-ng-if="!user.isSignedIn">
-      <li>
-        <a href="#/signin" data-ng-click="isCollapsed=!isCollapsed">
-          <i class="fa fa-sign-in"></i> Sign in
-        </a>
-      </li>
-    </ul>
+      <!-- <ul class="nav navbar-nav" data-ng-if="!user.isSignedIn">
+           <li>
+           <a href="#/signin" data-ng-click="isCollapsed=!isCollapsed">
+           <i class="fa fa-sign-in"></i> Sign in
+           </a>
+           </li>
+           </ul> -->
     <ul class="nav navbar-nav" data-ng-if="user.isSignedIn">
       <li>
         <a href="#/" data-ng-click="isCollapsed=!isCollapsed; signOut()">

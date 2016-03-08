@@ -10,3 +10,12 @@
   margin-top: $height-header;
   min-height: $height-content;
 }
+
+.container-fluid {
+    background:#F05E11;
+    padding:0;
+}
+
+a[ng-click]{
+    cursor: pointer;
+}
