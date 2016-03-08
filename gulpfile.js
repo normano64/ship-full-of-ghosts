@@ -8,6 +8,7 @@ var paths = {
   sass: 'app/sass/**/*.scss',
   css: 'app/static/**/*.css',
   js: 'app/static/**/*.js',
+  jsSource: 'app/js/**/*.js',
   index: 'app/index.html'
 };
 
@@ -33,7 +34,7 @@ gulp.task('sass:watch', function() {
 
 gulp.task('index', function() {
   var target = gulp.src(paths.index);
-  var js = gulp.src(['app/js/**/*.js'])
+  var js = gulp.src([paths.jsSource])
     .pipe(concat('app.js'))
     .pipe(gulp.dest('./app/static/'));
   var sources = gulp.src([paths.js, paths.css], {read: false});
@@ -43,7 +44,7 @@ gulp.task('index', function() {
 });
 
 gulp.task('index:watch', function() {
-  gulp.watch([paths.sass, paths.js], ['index']);
+  gulp.watch([paths.sass, paths.jsSource], ['index']);
 });
 
 gulp.task('default', ['sass', 'sass:watch', 'index', 'index:watch', 'serve'], function() {
