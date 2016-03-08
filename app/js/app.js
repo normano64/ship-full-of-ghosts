@@ -24,6 +24,11 @@ angular
         controller: 'ProductsCtrl',
         controllerAs: 'products'
       })
+      .when('/admin', {
+        templateUrl: 'views/admin.html',
+        controller: 'AdminCtrl',
+        controllerAs: 'admin'
+      })
       .when('/', {
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl',
