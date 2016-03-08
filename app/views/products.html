@@ -54,7 +54,7 @@
     class="cart-wrapper" 
     data-ng-span="user.isSignedIn"
     data-ng-controller="CartCtrl" 
-    data-ng-class="{'expanded': isExpanded}"
+    data-ng-class="{'expanded': cart.isExpanded}"
   >
     <div class="cart">
       <div class="cart-expand-stripe" data-ng-click="toggleCart()">
@@ -64,7 +64,7 @@
       </div>
       <div class="cart-main">
         <div class="cart-items">
-          <div class="cart-item" data-ng-repeat="item in items" data-ng-if="item">
+          <div class="cart-item" data-ng-repeat="item in cart.items" data-ng-if="item">
             <div class="cart-item-namn">
               {{ item.namn }}
             </div>
