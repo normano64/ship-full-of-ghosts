@@ -15,6 +15,7 @@ angular
     // (the rendering engine is already in this queue) so it will complete the execution before the new timeout event.
     $timeout(function() {
       var cartElement = angular.element(document.querySelectorAll('.cart'));
+      var cartPhantomElement = angular.element(document.querySelectorAll('.cart-phantom'));
       var initialOffset = parseInt(cartElement.css('margin-top'));
 
       angular.element(document.querySelectorAll('.products-item')).bind('dragstart', function() {
@@ -46,7 +47,7 @@ angular
       });
 
       angular.element($window).bind("scroll", function() {
-        cartElement.css('margin-top', initialOffset + this.pageYOffset + 'px');
+        cartPhantomElement.css('margin-top', initialOffset + this.pageYOffset + 'px');
       });
     }, 0);
   }]);
