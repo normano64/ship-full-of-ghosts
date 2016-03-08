@@ -81,10 +81,10 @@
 
         <div class="cart-actions">
           <div class="cart-redo-undo">
-            <button class="btn btn-danger" data-ng-click="redo()">
+            <button class="btn btn-danger" data-ng-click="redo()" data-ng-class="{'disabled': !cart.redoable}">
               Redo
             </button>
-            <button class="btn btn-primary" data-ng-click="undo()">
+            <button class="btn btn-primary" data-ng-click="undo()" data-ng-class="{'disabled': !cart.undoable}">
               Undo
             </button>
           </div>

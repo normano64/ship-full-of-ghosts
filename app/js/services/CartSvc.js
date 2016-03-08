@@ -21,7 +21,17 @@ angular
       items: {
 
       },
-      isExpanded: false
+      isExpanded: false,
+      undoable: false,
+      redoable: false
+    };
+
+    var pushUndo = function() {
+      undoItemsStack.push(clone(CartSvc.cart.items));
+      undoItemsStack = undoItemsStack.slice(-5);
+      redoItemsStack = [];
+      CartSvc.cart.undoable = true;
+      CartSvc.cart.redoable = false;
     };
 
     CartSvc.getCart = function() {
@@ -32,9 +42,7 @@ angular
       if (typeof CartSvc.cart.items[id] === 'undefined') {
         console.log('something goes wrong, no changing anything...');
       } else {
-        undoItemsStack.push(clone(CartSvc.cart.items));
-        undoItemsStack = undoItemsStack.slice(-5);
-        redoItemsStack = [];
+        pushUndo();
         CartSvc.cart.items[id].quantity ++;
       }
     };
@@ -45,9 +53,7 @@ angular
       } else {
         if (!(-- CartSvc.cart.items[id].quantity)) {
           // remove it from the cart
-          undoItemsStack.push(clone(CartSvc.cart.items));
-          undoItemsStack = undoItemsStack.slice(-5);
-          redoItemsStack = [];
+          pushUndo();
           CartSvc.cart.items[id] = undefined;
         }
       }
@@ -59,9 +65,7 @@ angular
         for (var i = 0; i < allItems.length; i ++) {
           var item = allItems[i];
           if (item.beer_id === id) {
-            undoItemsStack.push(clone(CartSvc.cart.items));
-            undoItemsStack = undoItemsStack.slice(-5);
-            redoItemsStack = [];
+            pushUndo();
 
             CartSvc.cart.items[id] = {
               beer_id: id,
@@ -77,9 +81,7 @@ angular
           console.log('something goes wrong, no changing anything...');
         }
       } else {
-        undoItemsStack.push(clone(CartSvc.cart.items));
-        undoItemsStack = undoItemsStack.slice(-5);
-        redoItemsStack = [];
+        pushUndo();
         CartSvc.cart.items[id].quantity ++;
       }
 
@@ -91,6 +93,10 @@ angular
         redoItemsStack.push(clone(CartSvc.cart.items));
         redoItemsStack = redoItemsStack.slice(-5);
         CartSvc.cart.items = undoItemsStack.pop();
+        CartSvc.cart.redoable = true;
+        if (undoItemsStack.length === 0) {
+          CartSvc.cart.undoable = false;
+        }
       } else {
         console.log('something goes wrong, no changing anything...');
       }
@@ -101,6 +107,10 @@ angular
         undoItemsStack.push(clone(CartSvc.cart.items));
         undoItemsStack = undoItemsStack.slice(-5);
         CartSvc.cart.items = redoItemsStack.pop();
+        CartSvc.cart.undoable = true;
+        if (redoItemsStack.length === 0) {
+          CartSvc.cart.redoable = false;
+        }
       } else {
         console.log('something goes wrong, no changing anything...');
       }
