@@ -2,49 +2,85 @@
 
 angular
   .module('shipFullOfGhosts.controllers')
-    .controller('ProductsCtrl', ['$scope', '$http', 'AccountSvc', '$window', '$timeout', function($scope, $http, AccountSvc, $window, $timeout) {
-    $scope.user = AccountSvc.getUser();
+    .controller('ProductsCtrl', [
+      '$scope', 
+      '$http', 
+      'AccountSvc', 
+      '$window', 
+      '$timeout', 
+      'CartSvc', 
+      function($scope, $http, AccountSvc, $window, $timeout, CartSvc) {
+        $scope.user = AccountSvc.getUser();
 
-    $scope.items = null;
-    $http.get('js/drinks.json')
-        .then(function(res){
-            $scope.items = res.data.payload;
-        });
+        $scope.canDrop = false;
+        $scope.dragging = false;
 
-    // $timeout adds a new event to the browser event queue 
-    // (the rendering engine is already in this queue) so it will complete the execution before the new timeout event.
-    $timeout(function() {
-      var cartElement = angular.element(document.querySelectorAll('.cart'));
-      var initialOffset = parseInt(cartElement.css('margin-top'));
+        $scope.items = null;
+        $http.get('js/drinks.json')
+          .then(function(res){
+              $scope.items = res.data.payload;
+          });
 
-      angular.element(document.querySelectorAll('.products-item')).bind('dragstart', function() {
-        console.log('start');
-        angular.element(document.querySelectorAll('.products-item')).css('opacity', '0');
-        angular.element(this).css('opacity', '1');
-        angular.element(document.querySelectorAll('.cart-drop')).css('width', '0px');
-        var containerWidth = angular.element(document.querySelectorAll('.product-wrapper')).css('width');
-        var calcLeft = parseInt(containerWidth) / 0.8 / 2 + 'px';
-        angular.element(document.querySelectorAll('.cart-drop')).css('left', calcLeft);
-        angular.element(document.querySelectorAll('.cart-drop')).css('display', 'flex');
-      });
+        var selectElement = function(identifier) {
+          return angular.element(document.querySelectorAll(identifier));
+        };
 
-      angular.element(document.querySelectorAll('.products-item')).bind('dragend', function() {
-        console.log('end');
-        angular.element(document.querySelectorAll('.products-item')).css('opacity', '1');
-        angular.element(document.querySelectorAll('.cart-drop')).css('display', 'none');
-      });
+        // $timeout adds a new event to the browser event queue 
+        // (the rendering engine is already in this queue) so it will complete the execution before the new timeout event.
+        $timeout(function() {
+          var cartElement = selectElement('.cart');
+          var cartPhantomElement = selectElement('.cart-phantom');
+          var productsItemElement = selectElement('.products-item');
+          var wrapperElement = selectElement('.product-wrapper');
+          var cartDropWrapperElement = selectElement('.cart-drop-wrapper');
+          var cartDropIconElement = selectElement('.cart-drop-icon');
 
-      angular.element(document.querySelectorAll('.cart-drop-icon')).bind('drop', function() {
-        console.log('drop');
-      });
+          var initialOffset = parseInt(cartElement.css('margin-top'));
 
-      angular.element(document.querySelectorAll('.cart-drop-icon')).bind('dragover', function() {
-        console.log('over');
-        return false;
-      });
+          productsItemElement.bind('dragstart', function(ev) {
+            ev.originalEvent.dataTransfer.setData('id', angular.element(this).attr('id').slice('products-item-'.length));
 
-      angular.element($window).bind("scroll", function() {
-        cartElement.css('margin-top', initialOffset + this.pageYOffset + 'px');
-      });
-    }, 0);
-  }]);
+            var containerWidth = parseInt(wrapperElement.css('width')) + 2 * parseInt(wrapperElement.css('margin-left'));
+            var calcLeft = containerWidth / 2 + 'px';
+
+            $scope.dragging = true;
+            $scope.$apply();
+
+            productsItemElement.css('opacity', '0');
+            angular.element(this).css('opacity', '1');
+            cartDropWrapperElement.css('width', '0px');
+            cartDropWrapperElement.css('left', calcLeft);
+            cartDropWrapperElement.css('display', 'flex');
+          });
+
+          productsItemElement.bind('dragend', function() {
+            $scope.canDrop = false;
+            $scope.dragging = false;
+            $scope.$apply();
+
+            productsItemElement.css('opacity', '1');
+            cartDropWrapperElement.css('display', 'none');
+          });
+
+          cartDropIconElement.bind('drop', function(ev) {
+            var selectedId = ev.originalEvent.dataTransfer.getData('id');
+            CartSvc.addItem(selectedId);
+          });
+
+          cartDropIconElement.bind('dragover', function() {
+            $scope.canDrop = true;
+            $scope.$apply();
+            return false;
+          });
+
+          cartDropIconElement.bind('dragleave', function() {
+            $scope.canDrop = false;
+            $scope.$apply();
+            return false;
+          });
+
+          angular.element($window).bind("scroll", function() {
+            cartPhantomElement.css('margin-top', initialOffset + this.pageYOffset + 'px');
+          });
+        }, 0);
+      }]);

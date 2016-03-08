@@ -1,11 +1,19 @@
 @import 'constant';
 
+.cart-phantom {
+  width: $width-stripe;
+  transition: width 0.5s;
+  height: $height-cart;
+  margin-top: calc(#{$height-search} - 50px);
+}
+
 .cart {
+  position: fixed;
+  left: calc(100vw - #{$width-stripe});
   display: flex;
   height: $height-cart;
   background-color: #dddddd;
-  width: $width-stripe;
-  transition: width 0.5s;
+  transition: left 0.5s;
   margin-top: calc(#{$height-search} - 50px);
 
   .cart-expand-stripe {
@@ -23,7 +31,6 @@
   .cart-main {
     background-color: #f2f2f2;
     height: 100%;
-    display: none;
     width: $width-cart;
 
     .cart-items {
@@ -68,6 +75,10 @@
 
 .cart-wrapper.expanded {
   .cart {
+    left: calc(100vw - #{$width-stripe} - #{$width-cart});
+  }
+
+  .cart-phantom {
     width: calc(#{$width-stripe} + #{$width-cart});
   }
 

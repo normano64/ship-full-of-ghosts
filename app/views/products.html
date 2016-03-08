@@ -26,9 +26,9 @@
     </div>
 
     <div class="col products">
-      <div class="products-items">
+      <div class="products-items" data-ng-class="{'dragging': dragging}">
         <div class="product-item-wrapper col-md-3 col-sm-4 col-xs-6" data-ng-repeat="item in items">
-          <div class="products-item" id="products-item-{{item.beer_id}}" draggable="true" data-ng-click="start()">
+          <div class="products-item" id="products-item-{{item.beer_id}}" draggable="true">
             <div class="item-image">
               <img draggable="false" src="images/beer.svg" />
             </div>
@@ -43,8 +43,10 @@
       </div>
     </div>
 
-    <div class="cart-drop">
-      <img src="images/cart.svg" class="cart-drop-icon"/>
+    <div class="cart-drop-wrapper">
+      <div class="cart-drop" data-ng-class="{'hovered': canDrop}">
+        <img src="images/cart.svg" class="cart-drop-icon"/>
+      </div>
     </div>
   </div>
 
@@ -52,7 +54,7 @@
     class="cart-wrapper" 
     data-ng-span="user.isSignedIn"
     data-ng-controller="CartCtrl" 
-    data-ng-class="{'expanded': isExpanded}"
+    data-ng-class="{'expanded': cart.isExpanded}"
   >
     <div class="cart">
       <div class="cart-expand-stripe" data-ng-click="toggleCart()">
@@ -62,27 +64,27 @@
       </div>
       <div class="cart-main">
         <div class="cart-items">
-          <div class="cart-item" data-ng-repeat="item in items" data-ng-if="item">
-            <div class="cart-item-name">
-              {{ item.name }}
+          <div class="cart-item" data-ng-repeat="item in cart.items" data-ng-if="item">
+            <div class="cart-item-namn">
+              {{ item.namn }}
             </div>
             <div class="cart-item-price">
               {{ item.price }}
             </div>
             <div class="cart-item-quantity">
-              <button class="btn btn-primary" data-ng-click="decreaseItem(item.id)">-</button>
+              <button class="btn btn-primary" data-ng-click="decreaseItem(item.beer_id)">-</button>
               {{ item.quantity }}
-              <button class="btn btn-primary" data-ng-click="increaseItem(item.id)">+</button>
+              <button class="btn btn-primary" data-ng-click="increaseItem(item.beer_id)">+</button>
             </div>
           </div>
         </div>
 
         <div class="cart-actions">
           <div class="cart-redo-undo">
-            <button class="btn btn-danger">
+            <button class="btn btn-danger" data-ng-click="redo()" data-ng-class="{'disabled': !cart.redoable}">
               Redo
             </button>
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" data-ng-click="undo()" data-ng-class="{'disabled': !cart.undoable}">
               Undo
             </button>
           </div>
@@ -92,9 +94,9 @@
         </div>
       </div>
     </div>
+    <div class="cart-phantom">
+    </div>
   </div>
   <div class="cart-main">
   </div>
-</div>
-</div>
 </div>

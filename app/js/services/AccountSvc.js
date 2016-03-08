@@ -7,7 +7,7 @@ angular
 
     AccountSvc.user = {
       isSignedIn: false
-    }
+    };
 
     AccountSvc.getUser = function() {
       return AccountSvc.user;
