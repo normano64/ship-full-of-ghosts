@@ -1,0 +1,56 @@
+.home {
+  background-image: url("../images/flying-dutchman.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #F05E11; }
+
+.container {
+  margin: auto; }
+
+.login {
+  height: 400px;
+  width: 30%;
+  float: left;
+  background-color: #FFFFFF;
+  text-align: center;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.5);
+  font-size: 30px;
+  margin-top: 10%;
+  margin-left: 10%;
+  padding-top: 130px; }
+  .login .fa {
+    font-size: 70px; }
+
+.guest {
+  height: 400px;
+  width: 30%;
+  float: right;
+  background-color: #FFFFFF;
+  text-align: center;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.5);
+  font-size: 30px;
+  margin-top: 10%;
+  margin-right: 10%;
+  padding-top: 130px; }
+  .guest .fa {
+    font-size: 70px; }
+
+a:link {
+  color: black; }
+
+a:visited {
+  color: black; }
+
+a:hover {
+  color: black; }
+
+a:active {
+  color: black; }
+
+.login:hover {
+  background-color: rgba(255, 255, 255, 0.8); }
+
+.guest:hover {
+  background-color: rgba(255, 255, 255, 0.8); }

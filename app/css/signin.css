@@ -1,0 +1,19 @@
+.container-signin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 50px); }
+  .container-signin .form-signin {
+    max-width: 300px;
+    margin-bottom: 50px; }
+    .container-signin .form-signin > * {
+      margin: 5px 0px; }
+    .container-signin .form-signin input {
+      text-align: center; }
+    .container-signin .form-signin .slogan-signin {
+      width: 100%;
+      text-align: center;
+      font-size: 30px;
+      margin-bottom: 15px; }
+    .container-signin .form-signin .signin-button {
+      width: 100%; }
