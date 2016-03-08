@@ -65,16 +65,16 @@
       <div class="cart-main">
         <div class="cart-items">
           <div class="cart-item" data-ng-repeat="item in items" data-ng-if="item">
-            <div class="cart-item-name">
-              {{ item.name }}
+            <div class="cart-item-namn">
+              {{ item.namn }}
             </div>
             <div class="cart-item-price">
               {{ item.price }}
             </div>
             <div class="cart-item-quantity">
-              <button class="btn btn-primary" data-ng-click="decreaseItem(item.id)">-</button>
+              <button class="btn btn-primary" data-ng-click="decreaseItem(item.beer_id)">-</button>
               {{ item.quantity }}
-              <button class="btn btn-primary" data-ng-click="increaseItem(item.id)">+</button>
+              <button class="btn btn-primary" data-ng-click="increaseItem(item.beer_id)">+</button>
             </div>
           </div>
         </div>

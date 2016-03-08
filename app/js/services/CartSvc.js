@@ -2,40 +2,16 @@
 
 angular
   .module('shipFullOfGhosts.services')
-  .service('CartSvc', ['API', function(API) {
+  .service('CartSvc', ['API', '$http', function(API, $http) {
     var CartSvc = {};
+    var allItems = {};
+
+    $http.get('js/drinks.json')
+      .then(function(res){
+          allItems = res.data.payload;
+      });
 
     CartSvc.cart = {
-      0: {
-        id: 0,
-        name: 'Brooklyn',
-        price: 79,
-        quantity: 1
-      },
-      1: {
-        id: 1,
-        name: 'Chimay blå',
-        price: 27.9,
-        quantity: 3
-      },
-      2: {
-        id: 2,
-        name: 'Thai',
-        price: 57,
-        quantity: 1
-      },
-      3: {
-        id: 3,
-        name: 'Kyckling Med',
-        price: 420,
-        quantity: 2
-      },
-      4: {
-        id: 4,
-        name: 'Thai Broileri',
-        price: 10,
-        quantity: 1
-      }
     };
 
     CartSvc.getCart = function() {
@@ -63,12 +39,23 @@ angular
 
     CartSvc.addItem = function(id) {
       if (typeof CartSvc.cart[id] === 'undefined') {
-        CartSvc.cart[id] = {
-          id: 4,
-          name: 'Thai Broileri',
-          price: 10,
-          quantity: 1
-        };
+        var itemFound = false;
+        for (var i = 0; i < allItems.length; i ++) {
+          var item = allItems[i];
+          if (item.beer_id === id) {
+            CartSvc.cart[id] = {
+              beer_id: id,
+              namn: item.namn,
+              price: item.pub_price,
+              quantity: 1
+            };
+            itemFound = true;
+            break;
+          }
+        }
+        if (!itemFound) {
+          console.log('something goes wrong, no changing anything...');
+        }
       } else {
         CartSvc.cart[id].quantity ++;
       }
