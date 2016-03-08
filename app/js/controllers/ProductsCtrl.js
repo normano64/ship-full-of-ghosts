@@ -30,7 +30,9 @@ angular
 
       var initialOffset = parseInt(cartElement.css('margin-top'));
 
-      productsItemElement.bind('dragstart', function() {
+      productsItemElement.bind('dragstart', function(ev) {
+        ev.originalEvent.dataTransfer.setData('id', angular.element(this).attr('id').slice('products-item-'.length));
+
         var containerWidth = parseInt(wrapperElement.css('width')) + 2 * parseInt(wrapperElement.css('margin-left'));
         var calcLeft = containerWidth / 2 + 'px';
 
@@ -53,8 +55,8 @@ angular
         cartDropWrapperElement.css('display', 'none');
       });
 
-      cartDropIconElement.bind('drop', function() {
-        console.log('drop');
+      cartDropIconElement.bind('drop', function(ev) {
+        var selectedId = ev.originalEvent.dataTransfer.getData('id'));
       });
 
       cartDropIconElement.bind('dragover', function() {
