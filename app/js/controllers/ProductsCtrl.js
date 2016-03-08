@@ -22,8 +22,10 @@ angular
         angular.element(document.querySelectorAll('.products-item')).css('opacity', '0');
         angular.element(this).css('opacity', '1');
         angular.element(document.querySelectorAll('.cart-drop')).css('width', '0px');
-        var containerWidth = angular.element(document.querySelectorAll('.product-wrapper')).css('width');
-        var calcLeft = parseInt(containerWidth) / 0.8 / 2 + 'px';
+        var wrapperElement = angular.element(document.querySelectorAll('.product-wrapper'));
+        var containerWidth = parseInt(wrapperElement.css('width')) + 2 * parseInt(wrapperElement.css('margin-left'));
+        var calcLeft = containerWidth / 2 + 'px';
+        console.log(containerWidth);
         angular.element(document.querySelectorAll('.cart-drop')).css('left', calcLeft);
         angular.element(document.querySelectorAll('.cart-drop')).css('display', 'flex');
       });
