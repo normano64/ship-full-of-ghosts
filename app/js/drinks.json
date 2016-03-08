@@ -2,69 +2,6 @@
     "type":"inventory_get",
     "payload":[
         {
-            "namn":"",
-            "namn2":"",
-            "sbl_price":"",
-            "pub_price":"",
-            "beer_id":"22590",
-            "count":"214",
-            "price":"14.00"
-        },
-        {
-            "namn":"",
-            "namn2":"",
-            "sbl_price":"",
-            "pub_price":"",
-            "beer_id":"0",
-            "count":"-2",
-            "price":"0.00"
-        },
-        {
-            "namn":"",
-            "namn2":"",
-            "sbl_price":"",
-            "pub_price":"",
-            "beer_id":"225900",
-            "count":"199",
-            "price":"14.90"
-        },
-        {
-            "namn":"",
-            "namn2":"",
-            "sbl_price":"",
-            "pub_price":"",
-            "beer_id":"3",
-            "count":"108",
-            "price":"14.90"
-        },
-        {
-            "namn":"",
-            "namn2":"",
-            "sbl_price":"",
-            "pub_price":"",
-            "beer_id":"2259",
-            "count":"371",
-            "price":"20.00"
-        },
-        {
-            "namn":"",
-            "namn2":"",
-            "sbl_price":"",
-            "pub_price":"",
-            "beer_id":"2",
-            "count":"-2",
-            "price":""
-        },
-        {
-            "namn":"",
-            "namn2":"",
-            "sbl_price":"",
-            "pub_price":"",
-            "beer_id":"1000",
-            "count":"4",
-            "price":"12.60"
-        },
-        {
             "namn":"Anchor Steam Beer",
             "namn2":"",
             "sbl_price":"23.90",
