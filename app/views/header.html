@@ -20,25 +20,18 @@
       <a href="#/" role="button" class="navbar-brand">
         The Flying Dutchman
       </a>
-      
-      <div id="chooseLanguage">
-        <label>
-          <input type="checkbox" id="switchLang" name="check"/>
-          <span id="lang" class="lang-text"></span>
-        </label>
+      <li>
+      <div id="chooseLanguageSwedish" onclick="swedish()">
+      <img src="images/Swedish.svg" />
       </div>
+      </li>
+    <li>
+      <div id="chooseLanguageEnglish" onclick="english()">
+      <img src="images/English.svg" />
+      </div>
+      </li>
       <script>
-      document.getElementById("switchLang").onclick = function () {
-        if (this.checked) {
-          swedish();
-        }
-        else {
-          english();
-        }
-      };
-      </script>
-      <script>
-      function swedish() {
+      function english() {
 
         var words = '{"drinks":[' +
         '{"englishText":"Beer","swedishText":"Öl" },' +
@@ -69,7 +62,7 @@
       } 
       </script>
       <script>
-      function english() {
+      function swedish() {
         var words = '{"drinks":[' +
         '{"englishText":"Beer","swedishText":"Öl" },' +
         '{"englishText":"Wine","swedishText":"Vin" },' +
