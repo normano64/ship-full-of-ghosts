@@ -32,14 +32,14 @@
     <div class="col products">
       <div class="products-items">
         <div class="product-item-wrapper col-md-3 col-sm-4 col-xs-6" data-ng-repeat="item in items">
-          <div class="products-item" id="products-item-{{item.id}}" draggable="true" data-ng-click="start()">
+          <div class="products-item" id="products-item-{{item.beer_id}}" draggable="true" data-ng-click="start()">
             <div class="item-image">
               <img draggable="false" src="images/beer.svg" />
             </div>
-            <div class="item-name">
-              {{ item.name }}
+            <div class="item-namn">
+              {{ item.namn }}
             </div>
-            <div class="item-price">
+            <div class="item-pub_price">
               {{ item.price }} Kr
             </div>
           </div>
@@ -50,7 +50,7 @@
 
   <div 
     class="cart-wrapper" 
-    data-ng-if="!user.isSignedIn" 
+    data-ng-spanuser.isSignedIn"
     data-ng-controller="CartCtrl" 
     data-ng-class="{'expanded': isExpanded}"
   >
