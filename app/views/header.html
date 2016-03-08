@@ -15,46 +15,6 @@
     <a class="navbar-brand visible-xs" href="#">The Flying Dutchman</a>
     </div>
 
-    <nav class="hidden-xs">
-      <ul class="nav navbar-nav">
-        <a href="#/" role="button" class="navbar-brand">
-          The Flying Dutchman
-        </a>
-        <li data-ng-if="!user.isSignedIn">
-          <a href="#/signin">
-            <i class="fa fa-sign-in"></i> Sign in
-          </a>
-        </li>
-        <li data-ng-if="user.isSignedIn">
-          <a href="#/" data-ng-click="signOut()">
-            <i class="fa fa-sign-out"></i> Sign out
-          </a>
-        </li>
-        <li data-ng-if="user.isSignedIn">
-          <a href="#/" data-ng-click="">
-            <i class="fa fa-user"></i> {{user.username}} <span class="caret"></span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <nav class="visible-xs collapse" uib-collapse="isCollapsed" style="height: 0px;">
-      <ul class="nav navbar-nav" data-ng-if="!user.isSignedIn">
-        <li>
-          <a href="#/signin" data-ng-click="isCollapsed=!isCollapsed">
-            <i class="fa fa-sign-in"></i> Sign in
-          </a>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav" data-ng-if="user.isSignedIn">
-        <li>
-          <a href="#/" data-ng-click="isCollapsed=!isCollapsed; signOut()">
-            <i class="fa fa-sign-out"></i> Sign out
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-
   <nav class="hidden-xs">
     <ul class="nav navbar-nav">
       <a href="#/" role="button" class="navbar-brand">
