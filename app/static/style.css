@@ -1,9 +1,16 @@
+.cart-phantom {
+  width: 20px;
+  transition: width 0.5s;
+  height: calc(100vh - 50px - 34px);
+  margin-top: calc(34px - 50px); }
+
 .cart {
+  position: fixed;
+  left: calc(100vw - 20px);
   display: flex;
   height: calc(100vh - 50px - 34px);
   background-color: #dddddd;
-  width: 20px;
-  transition: width 0.5s;
+  transition: left 0.5s;
   margin-top: calc(34px - 50px); }
   .cart .cart-expand-stripe {
     width: 20px;
@@ -16,7 +23,6 @@
   .cart .cart-main {
     background-color: #f2f2f2;
     height: 100%;
-    display: none;
     width: 300px; }
     .cart .cart-main .cart-items {
       height: calc(100% - 80px);
@@ -44,6 +50,9 @@
         align-items: center; }
 
 .cart-wrapper.expanded .cart {
+  left: calc(100vw - 20px - 300px); }
+
+.cart-wrapper.expanded .cart-phantom {
   width: calc(20px + 300px); }
 
 .cart-wrapper.expanded .cart-main {
@@ -145,7 +154,6 @@ a[ng-click] {
   background-color: #F05E11;
   display: flex;
   min-height: calc(100vh - 50px);
-  margin: 0 -15px;
   padding-top: 50px; }
 
 .product-wrapper {
@@ -170,15 +178,22 @@ a[ng-click] {
   .product-search button {
     border-radius: 0px; }
 
-.cart-drop {
+.cart-drop-wrapper {
   position: fixed;
   top: calc(50px + 34px);
   height: calc(100vh - 50px);
   display: none;
   align-items: center;
   justify-content: center; }
-  .cart-drop img {
-    max-width: 200px; }
+  .cart-drop-wrapper .cart-drop.hovered {
+    border-radius: 170px;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 40px; }
+  .cart-drop-wrapper .cart-drop img {
+    max-width: 150px; }
+
+.products-items.dragging .products-item:hover {
+  background-color: transparent !important; }
 
 .products-items .products-item {
   margin: 50px 0px;
@@ -191,6 +206,11 @@ a[ng-click] {
     padding: 10px; }
     .products-items .products-item .item-image img {
       height: 80px; }
+  .products-items .products-item .item-namn {
+    width: 160px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
 
 .container-signin {
   display: flex;

@@ -24,6 +24,11 @@ angular
         controller: 'ProductsCtrl',
         controllerAs: 'products'
       })
+      .when('/admin', {
+        templateUrl: 'views/admin.html',
+        controller: 'AdminCtrl',
+        controllerAs: 'admin'
+      })
       .when('/', {
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl',
@@ -38,66 +43,27 @@ angular
 
 angular
   .module('shipFullOfGhosts.controllers')
-  .controller('CartCtrl', ['$scope', 'AccountSvc', function($scope, AccountSvc) {
-    $scope.isExpanded = false;
+  .controller('AdminCtrl', ['$scope', function($scope) {
+    
+  }]);
+'use strict';
+
+angular
+  .module('shipFullOfGhosts.controllers')
+  .controller('CartCtrl', ['$scope', 'AccountSvc', 'CartSvc', function($scope, AccountSvc, CartSvc) {
     $scope.expandText = '◀';
 
-    $scope.items = {
-      0: {
-        id: 0,
-        name: 'Brooklyn',
-        price: 79,
-        quantity: 1
-      },
-      1: {
-        id: 1,
-        name: 'Chimay blå',
-        price: 27.9,
-        quantity: 3
-      },
-      2: {
-        id: 2,
-        name: 'Thai',
-        price: 57,
-        quantity: 1
-      },
-      3: {
-        id: 3,
-        name: 'Kyckling Med',
-        price: 420,
-        quantity: 2
-      },
-      4: {
-        id: 4,
-        name: 'Thai Broileri',
-        price: 10,
-        quantity: 1
-      }
-    };
+    $scope.cart = CartSvc.getCart();
 
     $scope.toggleCart = function() {
-      $scope.isExpanded = !$scope.isExpanded;
-      $scope.expandText = $scope.isExpanded ? '▶' : '◀';
+      $scope.cart.isExpanded = !$scope.cart.isExpanded;
+      $scope.expandText = $scope.cart.isExpanded ? '▶' : '◀';
     };
 
-    $scope.increaseItem = function(id) {
-      if (typeof $scope.items[id] === 'undefined') {
-        console.log('something goes wrong, no changing anything...');
-      } else {
-        $scope.items[id].quantity ++;
-      }
-    }
-
-    $scope.decreaseItem = function(id) {
-      if (typeof $scope.items[id] === 'undefined') {
-        console.log('something goes wrong, no changing anything...');
-      } else {
-        if (!(-- $scope.items[id].quantity)) {
-          // remove it from the cart
-          $scope.items[id] = undefined;
-        }
-      }
-    }
+    $scope.increaseItem = CartSvc.increaseItem;
+    $scope.decreaseItem = CartSvc.decreaseItem;
+    $scope.redo = CartSvc.redo;
+    $scope.undo = CartSvc.undo;
 
     $scope.user = AccountSvc.getUser();
   }]);
@@ -123,52 +89,88 @@ angular
 
 angular
   .module('shipFullOfGhosts.controllers')
-    .controller('ProductsCtrl', ['$scope', '$http', 'AccountSvc', '$window', '$timeout', function($scope, $http, AccountSvc, $window, $timeout) {
-    $scope.user = AccountSvc.getUser();
+    .controller('ProductsCtrl', [
+      '$scope', 
+      '$http', 
+      'AccountSvc', 
+      '$window', 
+      '$timeout', 
+      'CartSvc', 
+      function($scope, $http, AccountSvc, $window, $timeout, CartSvc) {
+        $scope.user = AccountSvc.getUser();
 
-    $scope.items = null;
-    $http.get('js/drinks.json')
-        .then(function(res){
-            $scope.items = res.data.payload;
-        });
+        $scope.canDrop = false;
+        $scope.dragging = false;
 
-    // $timeout adds a new event to the browser event queue 
-    // (the rendering engine is already in this queue) so it will complete the execution before the new timeout event.
-    $timeout(function() {
-      var cartElement = angular.element(document.querySelectorAll('.cart'));
-      var initialOffset = parseInt(cartElement.css('margin-top'));
+        $scope.items = null;
+        $http.get('js/drinks.json')
+          .then(function(res){
+              $scope.items = res.data.payload;
+          });
 
-      angular.element(document.querySelectorAll('.products-item')).bind('dragstart', function() {
-        console.log('start');
-        angular.element(document.querySelectorAll('.products-item')).css('opacity', '0');
-        angular.element(this).css('opacity', '1');
-        angular.element(document.querySelectorAll('.cart-drop')).css('width', '0px');
-        var containerWidth = angular.element(document.querySelectorAll('.product-wrapper')).css('width');
-        var calcLeft = parseInt(containerWidth) / 0.8 / 2 + 'px';
-        angular.element(document.querySelectorAll('.cart-drop')).css('left', calcLeft);
-        angular.element(document.querySelectorAll('.cart-drop')).css('display', 'flex');
-      });
+        var selectElement = function(identifier) {
+          return angular.element(document.querySelectorAll(identifier));
+        };
 
-      angular.element(document.querySelectorAll('.products-item')).bind('dragend', function() {
-        console.log('end');
-        angular.element(document.querySelectorAll('.products-item')).css('opacity', '1');
-        angular.element(document.querySelectorAll('.cart-drop')).css('display', 'none');
-      });
+        // $timeout adds a new event to the browser event queue 
+        // (the rendering engine is already in this queue) so it will complete the execution before the new timeout event.
+        $timeout(function() {
+          var cartElement = selectElement('.cart');
+          var cartPhantomElement = selectElement('.cart-phantom');
+          var productsItemElement = selectElement('.products-item');
+          var wrapperElement = selectElement('.product-wrapper');
+          var cartDropWrapperElement = selectElement('.cart-drop-wrapper');
+          var cartDropIconElement = selectElement('.cart-drop-icon');
 
-      angular.element(document.querySelectorAll('.cart-drop-icon')).bind('drop', function() {
-        console.log('drop');
-      });
+          var initialOffset = parseInt(cartElement.css('margin-top'));
 
-      angular.element(document.querySelectorAll('.cart-drop-icon')).bind('dragover', function() {
-        console.log('over');
-        return false;
-      });
+          productsItemElement.bind('dragstart', function(ev) {
+            ev.originalEvent.dataTransfer.setData('id', angular.element(this).attr('id').slice('products-item-'.length));
 
-      angular.element($window).bind("scroll", function() {
-        cartElement.css('margin-top', initialOffset + this.pageYOffset + 'px');
-      });
-    }, 0);
-  }]);
+            var containerWidth = parseInt(wrapperElement.css('width')) + 2 * parseInt(wrapperElement.css('margin-left'));
+            var calcLeft = containerWidth / 2 + 'px';
+
+            $scope.dragging = true;
+            $scope.$apply();
+
+            productsItemElement.css('opacity', '0');
+            angular.element(this).css('opacity', '1');
+            cartDropWrapperElement.css('width', '0px');
+            cartDropWrapperElement.css('left', calcLeft);
+            cartDropWrapperElement.css('display', 'flex');
+          });
+
+          productsItemElement.bind('dragend', function() {
+            $scope.canDrop = false;
+            $scope.dragging = false;
+            $scope.$apply();
+
+            productsItemElement.css('opacity', '1');
+            cartDropWrapperElement.css('display', 'none');
+          });
+
+          cartDropIconElement.bind('drop', function(ev) {
+            var selectedId = ev.originalEvent.dataTransfer.getData('id');
+            CartSvc.addItem(selectedId);
+          });
+
+          cartDropIconElement.bind('dragover', function() {
+            $scope.canDrop = true;
+            $scope.$apply();
+            return false;
+          });
+
+          cartDropIconElement.bind('dragleave', function() {
+            $scope.canDrop = false;
+            $scope.$apply();
+            return false;
+          });
+
+          angular.element($window).bind("scroll", function() {
+            cartPhantomElement.css('margin-top', initialOffset + this.pageYOffset + 'px');
+          });
+        }, 0);
+      }]);
 
 'use strict';
 
@@ -189,7 +191,7 @@ angular
 
     AccountSvc.user = {
       isSignedIn: false
-    }
+    };
 
     AccountSvc.getUser = function() {
       return AccountSvc.user;
@@ -208,4 +210,125 @@ angular
     }
 
     return AccountSvc;
+  }]);
+
+'use strict';
+
+angular
+  .module('shipFullOfGhosts.services')
+  .service('CartSvc', ['API', '$http', function(API, $http) {
+    var CartSvc = {};
+    var allItems = {};
+    var undoItemsStack = [];
+    var redoItemsStack = [];
+
+    var clone = function(obj) {
+      return JSON.parse(JSON.stringify(obj));
+    };
+
+    $http.get('js/drinks.json')
+      .then(function(res){
+          allItems = res.data.payload;
+      });
+
+    CartSvc.cart = {
+      items: {
+
+      },
+      isExpanded: false,
+      undoable: false,
+      redoable: false
+    };
+
+    var pushUndo = function() {
+      undoItemsStack.push(clone(CartSvc.cart.items));
+      undoItemsStack = undoItemsStack.slice(-5);
+      redoItemsStack = [];
+      CartSvc.cart.undoable = true;
+      CartSvc.cart.redoable = false;
+    };
+
+    CartSvc.getCart = function() {
+      return CartSvc.cart;
+    };
+
+    CartSvc.increaseItem = function(id) {
+      if (typeof CartSvc.cart.items[id] === 'undefined') {
+        console.log('something goes wrong, no changing anything...');
+      } else {
+        pushUndo();
+        CartSvc.cart.items[id].quantity ++;
+      }
+    };
+
+    CartSvc.decreaseItem = function(id) {
+      if (typeof CartSvc.cart.items[id] === 'undefined') {
+        console.log('something goes wrong, no changing anything...');
+      } else {
+        if (!(-- CartSvc.cart.items[id].quantity)) {
+          // remove it from the cart
+          pushUndo();
+          CartSvc.cart.items[id] = undefined;
+        }
+      }
+    };
+
+    CartSvc.addItem = function(id) {
+      if (typeof CartSvc.cart.items[id] === 'undefined') {
+        var itemFound = false;
+        for (var i = 0; i < allItems.length; i ++) {
+          var item = allItems[i];
+          if (item.beer_id === id) {
+            pushUndo();
+
+            CartSvc.cart.items[id] = {
+              beer_id: id,
+              namn: item.namn,
+              price: item.pub_price,
+              quantity: 1
+            };
+            itemFound = true;
+            break;
+          }
+        }
+        if (!itemFound) {
+          console.log('something goes wrong, no changing anything...');
+        }
+      } else {
+        pushUndo();
+        CartSvc.cart.items[id].quantity ++;
+      }
+
+      CartSvc.cart.isExpanded = true;
+    };
+
+    CartSvc.undo = function() {
+      if (undoItemsStack.length > 0) {
+        redoItemsStack.push(clone(CartSvc.cart.items));
+        redoItemsStack = redoItemsStack.slice(-5);
+        CartSvc.cart.items = undoItemsStack.pop();
+        CartSvc.cart.redoable = true;
+        if (undoItemsStack.length === 0) {
+          CartSvc.cart.undoable = false;
+        }
+      } else {
+        console.log('something goes wrong, no changing anything...');
+      }
+    };
+
+    CartSvc.redo = function() {
+      if (redoItemsStack.length > 0) {
+        undoItemsStack.push(clone(CartSvc.cart.items));
+        undoItemsStack = undoItemsStack.slice(-5);
+        CartSvc.cart.items = redoItemsStack.pop();
+        CartSvc.cart.undoable = true;
+        if (redoItemsStack.length === 0) {
+          CartSvc.cart.redoable = false;
+        }
+      } else {
+        console.log('something goes wrong, no changing anything...');
+      }
+    };
+
+    return CartSvc;
   }]);
