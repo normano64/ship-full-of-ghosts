@@ -14,6 +14,8 @@ angular
 
     $scope.increaseItem = CartSvc.increaseItem;
     $scope.decreaseItem = CartSvc.decreaseItem;
+    $scope.redo = CartSvc.redo;
+    $scope.undo = CartSvc.undo;
 
     $scope.user = AccountSvc.getUser();
   }]);
