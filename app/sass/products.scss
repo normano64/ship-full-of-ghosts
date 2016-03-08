@@ -34,7 +34,7 @@
   }
 }
 
-.cart-drop {
+.cart-drop-wrapper {
   position: fixed;
   top: calc(#{$height-header} + #{$height-search});
   height: $height-content;
@@ -42,12 +42,26 @@
   align-items: center;
   justify-content: center;
 
-  img {
-    max-width: 200px;
+  .cart-drop {
+    &.hovered {
+      border-radius: 170px;
+      background-color: rgba(255, 255, 255, 0.3);
+      padding: 40px;
+    }
+
+    img {
+      max-width: 150px;
+    }
   }
 }
 
 .products-items {
+  &.dragging {
+    .products-item:hover {
+      background-color: transparent !important;
+    }  
+  }
+  
   .products-item {
     margin: 50px 0px;
     cursor: pointer;

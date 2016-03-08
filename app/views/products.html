@@ -26,7 +26,7 @@
     </div>
 
     <div class="col products">
-      <div class="products-items">
+      <div class="products-items" data-ng-class="{'dragging': dragging}">
         <div class="product-item-wrapper col-md-3 col-sm-4 col-xs-6" data-ng-repeat="item in items">
           <div class="products-item" id="products-item-{{item.beer_id}}" draggable="true" data-ng-click="start()">
             <div class="item-image">
@@ -43,8 +43,10 @@
       </div>
     </div>
 
-    <div class="cart-drop">
-      <img src="images/cart.svg" class="cart-drop-icon"/>
+    <div class="cart-drop-wrapper">
+      <div class="cart-drop" data-ng-class="{'hovered': canDrop}">
+        <img src="images/cart.svg" class="cart-drop-icon"/>
+      </div>
     </div>
   </div>
 
