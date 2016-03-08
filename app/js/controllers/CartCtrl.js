@@ -9,7 +9,7 @@ angular
 
     $scope.toggleCart = function() {
       $scope.cart.isExpanded = !$scope.cart.isExpanded;
-      $scope.expandText = $scope.isExpanded ? '▶' : '◀';
+      $scope.expandText = $scope.cart.isExpanded ? '▶' : '◀';
     };
 
     $scope.increaseItem = CartSvc.increaseItem;
