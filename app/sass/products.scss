@@ -65,5 +65,12 @@
         height: 80px;
       }
     }
+
+    .item-namn {
+      width: 160px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 }
