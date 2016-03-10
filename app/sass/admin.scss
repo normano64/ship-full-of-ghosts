@@ -1,0 +1,20 @@
+.count-wrapper{
+	width: 20%;
+	height: auto;
+	float: right;
+	color: #000000;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-style: hidden hidden solid solid;
+	border-width: 2px;
+	padding-bottom: 5px;
+
+	.ng-scope{
+		float: none;
+		clear: right;
+		width: 100%;
+		background-color: transparent;
+		margin-left: 10px;
+		padding-bottom: 0px;
+		border: hidden;
+	}
+}

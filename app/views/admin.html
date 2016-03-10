@@ -1,1 +1,13 @@
-<h1>ADMIN INTERFACE</h1>     
+<div class="admin">
+	<div class="count-wrapper" ng-class="{'is-signed-in': user.isSignedIn}">
+		<div class="col count">
+			<center><h4>Low stock of the following product(s):</h4></center>
+			<div class="count-wrapper" data-ng-repeat="item in items" data-ng-if="item.count<=20">
+				<div class="item-count">
+					{{ item.namn }}:
+					{{ item.count }} Left
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
