@@ -23,7 +23,8 @@ angular
       },
       isExpanded: false,
       undoable: false,
-      redoable: false
+      redoable: false,
+      totalPrice: 0
     };
 
     var pushUndo = function() {
@@ -44,6 +45,7 @@ angular
       } else {
         pushUndo();
         CartSvc.cart.items[id].quantity ++;
+        CartSvc.cart.totalPrice += parseFloat(CartSvc.cart.items[id].price);
       }
     };
 
@@ -51,6 +53,7 @@ angular
       if (typeof CartSvc.cart.items[id] === 'undefined') {
         console.log('something goes wrong, no changing anything...');
       } else {
+        CartSvc.cart.totalPrice -= parseFloat(CartSvc.cart.items[id].price);
         if (!(-- CartSvc.cart.items[id].quantity)) {
           // remove it from the cart
           pushUndo();
@@ -70,9 +73,10 @@ angular
             CartSvc.cart.items[id] = {
               beer_id: id,
               namn: item.namn,
-              price: item.pub_price,
+              price: item.sbl_price,
               quantity: 1
             };
+            CartSvc.cart.totalPrice += parseFloat(CartSvc.cart.items[id].price);
             itemFound = true;
             break;
           }
@@ -83,6 +87,7 @@ angular
       } else {
         pushUndo();
         CartSvc.cart.items[id].quantity ++;
+        CartSvc.cart.totalPrice += parseFloat(CartSvc.cart.items[id].price);
       }
 
       CartSvc.cart.isExpanded = true;
