@@ -14,9 +14,7 @@ angular
   .constant('API', 'http://pub.jamaica-inn.net/fpdb/api.php')
   .filter('price', function() {
     return function(priceString) {
-      var priceNumbers = parseInt(parseFloat(priceString) * 100).toString();
-      var formattedPrice = priceNumbers.slice(0, -2) + '.' + priceNumbers.slice(-2);
-      return formattedPrice;
+      return priceString.toFixed(2);
     };
   })
   .config(['$routeProvider', function($routeProvider) {
