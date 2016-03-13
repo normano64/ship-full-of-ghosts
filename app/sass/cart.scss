@@ -19,6 +19,8 @@
   .cart-expand-stripe {
     width: $width-stripe;
     cursor: pointer;
+    background-color: rgb(235, 126, 69);
+    color: white;
 
     .stripe-content {
       display: flex;
