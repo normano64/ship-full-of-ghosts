@@ -23,8 +23,7 @@ angular
       },
       isExpanded: false,
       undoable: false,
-      redoable: false,
-      totalPrice: 0
+      redoable: false
     };
 
     var pushUndo = function() {
@@ -45,7 +44,6 @@ angular
       } else {
         pushUndo();
         CartSvc.cart.items[id].quantity ++;
-        CartSvc.cart.totalPrice += parseFloat(CartSvc.cart.items[id].price);
       }
     };
 
@@ -53,7 +51,6 @@ angular
       if (typeof CartSvc.cart.items[id] === 'undefined') {
         console.log('something goes wrong, no changing anything...');
       } else {
-        CartSvc.cart.totalPrice -= parseFloat(CartSvc.cart.items[id].price);
         if (!(-- CartSvc.cart.items[id].quantity)) {
           // remove it from the cart
           pushUndo();
@@ -76,7 +73,6 @@ angular
               price: item.sbl_price,
               quantity: 1
             };
-            CartSvc.cart.totalPrice += parseFloat(CartSvc.cart.items[id].price);
             itemFound = true;
             break;
           }
@@ -87,7 +83,6 @@ angular
       } else {
         pushUndo();
         CartSvc.cart.items[id].quantity ++;
-        CartSvc.cart.totalPrice += parseFloat(CartSvc.cart.items[id].price);
       }
 
       CartSvc.cart.isExpanded = true;
@@ -120,6 +115,15 @@ angular
         console.log('something goes wrong, no changing anything...');
       }
     };
+
+    CartSvc.getTotalPrice = function() {
+      var totalPrice = 0;
+      for (var item in CartSvc.cart.items) {
+        totalPrice += parseFloat(CartSvc.cart.items[item].price) * CartSvc.cart.items[item].quantity;
+      }
+
+      return totalPrice;
+    }
 
     return CartSvc;
   }]);

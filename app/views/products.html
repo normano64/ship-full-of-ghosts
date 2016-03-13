@@ -72,9 +72,9 @@
               {{ item.price }}
             </div>
             <div class="cart-item-quantity">
-              <button class="btn btn-primary" data-ng-click="decreaseItem(item.beer_id)">-</button>
-              {{ item.quantity }}
-              <button class="btn btn-primary" data-ng-click="increaseItem(item.beer_id)">+</button>
+              <button class="btn btn-primary" data-ng-click="decreaseItem(item.beer_id)">◀</button>
+              <input data-ng-model="item.quantity" />
+              <button class="btn btn-primary" data-ng-click="increaseItem(item.beer_id)">▶</button>
             </div>
           </div>
         </div>
@@ -89,7 +89,7 @@
             </button>
           </div>
           <button class="btn btn-success cart-checkout">
-            Checkout {{ cart.totalPrice | price }} Kr
+            Checkout {{ totalPrice | price }} Kr
           </button>
         </div>
       </div>

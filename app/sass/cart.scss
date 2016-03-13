@@ -44,6 +44,20 @@
         &>div {
           flex: 1;
         }
+
+        .cart-item-quantity {
+          button {
+            padding: 0;
+            background-color: transparent;
+            color: #F05E11;
+            border: none;
+          }
+
+          input {
+            width: 40px;
+            text-align: center;
+          }
+        }
       }
     }
 

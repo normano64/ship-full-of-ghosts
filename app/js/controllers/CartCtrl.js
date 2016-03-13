@@ -18,4 +18,8 @@ angular
     $scope.undo = CartSvc.undo;
 
     $scope.user = AccountSvc.getUser();
+
+    $scope.$watch('cart', function() {
+      $scope.totalPrice = CartSvc.getTotalPrice();
+    }, true);
   }]);
