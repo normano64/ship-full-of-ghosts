@@ -4,11 +4,12 @@ angular
 .module('shipFullOfGhosts.controllers')
 .controller('AdminCtrl', [
 	'$scope',
-	'$http', 
-	function($scope, $http) {
-		$scope.items = null;
-		$http.get('js/drinks.json')
-		.then(function(res){
-			$scope.items = res.data.payload;
-		});
+	'$http',
+	'AdminSvc',
+	function($scope, $http, AdminSvc) {
+		$scope.stock = AdminSvc.getStock();
+		$scope.increase = function(id, amount){
+			AdminSvc.increase(id,amount);
+		};
+		$scope.decrease = AdminSvc.decrease;
 	}]);

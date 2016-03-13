@@ -2,10 +2,10 @@
 	<div class="count-wrapper" ng-class="{'is-signed-in': user.isSignedIn}">
 		<div class="col count">
 			<center><h4>Low stock of the following product(s):</h4></center>
-			<div class="count-wrapper" data-ng-repeat="item in items" data-ng-if="item.count<=20">
+			<div class="count-wrapper" data-ng-repeat="drink in stock.drinks" data-ng-if="drink.count<=20">
 				<div class="item-count">
-					{{ item.namn }}:
-					{{ item.count }} Left
+					{{ drink.namn }}:
+					{{ drink.count }} Left
 				</div>
 			</div>
 		</div>
@@ -13,23 +13,28 @@
 	<div class="restock-wrapper">
 		<h4>Stock refill</h4>
 		<b>Select the beverage you want to adjust: </b></br>
-		<div class="restock" data-ng-repeat="item in items">
-			<div class="restock-item" id="restock-item-{{item.beer_id}}" ng-click="showAdjust = ! showAdjust">
+		<div class="restock" data-ng-repeat="drink in stock.drinks" >
+			<div class="restock-item" id="restock-item-{{drink.beer_id}}" ng-click="showAdjust =  true" >
 				<div class="item-image">
 					<img src="images/beer.svg" />
 				</div>
 				<div class="item-namn">
-					{{ item.namn }}:
-					{{ item.count }}
+					{{ drink.namn }}:
+					{{ drink.count }}
 				</div>
 				<div class="item-adjust" ng-class="{ 'hidden': ! showAdjust }">
 					<div class="cart-item-quantity">
-						<button class="btn btn-primary" data-ng-click="decrease(item.beer_id, item.count)">-</button>
-						{{ item.quantity }}
-						<button class="btn btn-primary" data-ng-click="increase(item.beer_id)">+</button>
+						<form ng-submit="decrease(drink.beer_id, amount)">
+							<button type="submit" class="btn btn-primary" id="minus" >-</button>
+						</form>
+						<form ng-submit="increase(drink.beer_id, amount)">
+							<button type="submit" class="btn btn-primary" id="plus">+</button>
+							<div class="btn-group">
+								<input type="number" class="btn-control" data-ng-model="amount" placeholder="amount"></div>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
