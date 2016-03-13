@@ -1,7 +1,7 @@
 <div class="container-signin">
   <div class="form form-signin">
     <h2 class="slogan-signin">
-      <p class="translate">Login</p>
+      <p> {{wordsList.isSwedish ? wordsList.words.id_8.swedishText : wordsList.words.id_8.englishText}}</p>
     </h2>
     <a href="#/admin"><button>Temporary button to Admin page</button></a>
     <form ng-submit="signIn(username, password)">

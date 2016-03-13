@@ -1,15 +1,16 @@
 <div class="home main-page">
-	<a href="#/signin">
+		<a href="#/signin">
 		<div class="container">
 			<div class="login">
 				<i class="fa fa-user"></i>
-				<p class="translate">Login</p>
+				<p>  {{wordsList.isSwedish ? wordsList.words.id_8.swedishText : wordsList.words.id_8.englishText}}  </p>
+				
 			</div>
 		</a>
 		<a href="#/products">
 			<div class="guest">
 				<i class="fa fa-binoculars"></i>
-				<p class="translate">Guest</p>
+				<p> {{wordsList.isSwedish ? wordsList.words.id_4.swedishText : wordsList.words.id_4.englishText}}
 			</div>
 		</div>
 	</a>

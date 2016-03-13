@@ -10,4 +10,26 @@
 			</div>
 		</div>
 	</div>
+	<div class="restock-wrapper">
+		<h4>Stock refill</h4>
+		<b>Select the beverage you want to adjust: </b></br>
+		<div class="restock" data-ng-repeat="item in items">
+			<div class="restock-item" id="restock-item-{{item.beer_id}}" ng-click="showAdjust = ! showAdjust">
+				<div class="item-image">
+					<img src="images/beer.svg" />
+				</div>
+				<div class="item-namn">
+					{{ item.namn }}:
+					{{ item.count }}
+				</div>
+				<div class="item-adjust" ng-class="{ 'hidden': ! showAdjust }">
+					<div class="cart-item-quantity">
+						<button class="btn btn-primary" data-ng-click="decrease(item.beer_id, item.count)">-</button>
+						{{ item.quantity }}
+						<button class="btn btn-primary" data-ng-click="increase(item.beer_id)">+</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
