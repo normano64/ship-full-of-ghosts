@@ -19,6 +19,8 @@
   .cart-expand-stripe {
     width: $width-stripe;
     cursor: pointer;
+    background-color: rgb(235, 126, 69);
+    color: white;
 
     .stripe-content {
       display: flex;
@@ -44,6 +46,20 @@
         &>div {
           flex: 1;
         }
+
+        .cart-item-quantity {
+          button {
+            padding: 0;
+            background-color: transparent;
+            color: #F05E11;
+            border: none;
+          }
+
+          input {
+            width: 40px;
+            text-align: center;
+          }
+        }
       }
     }
 
@@ -64,7 +80,7 @@
 
       .cart-checkout {
         flex: 1;
-        background-color: #5cb85c;
+        border-radius: 0;
         display: flex;
         justify-content: center;
         align-items: center;

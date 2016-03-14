@@ -4,6 +4,7 @@
   background-color: #F05E11;
   display: flex;
   min-height: $height-content;
+  /* margin: 0 -15px; */
   padding-top: 50px;
 }
 
@@ -28,10 +29,24 @@
   left: 0;
   width: 100vw;
   z-index:100;
+  padding:15px 20%;
+  background:#ffffff;
 
   button {
     border-radius: 0px;
   }
+    .input-group-addon {
+        border-right:0;
+      label {
+          font-weight:normal;
+          cursor:pointer;
+          line-height:1.42857143;
+          margin-bottom:0;
+      }
+      input[type=checkbox] {
+          vertical-align:middle;
+      }
+    }
 }
 
 .cart-drop-wrapper {

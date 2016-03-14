@@ -51,15 +51,19 @@ angular
       if (typeof CartSvc.cart.items[id] === 'undefined') {
         console.log('something goes wrong, no changing anything...');
       } else {
+        pushUndo();
         if (!(-- CartSvc.cart.items[id].quantity)) {
           // remove it from the cart
-          pushUndo();
           CartSvc.cart.items[id] = undefined;
         }
       }
     };
 
     CartSvc.addItem = function(id) {
+      if (typeof id === 'string') {
+        id = parseInt(id);
+      }
+
       if (typeof CartSvc.cart.items[id] === 'undefined') {
         var itemFound = false;
         for (var i = 0; i < allItems.length; i ++) {
@@ -70,7 +74,7 @@ angular
             CartSvc.cart.items[id] = {
               beer_id: id,
               namn: item.namn,
-              price: item.pub_price,
+              price: item.sbl_price,
               quantity: 1
             };
             itemFound = true;
@@ -115,6 +119,15 @@ angular
         console.log('something goes wrong, no changing anything...');
       }
     };
+
+    CartSvc.getTotalPrice = function() {
+      var totalPrice = 0;
+      for (var item in CartSvc.cart.items) {
+        totalPrice += parseFloat(CartSvc.cart.items[item].price) * CartSvc.cart.items[item].quantity;
+      }
+
+      return totalPrice;
+    }
 
     return CartSvc;
   }]);

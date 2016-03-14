@@ -2,32 +2,75 @@
   <div class="product-wrapper" ng-class="{'is-signed-in': user.isSignedIn}">
     
     <div class="input-group product-search">
-      <div class="input-group-btn search-panel">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-          <span id="search_concept">Beverages</span> <span class="caret"></span>
-        </button>
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-          <span id="search_concept">Filter by</span> <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="#contains">Contains</a></li>
-          <li><a href="#its_equal">It's equal</a></li>
-          <li><a href="#greather_than">Greather than ></a></li>
-          <li><a href="#less_than">Less than < </a></li>
-          <li class="divider"></li>
-          <li><a href="#all">Anything</a></li>
+        <!-- <div class="input-group-btn">
+             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+             <span class="current">Any</span> <span class="translate">beverages</span> <span class="caret"></span>
+             </button>
+             <ul class="dropdown-menu" role="menu">
+             <li><a ng-click="type('beer')" class="translate"><i class="fa fa-check-square-o"></i> Beer</a></li>
+             <li><a ng-click="type('cider')" class="translate"><i class="fa fa-check-square-o"></i> Cider</a></li>
+             <li><a ng-click="type('vin')" class="translate"><i class="fa fa-check-square-o"></i> Wine</a></li>
+             <li><a ng-click="type('whisky')" class="translate"><i class="fa fa-check-square-o"></i> Whiskey</a></li>
+             <li class="divider"></li>
+             <li><a ng-click="type('all')" class="translate">Any</a></li>
         </ul>
+    </div> -->
+      <div class="input-group-btn">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+              <span class="translate">Allergy: </span>
+              <span class="current">{{allergy}}</span>
+              <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+              <li>
+                  <a ng-click="allergyfn('gluten')" class="translate">
+                      <i ng-show="!allergies['gluten']" class="fa fa-square-o"></i><i ng-show="allergies['gluten']" class="fa fa-check-square-o"></i> Gluten
+                  </a>
+              </li>
+              <li>
+                  <a ng-click="allergyfn('alcohol')" class="translate">
+                      <i ng-show="!allergies['alcohol']" class="fa fa-square-o"></i><i ng-show="allergies['alcohol']" class="fa fa-check-square-o"></i> Alcohol
+                  </a>
+              </li>
+              <!-- <li class="divider"></li>
+                   <li><a ng-click="allergy('no')" class="translate">None</a></li> -->
+          </ul>
       </div>
-      <input type="hidden" name="search_param" value="all" id="search_param">
-      <input type="text" class="form-control" name="x" placeholder="Search term...">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-      </span>
+      <div class="input-group-btn">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+              <span>Sort by: </span>
+              <span class="current">{{predicateName}}</span>
+              <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+              <li><a ng-click="order($event, 'namn', false)" ng-show="predicate != 'namn'"
+                     class="translate">Name a-ö</i>
+              </a></li>
+              <li><a ng-click="order($event, 'namn', true)" ng-show="predicate != '-namn'"
+                     class="translate">Name ö-a</i>
+              </a></li>
+              <li><a ng-click="order($event, 'pub_price', false)" ng-show="predicate != 'pub_price'"
+                     class="translate">Price low-high</i>
+              </a></li>
+              <li><a ng-click="order($event, 'pub_price', true)" ng-show="predicate != '-pub_price'"
+                     class="translate">Price high-low</i>
+              </a></li>
+          </ul>
+      </div>
+      <!-- <span class="input-group-addon">
+           <label ng-click="">
+           <input type="checkbox"> <span class="translate"/>Gluten allergy</span>
+           </label>
+           </span> -->
+      <input type="text" class="form-control" name="x" placeholder="Search term..." ng-model="search.namn"/>
+      <!-- <span class="input-group-btn">
+           <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+           </span> -->
     </div>
 
     <div class="col products">
       <div class="products-items" data-ng-class="{'dragging': dragging}">
-        <div class="product-item-wrapper col-md-3 col-sm-4 col-xs-6" data-ng-repeat="item in items">
+          <div class="product-item-wrapper col-md-3 col-sm-6" data-ng-repeat="item in items | filter:filterAlcohol | filter:search | orderBy:predicate">
           <div class="products-item" id="products-item-{{item.beer_id}}" draggable="true">
             <div class="item-image">
               <img draggable="false" src="images/beer.svg" />
@@ -35,8 +78,8 @@
             <div class="item-namn">
               {{ item.namn }}
             </div>
-            <div class="item-pub_price">
-              {{ item.price }} Kr
+            <div class="item-price">
+              {{ item.pub_price }} Kr
             </div>
           </div>
         </div>
@@ -72,9 +115,9 @@
               {{ item.price }}
             </div>
             <div class="cart-item-quantity">
-              <button class="btn btn-primary" data-ng-click="decreaseItem(item.beer_id)">-</button>
-              {{ item.quantity }}
-              <button class="btn btn-primary" data-ng-click="increaseItem(item.beer_id)">+</button>
+              <button class="btn btn-primary" data-ng-click="decreaseItem(item.beer_id)">◀</button>
+              <input data-ng-model="item.quantity" />
+              <button class="btn btn-primary" data-ng-click="increaseItem(item.beer_id)">▶</button>
             </div>
           </div>
         </div>
@@ -88,9 +131,9 @@
               Undo
             </button>
           </div>
-          <div class="cart-checkout">
-            Checkout
-          </div>
+          <button class="btn btn-success cart-checkout">
+            Checkout {{ totalPrice | price }} Kr
+          </button>
         </div>
       </div>
     </div>

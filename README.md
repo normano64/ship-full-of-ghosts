@@ -13,3 +13,5 @@ Start the server.
 ```
 gulp
 ```
+
+http://normano64.github.io/ship-full-of-ghosts/app

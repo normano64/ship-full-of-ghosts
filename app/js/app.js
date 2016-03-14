@@ -12,6 +12,11 @@ angular
     'shipFullOfGhosts.services'
   ])
   .constant('API', 'http://pub.jamaica-inn.net/fpdb/api.php')
+  .filter('price', function() {
+    return function(priceString) {
+      return priceString.toFixed(2);
+    };
+  })
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/signin', {
