@@ -127,5 +127,5 @@ angular
           angular.element($window).bind("scroll", function() {
             cartPhantomElement.css('margin-top', initialOffset + this.pageYOffset + 'px');
           });
-        }, 0);
+        }, 100);
       }]);
