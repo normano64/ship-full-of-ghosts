@@ -2,12 +2,12 @@
 
 angular
   .module('shipFullOfGhosts.services')
-  .service('TranslateSvc', ['API',  function(API) {
+  .service('TranslateSvc', ['API', '$http', function(API, $http) {
     var TranslateSvc = {};
 
     TranslateSvc.wordsList = {
-      "words":{
-      "id_1":{
+      words:{
+     "id_1":{
       "englishText": "Beer",
       "swedishText": "Öl"},
       "id_2":{
