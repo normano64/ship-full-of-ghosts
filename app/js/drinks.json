@@ -7,7 +7,8 @@
             "pub_price":25,
             "beer_id":157503,
             "count":10,
-            "price":20.60
+            "price":20.60,
+            "allergy": ["gluten","alcohol"]
         },
         {
             "namn":"Beck's",
@@ -15,7 +16,8 @@
             "pub_price":20,
             "beer_id":154903,
             "count":0,
-            "price":14.10
+            "price":14.10,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Bedarö Bitter",
@@ -23,7 +25,8 @@
             "pub_price":30,
             "beer_id":141001,
             "count":-36,
-            "price":28.20
+            "price":28.20,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"BEO Apple Green Tea",
@@ -31,7 +34,8 @@
             "pub_price":15,
             "beer_id":197702,
             "count":-3,
-            "price":12.90
+            "price":12.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"BEO Blood Orange Hibiscus",
@@ -39,7 +43,8 @@
             "pub_price":15,
             "beer_id":197302,
             "count":-2,
-            "price":12.90
+            "price":12.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Bitburger Premium",
@@ -47,7 +52,8 @@
             "pub_price":15,
             "beer_id":156503,
             "count":-6,
-            "price":11.90
+            "price":11.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Black Tower Rivaner",
@@ -55,7 +61,8 @@
             "pub_price":35,
             "beer_id":604504,
             "count":47,
-            "price":29.00
+            "price":29.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Blue Nun",
@@ -63,7 +70,8 @@
             "pub_price":40,
             "beer_id":693502,
             "count":0,
-            "price":36.00
+            "price":36.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Bombardier",
@@ -71,7 +79,8 @@
             "pub_price":25,
             "beer_id":152901,
             "count":0,
-            "price":19.90
+            "price":19.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Brewdog 5 A.M. Saint",
@@ -79,7 +88,8 @@
             "pub_price":25,
             "beer_id":150103,
             "count":0,
-            "price":20.10
+            "price":20.10,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"BrewDog Dead Pony Club",
@@ -87,7 +97,8 @@
             "pub_price":20,
             "beer_id":1191303,
             "count":0,
-            "price":18.10
+            "price":18.10,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Brewdog Hardcore IPA",
@@ -95,7 +106,8 @@
             "pub_price":30,
             "beer_id":159103,
             "count":70,
-            "price":36.00
+            "price":36.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Brewdog Punk IPA",
@@ -103,7 +115,8 @@
             "pub_price":25,
             "beer_id":151503,
             "count":0,
-            "price":19.90
+            "price":19.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"BrewDog Rip Tide",
@@ -111,7 +124,8 @@
             "pub_price":30,
             "beer_id":162003,
             "count":0,
-            "price":26.90
+            "price":26.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"BrewDog Trashy Blonde",
@@ -119,7 +133,8 @@
             "pub_price":25,
             "beer_id":1158103,
             "count":3,
-            "price":18.90
+            "price":18.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Briccotondo Barbera",
@@ -127,7 +142,8 @@
             "pub_price":85,
             "beer_id":277301,
             "count":11,
-            "price":79.00
+            "price":79.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Brooklyn East India Pale Ale",
@@ -135,7 +151,8 @@
             "pub_price":25,
             "beer_id":168803,
             "count":21,
-            "price":22.90
+            "price":22.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Brooklyn Lager",
@@ -143,7 +160,8 @@
             "pub_price":20,
             "beer_id":154803,
             "count":4,
-            "price":16.90
+            "price":16.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Cameleon Selection Malbec",
@@ -151,7 +169,8 @@
             "pub_price":45,
             "beer_id":658102,
             "count":80,
-            "price":43.00
+            "price":43.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Campos Góticos Tempranillo",
@@ -159,7 +178,8 @@
             "pub_price":55,
             "beer_id":209702,
             "count":202,
-            "price":49.00
+            "price":49.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Casillero del Diablo Chardonnay",
@@ -167,7 +187,8 @@
             "pub_price":35,
             "beer_id":207504,
             "count":203,
-            "price":30.00
+            "price":30.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Ch Malavieille Alliance",
@@ -175,7 +196,8 @@
             "pub_price":125,
             "beer_id":266201,
             "count":194,
-            "price":119.00
+            "price":119.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Château Pech-Latt",
@@ -183,7 +205,8 @@
             "pub_price":105,
             "beer_id":223301,
             "count":201,
-            "price":99.00
+            "price":99.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Chilcas Sauvignon Blanc",
@@ -191,7 +214,8 @@
             "pub_price":50,
             "beer_id":669702,
             "count":20,
-            "price":45.00
+            "price":45.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Chill Out Mountains Malbec",
@@ -199,7 +223,8 @@
             "pub_price":75,
             "beer_id":614601,
             "count":177,
-            "price":69.00
+            "price":69.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Chimay blå",
@@ -207,7 +232,8 @@
             "pub_price":35,
             "beer_id":165103,
             "count":192,
-            "price":28.90
+            "price":28.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Cidraie Pear",
@@ -215,7 +241,8 @@
             "pub_price":25,
             "beer_id":180202,
             "count":198,
-            "price":20.00
+            "price":20.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Citra Pale Ale",
@@ -223,7 +250,8 @@
             "pub_price":25,
             "beer_id":155103,
             "count":193,
-            "price":20.90
+            "price":20.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Coopers Best Extra Stout",
@@ -231,7 +259,8 @@
             "pub_price":25,
             "beer_id":1127103,
             "count":197,
-            "price":19.90
+            "price":19.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Dr L Riesling",
@@ -239,7 +268,8 @@
             "pub_price":85,
             "beer_id":721801,
             "count":183,
-            "price":81.00
+            "price":81.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Duvel",
@@ -247,7 +277,8 @@
             "pub_price":30,
             "beer_id":165403,
             "count":171,
-            "price":24.90
+            "price":24.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Ecologica Shiraz Malbec",
@@ -255,7 +286,8 @@
             "pub_price":75,
             "beer_id":651201,
             "count":194,
-            "price":69.00
+            "price":69.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Einbecker Brauherren Alkoholfrei",
@@ -263,7 +295,8 @@
             "pub_price":15,
             "beer_id":191402,
             "count":193,
-            "price":9.90
+            "price":9.90,
+            "allergy":["gluten"]
         },
         {
             "namn":"El Cortejo Sauvignon Blanc",
@@ -271,7 +304,8 @@
             "pub_price":40,
             "beer_id":601202,
             "count":184,
-            "price":33.00
+            "price":33.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"El Coto Blanco",
@@ -279,7 +313,8 @@
             "pub_price":40,
             "beer_id":278002,
             "count":189,
-            "price":37.00
+            "price":37.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Electric Nurse Imperial Stout",
@@ -287,7 +322,8 @@
             "pub_price":40,
             "beer_id":8953903,
             "count":196,
-            "price":34.90
+            "price":34.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Erdinger Weissbier Hefe",
@@ -295,7 +331,8 @@
             "pub_price":25,
             "beer_id":1120801,
             "count":192,
-            "price":21.90
+            "price":21.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Fentimans Ginger Beer",
@@ -303,7 +340,8 @@
             "pub_price":25,
             "beer_id":196303,
             "count":197,
-            "price":22.50
+            "price":22.50,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Flying Dog Dogtoberfest Märzen",
@@ -311,7 +349,8 @@
             "pub_price":30,
             "beer_id":1163903,
             "count":209,
-            "price":25.90
+            "price":25.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Flying Dog Gonzo Imperial Porter",
@@ -319,7 +358,8 @@
             "pub_price":35,
             "beer_id":168303,
             "count":204,
-            "price":29.90
+            "price":29.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Franziskaner Hefe-Weissbier",
@@ -327,7 +367,8 @@
             "pub_price":25,
             "beer_id":168701,
             "count":208,
-            "price":20.50
+            "price":20.50,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Freedom IPA",
@@ -335,7 +376,8 @@
             "pub_price":30,
             "beer_id":8968701,
             "count":209,
-            "price":27.00
+            "price":27.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Fuller's ESB",
@@ -343,7 +385,8 @@
             "pub_price":30,
             "beer_id":1140501,
             "count":193,
-            "price":25.40
+            "price":25.40,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Gambrinus",
@@ -351,7 +394,8 @@
             "pub_price":20,
             "beer_id":1148901,
             "count":200,
-            "price":15.90
+            "price":15.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Guinness Extra Stout",
@@ -359,7 +403,8 @@
             "pub_price":20,
             "beer_id":156103,
             "count":199,
-            "price":16.90
+            "price":16.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Hell",
@@ -367,7 +412,8 @@
             "pub_price":30,
             "beer_id":1146001,
             "count":209,
-            "price":23.80
+            "price":23.80,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Hoegaarden Wit-Blanche",
@@ -375,7 +421,8 @@
             "pub_price":20,
             "beer_id":156303,
             "count":54,
-            "price":16.10
+            "price":16.10,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Hofbräu München Oktoberfest",
@@ -383,7 +430,8 @@
             "pub_price":25,
             "beer_id":1129801,
             "count":200,
-            "price":19.90
+            "price":19.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Hubert Beck Réserve du Chevalier Pinot Gris",
@@ -391,7 +439,8 @@
             "pub_price":55,
             "beer_id":1210502,
             "count":197,
-            "price":49.00
+            "price":49.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"il Conte Montepulciano d'Abruzzo",
@@ -399,7 +448,8 @@
             "pub_price":40,
             "beer_id":232202,
             "count":205,
-            "price":36.00
+            "price":36.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"il Nostro Grecanico",
@@ -407,7 +457,8 @@
             "pub_price":60,
             "beer_id":2280301,
             "count":202,
-            "price":57.00
+            "price":57.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Innis & GunnOak Aged Beer",
@@ -415,7 +466,8 @@
             "pub_price":25,
             "beer_id":1144703,
             "count":206,
-            "price":19.90
+            "price":19.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Innis & GunnRum Finish Oak Aged Beer",
@@ -423,7 +475,8 @@
             "pub_price":25,
             "beer_id":1159803,
             "count":200,
-            "price":19.90
+            "price":19.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Jever Pilsener",
@@ -431,7 +484,8 @@
             "pub_price":15,
             "beer_id":150603,
             "count":207,
-            "price":12.90
+            "price":12.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Jever Pilsener",
@@ -439,7 +493,8 @@
             "pub_price":20,
             "beer_id":150601,
             "count":197,
-            "price":15.90
+            "price":15.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Karlovacko",
@@ -447,7 +502,8 @@
             "pub_price":20,
             "beer_id":151001,
             "count":198,
-            "price":16.90
+            "price":16.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Kasteel Triple",
@@ -455,7 +511,8 @@
             "pub_price":45,
             "beer_id":8910403,
             "count":196,
-            "price":27.50
+            "price":27.50,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Königsmosel Riesling",
@@ -463,7 +520,8 @@
             "pub_price":45,
             "beer_id":746902,
             "count":200,
-            "price":39.00
+            "price":39.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"King Goblin",
@@ -471,7 +529,8 @@
             "pub_price":30,
             "beer_id":150401,
             "count":198,
-            "price":25.90
+            "price":25.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Kiviks Astrakan Fläderblom Äppelcider Halvtorr",
@@ -479,7 +538,8 @@
             "pub_price":25,
             "beer_id":187702,
             "count":199,
-            "price":19.90
+            "price":19.90,
+            "allergy":["alcohol"]
         },
         {
             "namn":"Kiviks Astrakan Torr Cider",
@@ -487,7 +547,8 @@
             "pub_price":25,
             "beer_id":181803,
             "count":199,
-            "price":18.90
+            "price":18.90,
+            "allergy":["alcohol"]
         },
         {
             "namn":"Kiviks Williams Päroncider Halvtorr",
@@ -495,7 +556,8 @@
             "pub_price":25,
             "beer_id":183203,
             "count":199,
-            "price":18.90
+            "price":18.90,
+            "allergy":["alcohol"]
         },
         {
             "namn":"Kloster",
@@ -503,7 +565,8 @@
             "pub_price":35,
             "beer_id":8967303,
             "count":192,
-            "price":32.30
+            "price":32.30,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Kung",
@@ -511,7 +574,8 @@
             "pub_price":15,
             "beer_id":144612,
             "count":178,
-            "price":10.60
+            "price":10.60,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Kwak",
@@ -519,7 +583,8 @@
             "pub_price":25,
             "beer_id":166403,
             "count":200,
-            "price":23.90
+            "price":23.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Lapin Kulta",
@@ -527,7 +592,8 @@
             "pub_price":15,
             "beer_id":159412,
             "count":1,
-            "price":13.10
+            "price":13.10,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Leffe Blonde",
@@ -535,7 +601,8 @@
             "pub_price":25,
             "beer_id":165903,
             "count":188,
-            "price":18.90
+            "price":18.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Leffe Brune",
@@ -543,7 +610,8 @@
             "pub_price":25,
             "beer_id":133603,
             "count":202,
-            "price":19.60
+            "price":19.60,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Leitz Eins Zwei Dry Riesling",
@@ -551,7 +619,8 @@
             "pub_price":105,
             "beer_id":582201,
             "count":200,
-            "price":99.00
+            "price":99.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Lindemans Bin 65 Chardonnay",
@@ -559,7 +628,8 @@
             "pub_price":50,
             "beer_id":210602,
             "count":191,
-            "price":43.00
+            "price":43.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Mahou Negra",
@@ -567,7 +637,8 @@
             "pub_price":20,
             "beer_id":172303,
             "count":198,
-            "price":15.20
+            "price":15.20,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Mariestads Alkoholfri",
@@ -575,7 +646,8 @@
             "pub_price":15,
             "beer_id":195202,
             "count":199,
-            "price":10.90
+            "price":10.90,
+            "allergy":["gluten"]
         },
         {
             "namn":"Mariestads Export",
@@ -583,7 +655,8 @@
             "pub_price":20,
             "beer_id":120301,
             "count":204,
-            "price":15.40
+            "price":15.40,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Mariestads Export",
@@ -591,7 +664,8 @@
             "pub_price":15,
             "beer_id":120003,
             "count":170,
-            "price":13.90
+            "price":13.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Mariestads Old Ox",
@@ -599,7 +673,8 @@
             "pub_price":20,
             "beer_id":137901,
             "count":201,
-            "price":17.50
+            "price":17.50,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Mikkeller American Dream",
@@ -607,7 +682,8 @@
             "pub_price":30,
             "beer_id":8966103,
             "count":200,
-            "price":28.90
+            "price":28.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Mikkeller Drink'in The Sun",
@@ -615,7 +691,8 @@
             "pub_price":20,
             "beer_id":1199403,
             "count":202,
-            "price":16.90
+            "price":16.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Miller Genuine Draft",
@@ -623,7 +700,8 @@
             "pub_price":20,
             "beer_id":157903,
             "count":200,
-            "price":14.90
+            "price":14.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Modus Hoperandi India Pale Ale",
@@ -631,7 +709,8 @@
             "pub_price":25,
             "beer_id":153915,
             "count":196,
-            "price":22.90
+            "price":22.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Mountain Livin' Pale Ale",
@@ -639,7 +718,8 @@
             "pub_price":30,
             "beer_id":8916315,
             "count":168,
-            "price":25.20
+            "price":25.20,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Nanny State",
@@ -647,7 +727,8 @@
             "pub_price":15,
             "beer_id":194703,
             "count":199,
-            "price":12.40
+            "price":12.40,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Napa Smith West Coast IPA",
@@ -655,7 +736,8 @@
             "pub_price":25,
             "beer_id":168103,
             "count":199,
-            "price":23.90
+            "price":23.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Newcastle Brown Ale",
@@ -663,7 +745,8 @@
             "pub_price":20,
             "beer_id":153803,
             "count":193,
-            "price":15.20
+            "price":15.20,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Nils Oscar India Ale",
@@ -671,7 +754,8 @@
             "pub_price":25,
             "beer_id":146403,
             "count":200,
-            "price":18.90
+            "price":18.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Old Speckled Hen",
@@ -679,7 +763,8 @@
             "pub_price":25,
             "beer_id":135601,
             "count":199,
-            "price":22.80
+            "price":22.80,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Old Speckled Hen",
@@ -687,7 +772,8 @@
             "pub_price":20,
             "beer_id":135603,
             "count":199,
-            "price":15.90
+            "price":15.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Omnipollo Leon",
@@ -695,7 +781,8 @@
             "pub_price":55,
             "beer_id":169301,
             "count":200,
-            "price":49.90
+            "price":49.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Omnipollo Nebuchadnezzar",
@@ -703,7 +790,8 @@
             "pub_price":35,
             "beer_id":123103,
             "count":200,
-            "price":29.90
+            "price":29.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Oppigårds Amarillo",
@@ -711,7 +799,8 @@
             "pub_price":25,
             "beer_id":144203,
             "count":192,
-            "price":19.70
+            "price":19.70,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Oppigårds Golden Ale",
@@ -719,7 +808,8 @@
             "pub_price":20,
             "beer_id":149003,
             "count":202,
-            "price":17.90
+            "price":17.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Oppigårds Indian Tribute",
@@ -727,7 +817,8 @@
             "pub_price":25,
             "beer_id":141503,
             "count":200,
-            "price":20.90
+            "price":20.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Oppigårds Thurbo Double IPA",
@@ -735,7 +826,8 @@
             "pub_price":30,
             "beer_id":8962903,
             "count":201,
-            "price":26.30
+            "price":26.30,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Paulaner Hefe-Weissbier",
@@ -743,7 +835,8 @@
             "pub_price":25,
             "beer_id":155701,
             "count":200,
-            "price":20.40
+            "price":20.40,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Paulaner Oktoberfest",
@@ -751,7 +844,8 @@
             "pub_price":25,
             "beer_id":1125001,
             "count":200,
-            "price":21.90
+            "price":21.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Paulaner Weissbier Kristall",
@@ -759,7 +853,8 @@
             "pub_price":25,
             "beer_id":153001,
             "count":198,
-            "price":19.90
+            "price":19.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Pilsner Urquell",
@@ -767,7 +862,8 @@
             "pub_price":20,
             "beer_id":156603,
             "count":199,
-            "price":14.90
+            "price":14.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Pistonhead Kustom Lager",
@@ -775,7 +871,8 @@
             "pub_price":15,
             "beer_id":145414,
             "count":210,
-            "price":9.90
+            "price":9.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Pistonhead Plastic Fantastic",
@@ -783,7 +880,8 @@
             "pub_price":15,
             "beer_id":148803,
             "count":208,
-            "price":11.90
+            "price":11.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Poliziano Vino Nobile di Montepulciano Viti Nuove",
@@ -791,7 +889,8 @@
             "pub_price":160,
             "beer_id":214401,
             "count":200,
-            "price":149.00
+            "price":149.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Primator Premium Lager",
@@ -799,7 +898,8 @@
             "pub_price":15,
             "beer_id":1151503,
             "count":200,
-            "price":9.90
+            "price":9.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Primátor Premium Dark",
@@ -807,7 +907,8 @@
             "pub_price":20,
             "beer_id":161503,
             "count":200,
-            "price":13.90
+            "price":13.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Rabarbernektar",
@@ -815,7 +916,8 @@
             "pub_price":45,
             "beer_id":194203,
             "count":183,
-            "price":39.00
+            "price":39.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Rochefort 10",
@@ -823,7 +925,8 @@
             "pub_price":45,
             "beer_id":162703,
             "count":200,
-            "price":39.90
+            "price":39.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Running Duck Sauvignon Blanc Semillon",
@@ -831,7 +934,8 @@
             "pub_price":80,
             "beer_id":202801,
             "count":0,
-            "price":75.00
+            "price":75.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Ruppertsberger Hofstück Riesling",
@@ -839,7 +943,8 @@
             "pub_price":70,
             "beer_id":591401,
             "count":198,
-            "price":65.00
+            "price":65.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"S:t Eriks Oktoberfest",
@@ -847,7 +952,8 @@
             "pub_price":20,
             "beer_id":1125303,
             "count":197,
-            "price":16.90
+            "price":16.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"S:t Eriks Organic Ale",
@@ -855,7 +961,8 @@
             "pub_price":25,
             "beer_id":1162503,
             "count":199,
-            "price":19.90
+            "price":19.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"S:t Eriks Pale Ale",
@@ -863,7 +970,8 @@
             "pub_price":20,
             "beer_id":142003,
             "count":198,
-            "price":17.90
+            "price":17.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Samuel Adams Black Lager",
@@ -871,7 +979,8 @@
             "pub_price":25,
             "beer_id":153503,
             "count":197,
-            "price":16.60
+            "price":16.60,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Samuel Adams Boston Ale",
@@ -879,7 +988,8 @@
             "pub_price":25,
             "beer_id":164903,
             "count":198,
-            "price":17.90
+            "price":17.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Samuel Adams Boston Lager",
@@ -887,7 +997,8 @@
             "pub_price":20,
             "beer_id":154603,
             "count":195,
-            "price":15.90
+            "price":15.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Sankt Anna Riesling",
@@ -895,7 +1006,8 @@
             "pub_price":55,
             "beer_id":212002,
             "count":200,
-            "price":49.00
+            "price":49.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Saxhyttegubbens Blåbär 100%",
@@ -903,7 +1015,8 @@
             "pub_price":75,
             "beer_id":196403,
             "count":30,
-            "price":69.90
+            "price":69.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Scarecrow",
@@ -911,7 +1024,8 @@
             "pub_price":30,
             "beer_id":1124601,
             "count":199,
-            "price":24.50
+            "price":24.50,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Shatler's San Fransisco",
@@ -919,7 +1033,8 @@
             "pub_price":25,
             "beer_id":192804,
             "count":198,
-            "price":20.00
+            "price":20.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Sierra Nevada Pale Ale",
@@ -927,7 +1042,8 @@
             "pub_price":25,
             "beer_id":152503,
             "count":199,
-            "price":23.90
+            "price":23.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Sierra Nevada Torpedo Extra IPA",
@@ -935,7 +1051,8 @@
             "pub_price":30,
             "beer_id":1152803,
             "count":200,
-            "price":26.90
+            "price":26.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Sigtuna East Coast Pale Ale",
@@ -943,7 +1060,8 @@
             "pub_price":20,
             "beer_id":149803,
             "count":199,
-            "price":18.90
+            "price":18.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Sleepy Bulldog Summer Pale Ale",
@@ -951,7 +1069,8 @@
             "pub_price":25,
             "beer_id":8817303,
             "count":199,
-            "price":19.80
+            "price":19.80,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Slottskällans Barrel Aged Imperial Stout",
@@ -959,7 +1078,8 @@
             "pub_price":45,
             "beer_id":8915103,
             "count":199,
-            "price":39.80
+            "price":39.80,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Slottskällans Imperial Stout",
@@ -967,7 +1087,8 @@
             "pub_price":30,
             "beer_id":135503,
             "count":200,
-            "price":28.70
+            "price":28.70,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Slottskällans Princess",
@@ -975,7 +1096,8 @@
             "pub_price":25,
             "beer_id":164103,
             "count":200,
-            "price":24.90
+            "price":24.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Slottskällans Red Ale",
@@ -983,7 +1105,8 @@
             "pub_price":25,
             "beer_id":8875603,
             "count":201,
-            "price":20.70
+            "price":20.70,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Sofiero Original",
@@ -991,7 +1114,8 @@
             "pub_price":15,
             "beer_id":122203,
             "count":200,
-            "price":9.90
+            "price":9.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Somersby Apple Cider Organic",
@@ -999,7 +1123,8 @@
             "pub_price":20,
             "beer_id":183502,
             "count":198,
-            "price":16.90
+            "price":16.90,
+            "allergy":["alcohol"]
         },
         {
             "namn":"Somersby Pear Cider",
@@ -1007,7 +1132,8 @@
             "pub_price":20,
             "beer_id":182402,
             "count":200,
-            "price":16.90
+            "price":16.90,
+            "allergy":["alcohol"]
         },
         {
             "namn":"Spaten München",
@@ -1015,7 +1141,8 @@
             "pub_price":20,
             "beer_id":1133301,
             "count":200,
-            "price":16.40
+            "price":16.40,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Spaten Oktoberfestbier",
@@ -1023,7 +1150,8 @@
             "pub_price":25,
             "beer_id":1128101,
             "count":198,
-            "price":20.60
+            "price":20.60,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"St Peter's Cream Stout",
@@ -1031,15 +1159,17 @@
             "pub_price":35,
             "beer_id":167101,
             "count":197,
-            "price":29.40
+            "price":29.40,
+            "allergy":["gluten","alcohol"]
         },
         {
-            "namn":"St Peter'sG-Free Ale",
+            "namn":"St Peter's G-Free Ale",
             "sbl_price":36.30,
             "pub_price":40,
             "beer_id":157701,
             "count":200,
-            "price":36.30
+            "price":36.30,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Starobrno Premium",
@@ -1047,7 +1177,8 @@
             "pub_price":15,
             "beer_id":1134103,
             "count":198,
-            "price":12.90
+            "price":12.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Staropramen",
@@ -1055,7 +1186,8 @@
             "pub_price":20,
             "beer_id":167903,
             "count":197,
-            "price":15.90
+            "price":15.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Staropramen Dark",
@@ -1063,7 +1195,8 @@
             "pub_price":20,
             "beer_id":163203,
             "count":200,
-            "price":15.90
+            "price":15.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Staropramen Granat",
@@ -1071,7 +1204,8 @@
             "pub_price":20,
             "beer_id":160903,
             "count":196,
-            "price":15.90
+            "price":15.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Staropramen Non-Alcoholic",
@@ -1079,7 +1213,8 @@
             "pub_price":15,
             "beer_id":193002,
             "count":192,
-            "price":12.40
+            "price":12.40,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Störtebeker 1402",
@@ -1087,7 +1222,8 @@
             "pub_price":15,
             "beer_id":190002,
             "count":200,
-            "price":10.90
+            "price":10.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Störtebeker Bock-Bier",
@@ -1095,7 +1231,8 @@
             "pub_price":20,
             "beer_id":1159903,
             "count":192,
-            "price":15.90
+            "price":15.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Stella Artois",
@@ -1103,7 +1240,8 @@
             "pub_price":20,
             "beer_id":1137903,
             "count":188,
-            "price":14.40
+            "price":14.40,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Stoneleigh Riesling",
@@ -1111,7 +1249,8 @@
             "pub_price":105,
             "beer_id":649801,
             "count":195,
-            "price":104.00
+            "price":104.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Stowford Press",
@@ -1119,7 +1258,8 @@
             "pub_price":15,
             "beer_id":198902,
             "count":203,
-            "price":12.90
+            "price":12.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Strongbow",
@@ -1127,7 +1267,8 @@
             "pub_price":20,
             "beer_id":181902,
             "count":188,
-            "price":15.50
+            "price":15.50,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Strongbow",
@@ -1135,7 +1276,8 @@
             "pub_price":20,
             "beer_id":181903,
             "count":198,
-            "price":17.90
+            "price":17.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Svart",
@@ -1143,7 +1285,8 @@
             "pub_price":25,
             "beer_id":1134803,
             "count":186,
-            "price":20.70
+            "price":20.70,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Thornbridge Jaipur India Pale Ale",
@@ -1151,7 +1294,8 @@
             "pub_price":30,
             "beer_id":162601,
             "count":191,
-            "price":27.90
+            "price":27.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Troppo Merlot Cabernet",
@@ -1159,7 +1303,8 @@
             "pub_price":50,
             "beer_id":218002,
             "count":194,
-            "price":39.00
+            "price":39.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Via del CampoBlanco",
@@ -1167,7 +1312,8 @@
             "pub_price":70,
             "beer_id":645901,
             "count":192,
-            "price":64.00
+            "price":64.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Viña Maipo Chardonnay",
@@ -1175,7 +1321,8 @@
             "pub_price":35,
             "beer_id":667102,
             "count":188,
-            "price":33.00
+            "price":33.00,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Weihenstephaner Hefe Weissbier",
@@ -1183,7 +1330,8 @@
             "pub_price":25,
             "beer_id":152601,
             "count":198,
-            "price":19.90
+            "price":19.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Weihenstephaner Hefeweissbier Alkoholfrei",
@@ -1191,7 +1339,8 @@
             "pub_price":15,
             "beer_id":192201,
             "count":184,
-            "price":12.90
+            "price":12.90,
+            "allergy":["gluten"]
         },
         {
             "namn":"Wisby Klosteröl",
@@ -1199,7 +1348,8 @@
             "pub_price":20,
             "beer_id":140003,
             "count":178,
-            "price":16.90
+            "price":16.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Wyld Wood Organic",
@@ -1207,7 +1357,8 @@
             "pub_price":30,
             "beer_id":186602,
             "count":194,
-            "price":27.90
+            "price":27.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Xide Jungle Passionfruit Habanero",
@@ -1215,7 +1366,8 @@
             "pub_price":20,
             "beer_id":171903,
             "count":191,
-            "price":15.90
+            "price":15.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Xide Non AlcoLemon Dragonfruit",
@@ -1223,7 +1375,8 @@
             "pub_price":15,
             "beer_id":192003,
             "count":196,
-            "price":13.90
+            "price":13.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Xide Pine Citrus",
@@ -1231,7 +1384,8 @@
             "pub_price":20,
             "beer_id":178503,
             "count":0,
-            "price":15.90
+            "price":15.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Xide Wasabi Lemon",
@@ -1239,7 +1393,8 @@
             "pub_price":20,
             "beer_id":182603,
             "count":-1,
-            "price":15.90
+            "price":15.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"YetiImperial Stout",
@@ -1247,7 +1402,8 @@
             "pub_price":35,
             "beer_id":166703,
             "count":643,
-            "price":31.90
+            "price":31.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Young's Double Chocolate Stout",
@@ -1255,7 +1411,8 @@
             "pub_price":30,
             "beer_id":160601,
             "count":0,
-            "price":25.90
+            "price":25.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Zeitgeist Black Lager",
@@ -1263,7 +1420,8 @@
             "pub_price":20,
             "beer_id":157803,
             "count":0,
-            "price":15.90
+            "price":15.90,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Zeunerts Höga Kusten",
@@ -1271,7 +1429,8 @@
             "pub_price":20,
             "beer_id":148001,
             "count":-1,
-            "price":15.40
+            "price":15.40,
+            "allergy":["gluten","alcohol"]
         },
         {
             "namn":"Zlatopramen Premium",
@@ -1279,7 +1438,8 @@
             "pub_price":20,
             "beer_id":158201,
             "count":0,
-            "price":16.90
+            "price":16.90,
+            "allergy":["gluten","alcohol"]
         }
     ]
 }
