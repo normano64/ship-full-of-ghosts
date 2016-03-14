@@ -51,15 +51,19 @@ angular
       if (typeof CartSvc.cart.items[id] === 'undefined') {
         console.log('something goes wrong, no changing anything...');
       } else {
+        pushUndo();
         if (!(-- CartSvc.cart.items[id].quantity)) {
           // remove it from the cart
-          pushUndo();
           CartSvc.cart.items[id] = undefined;
         }
       }
     };
 
     CartSvc.addItem = function(id) {
+      if (typeof id === 'string') {
+        id = parseInt(id);
+      }
+
       if (typeof CartSvc.cart.items[id] === 'undefined') {
         var itemFound = false;
         for (var i = 0; i < allItems.length; i ++) {
