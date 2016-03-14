@@ -12,6 +12,11 @@ angular
     'shipFullOfGhosts.services'
   ])
   .constant('API', 'http://pub.jamaica-inn.net/fpdb/api.php')
+  .filter('price', function() {
+    return function(priceString) {
+      return priceString.toFixed(2);
+    };
+  })
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/signin', {
@@ -42,10 +47,18 @@ angular
 'use strict';
 
 angular
-  .module('shipFullOfGhosts.controllers')
-  .controller('AdminCtrl', ['$scope', function($scope) {
-    
-  }]);
+.module('shipFullOfGhosts.controllers')
+.controller('AdminCtrl', [
+	'$scope',
+	'$http',
+	'AdminSvc',
+	function($scope, $http, AdminSvc) {
+		$scope.stock = AdminSvc.getStock();
+		$scope.increase = function(id, amount){
+			AdminSvc.increase(id,amount);
+		};
+		$scope.decrease = AdminSvc.decrease;
+	}]);
 'use strict';
 
 angular
@@ -66,24 +79,42 @@ angular
     $scope.undo = CartSvc.undo;
 
     $scope.user = AccountSvc.getUser();
+
+    $scope.$watch('cart', function() {
+      $scope.totalPrice = CartSvc.getTotalPrice();
+    }, true);
   }]);
 'use strict';
 
 angular
-  .module('shipFullOfGhosts.controllers')
-  .controller('HomeCtrl', ['$scope', function($scope) {
-    
-  }]);
+.module('shipFullOfGhosts.controllers')
+.controller('HomeCtrl', [
+	'$scope',
+	'$http',
+	'AccountSvc',
+	'TranslateSvc',
+	function($scope, $http, AccountSvc, TranslateSvc) {
+		$scope.wordsList = TranslateSvc.wordsList;
+    }]);
 'use strict';
 
 angular
   .module('shipFullOfGhosts.controllers')
-  .controller('NavCtrl', ['$scope', 'AccountSvc', function($scope, AccountSvc) {
+  .controller('NavCtrl', ['$scope', 'AccountSvc', 'TranslateSvc', function($scope, AccountSvc, TranslateSvc) {
     $scope.signOut = function() {
       AccountSvc.signOut();
     };
 
+   $scope.translateSwe = function(){
+    	TranslateSvc.translateSwe();
+    }
+
+    $scope.translateEng = function(){
+    	TranslateSvc.translateEng();
+    }
+
     $scope.user = AccountSvc.getUser();
+    
   }]);
 'use strict';
 
@@ -107,6 +138,51 @@ angular
           .then(function(res){
               $scope.items = res.data.payload;
           });
+          $scope.predicate = 'namn';
+          $scope.predicateName = 'Name a-ö';
+          $scope.order = function(item, predicate, reverse) {
+              if(reverse) {
+                  predicate = '-' + predicate;
+              }
+              $scope.predicate = predicate;
+              $scope.reverse = reverse;
+              $scope.predicateName = item.currentTarget.textContent;
+          };
+          $scope.allergy = 'No';
+          $scope.allergies = {
+              'gluten': false,
+              'alcohol': false
+          };
+          $scope.allergyfn = function(allergy) {
+              if($scope.allergies[allergy] == false) {
+                  $scope.allergies[allergy] = true;
+              } else {
+                  $scope.allergies[allergy] = false;
+              }
+              var allergies = ''
+              angular.forEach($scope.allergies, function(value, key) {
+                  if(value) {
+                      if(allergies == '') {
+                          allergies = key;
+                      } else {
+                          allergies = allergies + ', ' + key;
+                      }
+                  }
+              });
+              if(allergies == '') {
+                  allergies = 'No';
+              }
+              $scope.allergy = allergies;
+          };
+          $scope.filterAlcohol = function(item) {
+              var keep = true;
+              angular.forEach($scope.allergies, function(value, key) {
+                  if(value && item.allergy.indexOf(key) > -1) {
+                      keep = false;
+                  }
+              });
+              return keep;
+          };
 
         var selectElement = function(identifier) {
           return angular.element(document.querySelectorAll(identifier));
@@ -169,40 +245,64 @@ angular
           angular.element($window).bind("scroll", function() {
             cartPhantomElement.css('margin-top', initialOffset + this.pageYOffset + 'px');
           });
-        }, 0);
+        }, 100);
       }]);
 
 'use strict';
 
 angular
   .module('shipFullOfGhosts.controllers')
-  .controller('SigninCtrl', ['$scope', 'AccountSvc', function($scope, AccountSvc) {
+  .controller('SigninCtrl', ['$scope', '$timeout', 'AccountSvc', 'TranslateSvc', function($scope, $timeout, AccountSvc, TranslateSvc) {
     $scope.signIn = function(username, password) {
       AccountSvc.signIn(username, password);
       console.log(username + ' has signed in!');
     };
+    $scope.wordsList = TranslateSvc.wordsList;
+
+    $scope.showWrong = false;
+	$scope.$timeout = $timeout;
+	$scope.show = function() {
+		$scope.showWrong=true;
+	}
   }]);
 'use strict';
 
 angular
-  .module('shipFullOfGhosts.services')
-  .service('AccountSvc', ['API', '$location', function(API, $location) {
-    var AccountSvc = {};
+.module('shipFullOfGhosts.services')
+.service('AccountSvc', ['API', '$location', '$http', function(API, $location, $http) {
+  var AccountSvc = {};
 
-    AccountSvc.user = {
-      isSignedIn: false
-    };
+  AccountSvc.user = {
+    users: {
 
-    AccountSvc.getUser = function() {
-      return AccountSvc.user;
-    };
+    },
+    isSignedIn: false
+  };
 
-    AccountSvc.signIn = function(username, password) {
-      AccountSvc.user.username = username;
-      AccountSvc.user.isSignedIn = true;
+  $http.get('js/users.json')
+  .then(function(res){
+    AccountSvc.user.users = res.data.payload;
+  });
 
-      $location.path('/products');
-    };
+
+  AccountSvc.getUser = function() {
+    return AccountSvc.user;
+  };
+
+  AccountSvc.signIn = function(uname, password) {
+    for(var i=0; i<AccountSvc.user.users.length;i++){
+      if (uname==password && uname==AccountSvc.user.users[i].username){
+        AccountSvc.user.username = AccountSvc.user.users[i].first_name + " " + AccountSvc.user.users[i].last_name;
+        AccountSvc.user.isSignedIn = true;
+        if(AccountSvc.user.users[i].admin=="yes"){
+          $location.path('/admin');
+        }
+        else if(AccountSvc.user.users[i].admin=="no"){
+          $location.path('/products');
+        }
+      }
+    }
+  };
 
     AccountSvc.signOut = function() {
       AccountSvc.user.username = undefined;
@@ -212,6 +312,52 @@ angular
     return AccountSvc;
   }]);
 
+'use strict';
+
+angular
+.module('shipFullOfGhosts.services')
+.service('AdminSvc', ['API', '$http', function(API, $http) {
+	var AdminSvc = {};
+
+	AdminSvc.stock = {
+		drinks: {
+
+		}
+	};
+
+	$http.get('js/drinks.json')
+	.then(function(res){
+		AdminSvc.stock.drinks = res.data.payload;
+	});
+
+	AdminSvc.getStock = function() {
+		return AdminSvc.stock;
+	};
+
+	function isInteger(x) {
+		return (typeof x === 'number') && (x % 1 === 0);
+	};
+
+	AdminSvc.increase = function(id,num){
+		if(isInteger(num)){
+		for(var i = 0; i<AdminSvc.stock.drinks.length;i++){
+			if(id==AdminSvc.stock.drinks[i].beer_id){
+				AdminSvc.stock.drinks[i].count =  parseInt(AdminSvc.stock.drinks[i].count)+num;				
+			}
+		}
+	}
+}
+		AdminSvc.decrease = function(id,num){
+		if(isInteger(num)){
+		for(var i = 0; i<AdminSvc.stock.drinks.length;i++){
+			if(id==AdminSvc.stock.drinks[i].beer_id){
+				AdminSvc.stock.drinks[i].count =  parseInt(AdminSvc.stock.drinks[i].count)-num;				
+			}
+		}
+	}
+}
+	return AdminSvc;		
+}]);
 'use strict';
 
 angular
@@ -265,15 +411,19 @@ angular
       if (typeof CartSvc.cart.items[id] === 'undefined') {
         console.log('something goes wrong, no changing anything...');
       } else {
+        pushUndo();
         if (!(-- CartSvc.cart.items[id].quantity)) {
           // remove it from the cart
-          pushUndo();
           CartSvc.cart.items[id] = undefined;
         }
       }
     };
 
     CartSvc.addItem = function(id) {
+      if (typeof id === 'string') {
+        id = parseInt(id);
+      }
+
       if (typeof CartSvc.cart.items[id] === 'undefined') {
         var itemFound = false;
         for (var i = 0; i < allItems.length; i ++) {
@@ -284,7 +434,7 @@ angular
             CartSvc.cart.items[id] = {
               beer_id: id,
               namn: item.namn,
-              price: item.pub_price,
+              price: item.sbl_price,
               quantity: 1
             };
             itemFound = true;
@@ -330,5 +480,66 @@ angular
       }
     };
 
+    CartSvc.getTotalPrice = function() {
+      var totalPrice = 0;
+      for (var item in CartSvc.cart.items) {
+        totalPrice += parseFloat(CartSvc.cart.items[item].price) * CartSvc.cart.items[item].quantity;
+      }
+
+      return totalPrice;
+    }
+
     return CartSvc;
+  }]);
+
+'use strict';
+
+angular
+  .module('shipFullOfGhosts.services')
+  .service('TranslateSvc', ['API', '$http', function(API, $http) {
+    var TranslateSvc = {};
+
+    TranslateSvc.wordsList = {
+      words:{
+     "id_1":{
+      "englishText": "Beer",
+      "swedishText": "Öl"},
+      "id_2":{
+      "englishText": "Wine",
+      "swedishText": "Vin"},
+      "id_3":{
+      "englishText": "Whiskey",
+      "swedishText": "Whisky"},
+      "id_4":{
+      "englishText": "Guest",
+      "swedishText": "Gäst"},
+      "id_5":{    
+      "englishText": "Beverages",
+      "swedishText": "Drycker"},
+      "id_6":{
+      "englishText": "Username",
+      "swedishText": "Användarnamn"},
+      "id_7":{
+      "englishText": "Password",
+      "swedishText": "Lösenord"},
+      "id_8":{
+      "englishText": "Login",
+      "swedishText": "Logga in"}
+      },
+      isSwedish:false
+    };
+
+    TranslateSvc.getWords = function() {
+      return TranslateSvc.wordsList;
+    };
+
+    TranslateSvc.translateSwe = function(){
+      TranslateSvc.wordsList.isSwedish = true;
+    };
+
+    TranslateSvc.translateEng = function(){
+      TranslateSvc.wordsList.isSwedish = false;
+    }
+
+    return TranslateSvc;
   }]);
