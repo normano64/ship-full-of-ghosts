@@ -3,8 +3,6 @@
     <h2 class="slogan-signin">
       <p> {{wordsList.isSwedish ? wordsList.words.id_8.swedishText : wordsList.words.id_8.englishText}}</p>
     </h2>
-    <a href="#/admin"><button>Temporary button to Admin page</button></a>
-    <a href="#/products"><button>Temporary button to Products page</button></a>
     <div ng-class="{ 'hidden': ! showWrong }">{{wordsList.isSwedish ? wordsList.words.id_9.swedishText : wordsList.words.id_9.englishText}}</div>
     <form ng-submit="signIn(username, password)">
       <div class="form-group">
