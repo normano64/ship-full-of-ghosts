@@ -104,17 +104,39 @@
   }
 }
 
-.product-info-body {
-  .detail {
-    width: 100%;
-    display: flex;
+.modal-content {
+  background-color: rgb(239, 121, 52);
+  border: none;
+  border-radius: 0px;
+  color: #ECECEC;
 
-    &>div {
-      flex: 1;
+  .product-info-body {
+    .detail {
+      width: 100%;
+      display: flex;
+
+      &>div {
+        padding: 0 20px;
+        &:nth-child(1) {
+          flex: 1;
+        }
+
+        &:nth-child(2) {
+          flex: 2;
+        }
+      }
+
+      .detail-attribute {
+        font-weight: 800;
+      }
     }
+  }
 
-    .detail-attribute {
-      font-weight: 800;
+  .product-info-footer {
+    button {
+      border-radius: 0px;
+      width: 75px;
+      border: none;
     }
   }
 }
