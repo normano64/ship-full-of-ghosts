@@ -294,6 +294,22 @@
           {{ (item.price * item.quantity) | price }}
         </div>
       </div>
+
+      <div class="checkout-row checkout-total">
+        <div class="checkout-name">
+          Total
+        </div>
+
+        <div class="checkout-price">
+        </div>
+
+        <div class="checkout-quantity">
+        </div>
+
+        <div class="checkout-total-price">
+          {{ totalPrice | price }}
+        </div>
+      </div>
     </div>
     <div class="modal-footer customized-modal-footer">
       <button class="btn btn-primary" type="button" data-ng-click="close()">close</button>

@@ -5,6 +5,8 @@ angular
     .controller('CheckoutCtrl', ['$scope', '$uibModalInstance', 'CartSvc', '$location', function($scope, $uibModalInstance, CartSvc, $location) {
       $scope.cart = CartSvc.getCart();
 
+      $scope.totalPrice = CartSvc.getTotalPrice();
+
       $scope.close = function() {
         $uibModalInstance.dismiss('cancel');
       };
