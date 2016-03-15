@@ -81,7 +81,10 @@ angular
       "swedishText": "Nej"},
       "id_25":{
       "englishText": "Name ö-a",
-      "swedishText": "Namn ö-a"}
+      "swedishText": "Namn ö-a"},
+      "id_26":{
+      "englishText": "amount",
+      "swedishText": "mängd"}
       },
 
       isSwedish:false

@@ -27,7 +27,7 @@
 						<form ng-submit="decrease(drink.beer_id, amount)">
 							<button type="submit" class="btn btn-primary" id="minus" >-</button>
 						</form>
-						<input type="number" class="btn-control" data-ng-model="amount" placeholder="amount" id="formu" min="0">
+						<input type="number" class="btn-control" data-ng-model="amount" placeholder="{{wordsList.isSwedish ? wordsList.words.id_26.swedishText : wordsList.words.id_26.englishText}}" id="formu" min="0">
 						<form ng-submit="increase(drink.beer_id, amount)">
 							<button type="submit" class="btn btn-primary" id="plus">+</button>
 							<div class="btn-group">
