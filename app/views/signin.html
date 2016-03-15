@@ -5,13 +5,13 @@
     </h2>
     <a href="#/admin"><button>Temporary button to Admin page</button></a>
     <a href="#/products"><button>Temporary button to Products page</button></a>
-    <div ng-class="{ 'hidden': ! showWrong }">Invalid username or password</div>
+    <div ng-class="{ 'hidden': ! showWrong }">{{wordsList.isSwedish ? wordsList.words.id_9.swedishText : wordsList.words.id_9.englishText}}</div>
     <form ng-submit="signIn(username, password)">
       <div class="form-group">
-        <input type="string" class="form-control" data-ng-model="username" placeholder="Username">
+        <input type="string" class="form-control" data-ng-model="username" placeholder="{{wordsList.isSwedish ? wordsList.words.id_6.swedishText : wordsList.words.id_6.englishText}}">
       </div>
       <div class="form-group">
-        <input type="password" class="form-control" data-ng-model="password" placeholder="Password">
+        <input type="password" class="form-control" data-ng-model="password" placeholder="{{wordsList.isSwedish ? wordsList.words.id_7.swedishText : wordsList.words.id_7.englishText}}">
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-default signin-button" ng-click="$timeout(show,100);"><i class="fa fa-sign-in"></i></button>
