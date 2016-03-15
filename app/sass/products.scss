@@ -110,7 +110,7 @@
   border-radius: 0px;
   color: #ECECEC;
 
-  .product-info-body {
+  .customized-modal-body {
     .detail {
       width: 100%;
       display: flex;
@@ -130,9 +130,25 @@
         font-weight: 800;
       }
     }
+
+    .checkout-row {
+      display: flex;
+
+      &.checkout-header {
+        font-weight: 800;
+      }
+
+      &>div {
+        flex: 1;
+      }
+
+      .checkout-name {
+        flex: 2;
+      }
+    }
   }
 
-  .product-info-footer {
+  .customized-modal-footer {
     button {
       border-radius: 0px;
       width: 75px;

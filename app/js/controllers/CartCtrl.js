@@ -2,7 +2,7 @@
 
 angular
   .module('shipFullOfGhosts.controllers')
-  .controller('CartCtrl', ['$scope', 'AccountSvc', 'CartSvc', function($scope, AccountSvc, CartSvc) {
+  .controller('CartCtrl', ['$scope', 'AccountSvc', 'CartSvc', '$uibModal', function($scope, AccountSvc, CartSvc, $uibModal) {
     $scope.expandText = '◀';
 
     $scope.cart = CartSvc.getCart();
@@ -18,6 +18,14 @@ angular
     $scope.undo = CartSvc.undo;
 
     $scope.user = AccountSvc.getUser();
+
+    $scope.checkout = function() {
+      var checkoutModal = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'checkout.html',
+        controller: 'CheckoutCtrl'
+      });
+    };
 
     $scope.$watch('cart', function() {
       $scope.totalPrice = CartSvc.getTotalPrice();

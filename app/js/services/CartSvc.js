@@ -74,7 +74,7 @@ angular
             CartSvc.cart.items[id] = {
               beer_id: id,
               namn: item.namn,
-              price: item.sbl_price,
+              price: item.pub_price,
               quantity: 1
             };
             itemFound = true;

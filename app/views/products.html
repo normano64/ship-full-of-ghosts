@@ -112,7 +112,7 @@
               {{ item.namn }}
             </div>
             <div class="cart-item-price">
-              {{ item.price }}
+              {{ item.price | price }}
             </div>
             <div class="cart-item-quantity">
               <button class="btn btn-primary" data-ng-click="decreaseItem(item.beer_id)">◀</button>
@@ -131,7 +131,7 @@
               {{wordsList.isSwedish ? wordsList.words.id_21.swedishText : wordsList.words.id_21.englishText}}
             </button>
           </div>
-          <button class="btn btn-success cart-checkout">
+          <button class="btn btn-success cart-checkout" data-ng-click="checkout()">
             {{wordsList.isSwedish ? wordsList.words.id_22.swedishText : wordsList.words.id_22.englishText}} {{ totalPrice | price }} Kr
           </button>
         </div>
@@ -145,10 +145,10 @@
   </div>
 
   <script type="text/ng-template" id="drinksInfo.html">
-    <div class="modal-header product-info-header">
+    <div class="modal-header customized-modal-header">
       <h3 class="modal-title">{{ drink.namn }} <span style="float:right">{{ drink.pub_price }} Kr</span></h3>
     </div>
-    <div class="modal-body product-info-body">
+    <div class="modal-body customized-modal-body">
       <div class="detail">
         <div class="detail-attribute">
           saljstart
@@ -248,9 +248,56 @@
         </div>
       </div>
     </div>
-    <div class="modal-footer product-info-footer">
+    <div class="modal-footer customized-modal-footer">
       <button class="btn btn-primary" type="button" data-ng-click="close()">close</button>
       <button class="btn btn-success" type="button" data-ng-click="buy()">buy</button>
+    </div>
+  </script>
+
+  <script type="text/ng-template" id="checkout.html">
+    <div class="modal-header customized-modal-header">
+      <h3 class="modal-title">Checkout</span></h3>
+    </div>
+    <div class="modal-body customized-modal-body">
+      <div class="checkout-row checkout-header">
+        <div class="checkout-name">
+          Name
+        </div>
+
+        <div class="checkout-price">
+          Price
+        </div>
+
+        <div class="checkout-quantity">
+          Quantity
+        </div>
+
+        <div class="checkout-total-price">
+          Total price
+        </div>
+      </div>
+
+      <div class="checkout-row" data-ng-repeat="item in cart.items">
+        <div class="checkout-name">
+          {{ item.namn }}
+        </div>
+
+        <div class="checkout-price">
+          {{ item.price | price }}
+        </div>
+
+        <div class="checkout-quantity">
+          {{ item.quantity }}
+        </div>
+
+        <div class="checkout-total-price">
+          {{ (item.price * item.quantity) | price }}
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer customized-modal-footer">
+      <button class="btn btn-primary" type="button" data-ng-click="close()">close</button>
+      <button class="btn btn-success" type="button" data-ng-click="confirm()">confirm</button>
     </div>
   </script>
 </div>
