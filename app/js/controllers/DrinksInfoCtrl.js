@@ -7,7 +7,8 @@ angular
       '$http',
       '$uibModalInstance',
       'drinkId',
-      function($scope, $http, $uibModalInstance, drinkId) {
+      'CartSvc',
+      function($scope, $http, $uibModalInstance, drinkId, CartSvc) {
         $http.get('js/drinks.json')
           .then(function(res) {
             var allItems = res.data.payload;
@@ -17,4 +18,13 @@ angular
               }
             });
           });
+
+        $scope.close = function() {
+          $uibModalInstance.dismiss('cancel');
+        };
+
+        $scope.buy = function() {
+          CartSvc.addItem(drinkId);
+          $uibModalInstance.dismiss('cancel');
+        };
       }]);
