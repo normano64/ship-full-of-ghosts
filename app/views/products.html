@@ -17,7 +17,7 @@
     </div> -->
       <div class="input-group-btn">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-              <span class="translate">Allergy: </span>
+              <span class="translate">{{wordsList.isSwedish ? wordsList.words.id_14.swedishText : wordsList.words.id_14.englishText}}: </span>
               <span class="current">{{allergy}}</span>
               <span class="caret"></span>
           </button>
@@ -29,7 +29,7 @@
               </li>
               <li>
                   <a ng-click="allergyfn('alcohol')" class="translate">
-                      <i ng-show="!allergies['alcohol']" class="fa fa-square-o"></i><i ng-show="allergies['alcohol']" class="fa fa-check-square-o"></i> Alcohol
+                      <i ng-show="!allergies['alcohol']" class="fa fa-square-o"></i><i ng-show="allergies['alcohol']" class="fa fa-check-square-o"></i> {{wordsList.isSwedish ? wordsList.words.id_23.swedishText : wordsList.words.id_23.englishText}}
                   </a>
               </li>
               <!-- <li class="divider"></li>
@@ -38,22 +38,22 @@
       </div>
       <div class="input-group-btn">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-              <span>Sort by: </span>
+              <span>{{wordsList.isSwedish ? wordsList.words.id_15.swedishText : wordsList.words.id_15.englishText}}: </span>
               <span class="current">{{predicateName}}</span>
               <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
               <li><a ng-click="order($event, 'namn', false)" ng-show="predicate != 'namn'"
-                     class="translate">Name a-ö</i>
+                     class="translate">{{wordsList.isSwedish ? wordsList.words.id_16.swedishText : wordsList.words.id_16.englishText}}</i>
               </a></li>
               <li><a ng-click="order($event, 'namn', true)" ng-show="predicate != '-namn'"
-                     class="translate">Name ö-a</i>
+                     class="translate">{{wordsList.isSwedish ? wordsList.words.id_25.swedishText : wordsList.words.id_25.englishText}}</i>
               </a></li>
               <li><a ng-click="order($event, 'pub_price', false)" ng-show="predicate != 'pub_price'"
-                     class="translate">Price low-high</i>
+                     class="translate">{{wordsList.isSwedish ? wordsList.words.id_17.swedishText : wordsList.words.id_17.englishText}}</i>
               </a></li>
               <li><a ng-click="order($event, 'pub_price', true)" ng-show="predicate != '-pub_price'"
-                     class="translate">Price high-low</i>
+                     class="translate">{{wordsList.isSwedish ? wordsList.words.id_18.swedishText : wordsList.words.id_18.englishText}}</i>
               </a></li>
           </ul>
       </div>
@@ -62,7 +62,7 @@
            <input type="checkbox"> <span class="translate"/>Gluten allergy</span>
            </label>
            </span> -->
-      <input type="text" class="form-control" name="x" placeholder="Search term..." ng-model="search.namn"/>
+      <input type="text" class="form-control" name="x" placeholder="{{wordsList.isSwedish ? wordsList.words.id_19.swedishText : wordsList.words.id_19.englishText}}" ng-model="search.namn"/>
       <!-- <span class="input-group-btn">
            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
            </span> -->
@@ -125,14 +125,14 @@
         <div class="cart-actions">
           <div class="cart-redo-undo">
             <button class="btn btn-danger" data-ng-click="redo()" data-ng-class="{'disabled': !cart.redoable}">
-              Redo
+              {{wordsList.isSwedish ? wordsList.words.id_20.swedishText : wordsList.words.id_20.englishText}}
             </button>
             <button class="btn btn-primary" data-ng-click="undo()" data-ng-class="{'disabled': !cart.undoable}">
-              Undo
+              {{wordsList.isSwedish ? wordsList.words.id_21.swedishText : wordsList.words.id_21.englishText}}
             </button>
           </div>
           <button class="btn btn-success cart-checkout">
-            Checkout {{ totalPrice | price }} Kr
+            {{wordsList.isSwedish ? wordsList.words.id_22.swedishText : wordsList.words.id_22.englishText}} {{ totalPrice | price }} Kr
           </button>
         </div>
       </div>

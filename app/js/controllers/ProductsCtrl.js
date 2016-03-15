@@ -9,8 +9,11 @@ angular
       '$window', 
       '$timeout', 
       'CartSvc', 
-      function($scope, $http, AccountSvc, $window, $timeout, CartSvc) {
+      'TranslateSvc',
+      function($scope, $http, AccountSvc, $window, $timeout, CartSvc, TranslateSvc) {
         $scope.user = AccountSvc.getUser();
+
+        $scope.wordsList = TranslateSvc.wordsList;
 
         $scope.canDrop = false;
         $scope.dragging = false;
