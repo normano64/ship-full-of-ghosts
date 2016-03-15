@@ -3,13 +3,14 @@
 angular
   .module('shipFullOfGhosts.controllers')
     .controller('ProductsCtrl', [
-      '$scope', 
-      '$http', 
-      'AccountSvc', 
-      '$window', 
-      '$timeout', 
-      'CartSvc', 
-      function($scope, $http, AccountSvc, $window, $timeout, CartSvc) {
+      '$scope',
+      '$http',
+      'AccountSvc',
+      '$window',
+      '$timeout',
+      'CartSvc',
+      '$uibModal',
+      function($scope, $http, AccountSvc, $window, $timeout, CartSvc, $uibModal) {
         $scope.user = AccountSvc.getUser();
 
         $scope.canDrop = false;
@@ -20,51 +21,64 @@ angular
           .then(function(res){
               $scope.items = res.data.payload;
           });
-          $scope.predicate = 'namn';
-          $scope.predicateName = 'Name a-ö';
-          $scope.order = function(item, predicate, reverse) {
-              if(reverse) {
-                  predicate = '-' + predicate;
+        $scope.predicate = 'namn';
+        $scope.predicateName = 'Name a-ö';
+        $scope.order = function(item, predicate, reverse) {
+            if(reverse) {
+                predicate = '-' + predicate;
+            }
+            $scope.predicate = predicate;
+            $scope.reverse = reverse;
+            $scope.predicateName = item.currentTarget.textContent;
+        };
+        $scope.allergy = 'No';
+        $scope.allergies = {
+            'gluten': false,
+            'alcohol': false
+        };
+        $scope.allergyfn = function(allergy) {
+            if($scope.allergies[allergy] == false) {
+                $scope.allergies[allergy] = true;
+            } else {
+                $scope.allergies[allergy] = false;
+            }
+            var allergies = ''
+            angular.forEach($scope.allergies, function(value, key) {
+                if(value) {
+                    if(allergies == '') {
+                        allergies = key;
+                    } else {
+                        allergies = allergies + ', ' + key;
+                    }
+                }
+            });
+            if(allergies == '') {
+                allergies = 'No';
+            }
+            $scope.allergy = allergies;
+        };
+        $scope.filterAlcohol = function(item) {
+            var keep = true;
+            angular.forEach($scope.allergies, function(value, key) {
+                if(value && item.allergy.indexOf(key) > -1) {
+                    keep = false;
+                }
+            });
+            return keep;
+        };
+
+        $scope.showDrinksInfo = function(id) {
+          var drinksInfoModal = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'drinksInfo.html',
+            controller: 'DrinksInfoCtrl',
+            resolve: {
+              drinkId: function () {
+                return id;
               }
-              $scope.predicate = predicate;
-              $scope.reverse = reverse;
-              $scope.predicateName = item.currentTarget.textContent;
-          };
-          $scope.allergy = 'No';
-          $scope.allergies = {
-              'gluten': false,
-              'alcohol': false
-          };
-          $scope.allergyfn = function(allergy) {
-              if($scope.allergies[allergy] == false) {
-                  $scope.allergies[allergy] = true;
-              } else {
-                  $scope.allergies[allergy] = false;
-              }
-              var allergies = ''
-              angular.forEach($scope.allergies, function(value, key) {
-                  if(value) {
-                      if(allergies == '') {
-                          allergies = key;
-                      } else {
-                          allergies = allergies + ', ' + key;
-                      }
-                  }
-              });
-              if(allergies == '') {
-                  allergies = 'No';
-              }
-              $scope.allergy = allergies;
-          };
-          $scope.filterAlcohol = function(item) {
-              var keep = true;
-              angular.forEach($scope.allergies, function(value, key) {
-                  if(value && item.allergy.indexOf(key) > -1) {
-                      keep = false;
-                  }
-              });
-              return keep;
-          };
+            }
+          });
+        };
 
         var selectElement = function(identifier) {
           return angular.element(document.querySelectorAll(identifier));

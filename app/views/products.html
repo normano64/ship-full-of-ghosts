@@ -71,7 +71,7 @@
     <div class="col products">
       <div class="products-items" data-ng-class="{'dragging': dragging}">
           <div class="product-item-wrapper col-md-3 col-sm-6" data-ng-repeat="item in items | filter:filterAlcohol | filter:search | orderBy:predicate">
-          <div class="products-item" id="products-item-{{item.beer_id}}" draggable="true">
+          <div class="products-item" id="products-item-{{item.beer_id}}" draggable="true" data-ng-click="showDrinksInfo(item.beer_id)">
             <div class="item-image">
               <img draggable="false" src="images/beer.svg" />
             </div>
@@ -140,6 +140,20 @@
     <div class="cart-phantom">
     </div>
   </div>
+
   <div class="cart-main">
   </div>
+
+  <script type="text/ng-template" id="drinksInfo.html">
+    <div class="modal-header">
+      <h3 class="modal-title">Information</h3>
+    </div>
+    <div class="modal-body">
+      {{ drink }}
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" type="button" data-ng-click="close()">close</button>
+      <button class="btn btn-warning" type="button" data-ng-click="buy()">buy</button>
+    </div>
+  </script>
 </div>
