@@ -103,3 +103,18 @@
     }
   }
 }
+
+.product-info-body {
+  .detail {
+    width: 100%;
+    display: flex;
+
+    &>div {
+      flex: 1;
+    }
+
+    .detail-attribute {
+      font-weight: 800;
+    }
+  }
+}
