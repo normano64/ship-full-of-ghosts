@@ -146,10 +146,143 @@
 
   <script type="text/ng-template" id="drinksInfo.html">
     <div class="modal-header">
-      <h3 class="modal-title">Information</h3>
+      <h3 class="modal-title">{{ drink.namn }} {{ drink.pub_price }}</h3>
     </div>
     <div class="modal-body">
-      {{ drink }}
+      <div class="detail">
+        <div class="detail-attribute">
+          saljstart
+        </div>
+        <div class="detail-value">
+          {{ drink.detail.saljstart }}
+        </div>
+      </div>
+
+      <div class="detail">
+        <div class="detail-attribute">
+          varugrupp
+        </div>
+        <div class="detail-value">
+          {{ drink.detail.varugrupp }}
+        </div>
+      </div>
+
+      <div class="detail">
+        <div class="detail-attribute">
+          forpackning
+        </div>
+        <div class="detail-value">
+          {{ drink.detail.forpackning }}
+        </div>
+      </div>
+
+      <div class="detail">
+        <div class="detail-attribute">
+          slutlev
+        </div>
+        <div class="detail-value">
+          {{ drink.detail.slutlev }}
+        </div>
+      </div>
+
+      <div class="detail">
+        <div class="detail-attribute">
+          forslutning
+        </div>
+        <div class="detail-value">
+          {{ drink.detail.forslutning }}
+        </div>
+      </div>
+
+      <div class="detail">
+        <div class="detail-attribute">
+          ursprung
+        </div>
+        <div class="detail-value">
+          {{ drink.detail.ursprung }}
+        </div>
+      </div>
+
+      <div class="detail">
+        <div class="detail-attribute">
+          ursprunglandnamn
+        </div>
+        <div class="detail-value">
+          {{ drink.detail.ursprunglandnamn }}
+        </div>
+      </div>
+
+      <div class="detail">
+        <div class="detail-attribute">
+          producent
+        </div>
+        <div class="detail-value">
+          {{ drink.detail.producent }}
+        </div>
+      </div>
+
+      <div class="detail">
+        <div class="detail-attribute">
+          leverantor
+        </div>
+        <div class="detail-value">
+          {{ drink.detail.leverantor }}
+        </div>
+      </div>
+
+      <div class="detail">
+        <div class="detail-attribute">
+          argang
+        </div>
+        <div class="detail-value">
+          {{ drink.detail.argang }}
+        </div>
+      </div>
+
+      <div class="detail">
+        <div class="detail-attribute">
+          provadargang
+        </div>
+        <div class="detail-value">
+          {{ drink.detail.provadargang }}
+        </div>
+      </div>
+
+      <div class="detail">
+        <div class="detail-attribute">
+          alkoholhalt
+        </div>
+        <div class="detail-value">
+          {{ drink.detail.alkoholhalt }}
+        </div>
+      </div>
+
+      <div class="detail">
+        <div class="detail-attribute">
+          sortiment
+        </div>
+        <div class="detail-value">
+          {{ drink.detail.sortiment }}
+        </div>
+      </div>
+
+      <div class="detail">
+        <div class="detail-attribute">
+          ekologisk
+        </div>
+        <div class="detail-value">
+          {{ drink.detail.ekologisk }}
+        </div>
+      </div>
+
+      <div class="detail">
+        <div class="detail-attribute">
+          koscher
+        </div>
+        <div class="detail-value">
+          {{ drink.detail.koscher }}
+        </div>
+      </div>
     </div>
     <div class="modal-footer">
       <button class="btn btn-primary" type="button" data-ng-click="close()">close</button>

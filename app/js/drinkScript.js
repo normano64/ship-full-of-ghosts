@@ -1,4 +1,5 @@
 // this script is used for fetching all the beers with their information
+/*
 var http = function() {
   this.get = function(url, callback) {
     var request = new XMLHttpRequest();
@@ -27,3 +28,4 @@ client.get('http://pub.jamaica-inn.net/fpdb/api.php?username=jorass&password=jor
 
   Promise.all(requests).then(() => console.log(JSON.stringify(payload)));
 });
+*/
