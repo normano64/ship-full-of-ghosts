@@ -18,9 +18,7 @@ angular
       });
 
     CartSvc.cart = {
-      items: {
-
-      },
+      items: {},
       isExpanded: false,
       undoable: false,
       redoable: false
@@ -127,6 +125,15 @@ angular
       }
 
       return totalPrice;
+    };
+
+    CartSvc.clear = function() {
+      CartSvc.cart = {
+        items: {},
+        isExpanded: false,
+        undoable: false,
+        redoable: false
+      };
     }
 
     return CartSvc;
