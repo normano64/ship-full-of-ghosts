@@ -79,7 +79,7 @@
       "sbl_price": 28.60,
       "pub_price": 30,
       "beer_id": 141001,
-      "count": -36,
+      "count": 0,
       "price": 28.20,
       "detail": {
         "nr": "141001",
@@ -115,7 +115,7 @@
       "sbl_price": 12.90,
       "pub_price": 15,
       "beer_id": 197702,
-      "count": -3,
+      "count": 3,
       "price": 12.90,
       "detail": {
         "nr": "197702",
@@ -151,7 +151,7 @@
       "sbl_price": 12.90,
       "pub_price": 15,
       "beer_id": 197302,
-      "count": -2,
+      "count": 2,
       "price": 12.90,
       "detail": {
         "nr": "197302",
@@ -187,7 +187,7 @@
       "sbl_price": 12.60,
       "pub_price": 15,
       "beer_id": 156503,
-      "count": -6,
+      "count": 6,
       "price": 11.90,
       "detail": {
         "nr": "156503",
@@ -5551,7 +5551,7 @@
       "sbl_price": 15.90,
       "pub_price": 20,
       "beer_id": 182603,
-      "count": -1,
+      "count": 0,
       "price": 15.90,
       "detail": {
         "nr": "182603",
@@ -5695,7 +5695,7 @@
       "sbl_price": 15.40,
       "pub_price": 20,
       "beer_id": 148001,
-      "count": -1,
+      "count": 1,
       "price": 15.40,
       "detail": {
         "nr": "148001",
