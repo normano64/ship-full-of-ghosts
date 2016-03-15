@@ -27,8 +27,8 @@ angular
 	AdminSvc.increase = function(id,num){
 		if(isInteger(num)){
 		for(var i = 0; i<AdminSvc.stock.drinks.length;i++){
-			if(id==AdminSvc.stock.drinks[i].beer_id){
-				AdminSvc.stock.drinks[i].count =  parseInt(AdminSvc.stock.drinks[i].count)+num;				
+			if(id==AdminSvc.stock.drinks[i].beer_id && AdminSvc.stock.drinks[i].count+num>=0){
+				AdminSvc.stock.drinks[i].count =  AdminSvc.stock.drinks[i].count+num;				
 			}
 		}
 	}
@@ -36,8 +36,8 @@ angular
 		AdminSvc.decrease = function(id,num){
 		if(isInteger(num)){
 		for(var i = 0; i<AdminSvc.stock.drinks.length;i++){
-			if(id==AdminSvc.stock.drinks[i].beer_id){
-				AdminSvc.stock.drinks[i].count =  parseInt(AdminSvc.stock.drinks[i].count)-num;				
+			if(id==AdminSvc.stock.drinks[i].beer_id && AdminSvc.stock.drinks[i].count-num>=0){
+				AdminSvc.stock.drinks[i].count =  AdminSvc.stock.drinks[i].count-num;				
 			}
 		}
 	}
