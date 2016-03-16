@@ -136,7 +136,7 @@
               {{wordsList.isSwedish ? wordsList.words.id_21.swedishText : wordsList.words.id_21.englishText}}
             </button>
           </div>
-          <button class="btn btn-success cart-checkout" data-ng-click="checkout()">
+          <button class="btn btn-success cart-checkout" data-ng-class="{'disabled': totalPrice === 0}" data-ng-click="checkout()">
             {{wordsList.isSwedish ? wordsList.words.id_22.swedishText : wordsList.words.id_22.englishText}} {{ totalPrice | price }} Kr
           </button>
         </div>
