@@ -24,42 +24,27 @@ angular
           .then(function(res){
               $scope.items = res.data.payload;
           });
-        $scope.predicate = 'namn';
-        $scope.predicateName = 'Name a-ö';
-        $scope.order = function(item, predicate, reverse) {
-            if(reverse) {
-                predicate = '-' + predicate;
-            }
-            $scope.predicate = predicate;
-            $scope.reverse = reverse;
-            $scope.predicateName = item.currentTarget.textContent;
-        };
-        $scope.allergy = 'No';
-        $scope.allergies = {
-            'gluten': false,
-            'alcohol': false
-        };
-        $scope.allergyfn = function(allergy) {
-            if($scope.allergies[allergy] == false) {
-                $scope.allergies[allergy] = true;
-            } else {
-                $scope.allergies[allergy] = false;
-            }
-            var allergies = ''
-            angular.forEach($scope.allergies, function(value, key) {
-                if(value) {
-                    if(allergies == '') {
-                        allergies = key;
-                    } else {
-                        allergies = allergies + ', ' + key;
-                    }
-                }
-            });
-            if(allergies == '') {
-                allergies = 'No';
-            }
-            $scope.allergy = allergies;
-        };
+
+          $scope.predicate = 'namn';
+          $scope.order = function(predicate, reverse) {
+              $scope.predicate = (reverse ? '-' : '') + predicate;
+              $scope.reverse = reverse;
+          };
+
+          $scope.allergies = {
+              'gluten': false,
+              'alcohol': false
+          };
+          $scope.allergyfn = function(allergy) {
+              $scope.allergies[allergy] = !$scope.allergies[allergy];
+          };
+          $scope.allergyreset = function() {
+              $scope.allergies = {
+                  'gluten': false,
+                  'alcohol': false
+              };
+          };
+
         $scope.filterAlcohol = function(item) {
             var keep = true;
             angular.forEach($scope.allergies, function(value, key) {
