@@ -34,6 +34,11 @@ angular
         controller: 'AdminCtrl',
         controllerAs: 'admin'
       })
+      .when('/thankyou', {
+        templateUrl: 'views/thankyou.html',
+        controller: 'ThankYouCtrl',
+        controllerAs: 'thankyou'
+      })
       .when('/', {
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl',

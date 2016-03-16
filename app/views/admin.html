@@ -1,18 +1,18 @@
 <div class="admin">
 	<div class="count-wrapper" ng-class="{'is-signed-in': user.isSignedIn}">
 		<div class="col count">
-			<center><h4>Low stock of the following product(s):</h4></center>
+			<center><h4>{{wordsList.isSwedish ? wordsList.words.id_10.swedishText : wordsList.words.id_10.englishText}}:</h4></center>
 			<div class="count-wrapper" data-ng-repeat="drink in stock.drinks" data-ng-if="drink.count<=20">
 				<div class="item-count">
 					{{ drink.namn }}:
-					{{ drink.count }} Left
+					{{ drink.count }} {{wordsList.isSwedish ? wordsList.words.id_13.swedishText : wordsList.words.id_13.englishText}}
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="restock-wrapper">
-		<h4>Stock refill</h4>
-		<b>Select the beverage you want to adjust: </b></br>
+		<h4>{{wordsList.isSwedish ? wordsList.words.id_11.swedishText : wordsList.words.id_11.englishText}}:</h4>
+		<b>{{wordsList.isSwedish ? wordsList.words.id_12.swedishText : wordsList.words.id_12.englishText}}: </b></br>
 		<div class="restock" data-ng-repeat="drink in stock.drinks" >
 			<div class="restock-item" id="restock-item-{{drink.beer_id}}" ng-click="showAdjust =  true" >
 				<div class="item-image">
@@ -27,10 +27,11 @@
 						<form ng-submit="decrease(drink.beer_id, amount)">
 							<button type="submit" class="btn btn-primary" id="minus" >-</button>
 						</form>
+						<input type="number" class="btn-control" data-ng-model="amount" placeholder="{{wordsList.isSwedish ? wordsList.words.id_26.swedishText : wordsList.words.id_26.englishText}}" id="formu" min="0">
 						<form ng-submit="increase(drink.beer_id, amount)">
 							<button type="submit" class="btn btn-primary" id="plus">+</button>
 							<div class="btn-group">
-								<input type="number" class="btn-control" data-ng-model="amount" placeholder="amount"></div>
+								</div>
 							</form>
 						</div>
 					</div>

@@ -32,6 +32,7 @@
 
 .restock{
 	float: left;
+	height: 250px;
 }
 
   .restock-item {
@@ -58,10 +59,18 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
     #minus{
     	float:left;
+    	margin-right: 2px;
     }
     #plus{
+    	float: right;
+    	margin-left: 2px;
+    }
+    #formu{
+    	width: 90px;
     	float: left;
+    	margin-top: 5px;
     }
   }

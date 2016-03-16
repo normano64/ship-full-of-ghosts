@@ -1,0 +1,12 @@
+@import 'constant';
+
+.thankyou {
+  height: $height-content;
+  padding-bottom: 40px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 30px;  
+}

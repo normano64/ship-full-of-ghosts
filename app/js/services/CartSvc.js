@@ -18,9 +18,7 @@ angular
       });
 
     CartSvc.cart = {
-      items: {
-
-      },
+      items: {},
       isExpanded: false,
       undoable: false,
       redoable: false
@@ -74,7 +72,7 @@ angular
             CartSvc.cart.items[id] = {
               beer_id: id,
               namn: item.namn,
-              price: item.sbl_price,
+              price: item.pub_price,
               quantity: 1
             };
             itemFound = true;
@@ -127,6 +125,15 @@ angular
       }
 
       return totalPrice;
+    };
+
+    CartSvc.clear = function() {
+      CartSvc.cart = {
+        items: {},
+        isExpanded: false,
+        undoable: false,
+        redoable: false
+      };
     }
 
     return CartSvc;

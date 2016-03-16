@@ -30,10 +30,6 @@
           <img src="images/English.svg" />
         </div>
       </li>
-      <li data-ng-if="!user.isSignedIn">
-        <a href="#/signin">
-          <i class="fa fa-sign-in"></i> Sign in
-        </a>
       </li>
       <li data-ng-if="user.isSignedIn">
         <a href="#/" data-ng-click="signOut()">
