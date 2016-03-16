@@ -18,7 +18,9 @@
       <div class="input-group-btn">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
               <span class="translate">{{wordsList.isSwedish ? wordsList.words.id_14.swedishText : wordsList.words.id_14.englishText}}: </span>
-              <span class="current">{{allergy}}</span>
+              <span ng-show="!allergies['alcohol'] && !allergies['gluten']">{{wordsList.isSwedish ? wordsList.words.id_24.swedishText : wordsList.words.id_24.englishText}}</span>
+              <span ng-show="allergies['gluten']">Gluten<span ng-show="allergies['alcohol'] && allergies['gluten']">, </span></span>
+              <span ng-show="allergies['alcohol']">{{wordsList.isSwedish ? wordsList.words.id_23.swedishText : wordsList.words.id_23.englishText}}</span>
               <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
@@ -39,20 +41,23 @@
       <div class="input-group-btn">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
               <span>{{wordsList.isSwedish ? wordsList.words.id_15.swedishText : wordsList.words.id_15.englishText}}: </span>
-              <span class="current">{{predicateName}}</span>
+              <span ng-show="predicate == 'namn'">{{wordsList.isSwedish ? wordsList.words.id_16.swedishText : wordsList.words.id_16.englishText}}</span>
+              <span ng-show="predicate == '-namn'">{{wordsList.isSwedish ? wordsList.words.id_25.swedishText : wordsList.words.id_25.englishText}}</span>
+              <span ng-show="predicate == 'pub_price'">{{wordsList.isSwedish ? wordsList.words.id_17.swedishText : wordsList.words.id_17.englishText}}</span>
+              <span ng-show="predicate == '-pub_price'">{{wordsList.isSwedish ? wordsList.words.id_18.swedishText : wordsList.words.id_18.englishText}}</span>
               <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
-              <li><a ng-click="order($event, 'namn', false)" ng-show="predicate != 'namn'"
+              <li><a ng-click="order('namn', false)" ng-show="predicate != 'namn'"
                      class="translate">{{wordsList.isSwedish ? wordsList.words.id_16.swedishText : wordsList.words.id_16.englishText}}</i>
               </a></li>
-              <li><a ng-click="order($event, 'namn', true)" ng-show="predicate != '-namn'"
+              <li><a ng-click="order('namn', true)" ng-show="predicate != '-namn'"
                      class="translate">{{wordsList.isSwedish ? wordsList.words.id_25.swedishText : wordsList.words.id_25.englishText}}</i>
               </a></li>
-              <li><a ng-click="order($event, 'pub_price', false)" ng-show="predicate != 'pub_price'"
+              <li><a ng-click="order('pub_price', false)" ng-show="predicate != 'pub_price'"
                      class="translate">{{wordsList.isSwedish ? wordsList.words.id_17.swedishText : wordsList.words.id_17.englishText}}</i>
               </a></li>
-              <li><a ng-click="order($event, 'pub_price', true)" ng-show="predicate != '-pub_price'"
+              <li><a ng-click="order('pub_price', true)" ng-show="predicate != '-pub_price'"
                      class="translate">{{wordsList.isSwedish ? wordsList.words.id_18.swedishText : wordsList.words.id_18.englishText}}</i>
               </a></li>
           </ul>
