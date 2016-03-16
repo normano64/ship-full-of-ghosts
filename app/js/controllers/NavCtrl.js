@@ -17,4 +17,8 @@ angular
 
     $scope.user = AccountSvc.getUser();
     
+  }]).filter('translate', ['TranslateSvc', function(TranslateSvc) {
+      return function(id) {
+          return TranslateSvc.wordsList.isSwedish ? id.swedishText : id.englishText;
+      };
   }]);
