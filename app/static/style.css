@@ -28,7 +28,8 @@
   text-align: center; }
 
 .restock {
-  float: left; }
+  float: left;
+  height: 250px; }
 
 .restock-item {
   margin: 50px 0px;
@@ -47,9 +48,15 @@
     overflow: hidden;
     text-overflow: ellipsis; }
   .restock-item #minus {
-    float: left; }
+    float: left;
+    margin-right: 2px; }
   .restock-item #plus {
-    float: left; }
+    float: right;
+    margin-left: 2px; }
+  .restock-item #formu {
+    width: 90px;
+    float: left;
+    margin-top: 5px; }
 
 .cart-phantom {
   width: 20px;
@@ -287,6 +294,38 @@ a[ng-click] {
     overflow: hidden;
     text-overflow: ellipsis; }
 
+.modal-content {
+  background-color: #ef7934;
+  border: none;
+  border-radius: 0px;
+  color: #ECECEC; }
+  .modal-content .customized-modal-body .detail {
+    width: 100%;
+    display: flex; }
+    .modal-content .customized-modal-body .detail > div {
+      padding: 0 20px; }
+      .modal-content .customized-modal-body .detail > div:nth-child(1) {
+        flex: 1; }
+      .modal-content .customized-modal-body .detail > div:nth-child(2) {
+        flex: 2; }
+    .modal-content .customized-modal-body .detail .detail-attribute {
+      font-weight: 800; }
+  .modal-content .customized-modal-body .checkout-row {
+    display: flex; }
+    .modal-content .customized-modal-body .checkout-row.checkout-header {
+      font-weight: 800; }
+    .modal-content .customized-modal-body .checkout-row.checkout-total {
+      font-weight: 800;
+      margin-top: 20px; }
+    .modal-content .customized-modal-body .checkout-row > div {
+      flex: 1; }
+    .modal-content .customized-modal-body .checkout-row .checkout-name {
+      flex: 2; }
+  .modal-content .customized-modal-footer button {
+    border-radius: 0px;
+    width: 75px;
+    border: none; }
+
 .container-signin {
   display: flex;
   justify-content: center;
@@ -306,3 +345,13 @@ a[ng-click] {
       margin-bottom: 15px; }
     .container-signin .form-signin .signin-button {
       width: 100%; }
+
+.thankyou {
+  height: calc(100vh - 50px);
+  padding-bottom: 40px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 30px; }

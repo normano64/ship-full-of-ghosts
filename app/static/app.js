@@ -34,6 +34,11 @@ angular
         controller: 'AdminCtrl',
         controllerAs: 'admin'
       })
+      .when('/thankyou', {
+        templateUrl: 'views/thankyou.html',
+        controller: 'ThankYouCtrl',
+        controllerAs: 'thankyou'
+      })
       .when('/', {
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl',
@@ -44,6 +49,37 @@ angular
       });
   }]);
 
+// this script is used for fetching all the beers with their information
+/*
+var http = function() {
+  this.get = function(url, callback) {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() { 
+      if (request.readyState == 4 && request.status == 200)
+        callback(request.responseText);
+      }
+
+      request.open("GET", url, true);
+      request.send(null);
+  };
+}
+
+var client = new http();
+client.get('http://pub.jamaica-inn.net/fpdb/api.php?username=jorass&password=jorass&action=inventory_get', function(response) {
+  var payload = JSON.parse(response).payload;
+  let requests = payload.map((item) => {
+    return new Promise((resolve) => {
+      client.get('http://pub.jamaica-inn.net/fpdb/api.php?username=jorass&password=jorass&action=beer_data_get&beer_id=' + item.beer_id, function(detailResponse) {
+        var detailPayload = JSON.parse(detailResponse).payload;
+        item.detail = detailPayload[0];
+        resolve();
+      });
+    });
+  });
+
+  Promise.all(requests).then(() => console.log(JSON.stringify(payload)));
+});
+*/
 'use strict';
 
 angular
@@ -52,18 +88,20 @@ angular
 	'$scope',
 	'$http',
 	'AdminSvc',
-	function($scope, $http, AdminSvc) {
+	'TranslateSvc',
+	function($scope, $http, AdminSvc, TranslateSvc) {
 		$scope.stock = AdminSvc.getStock();
 		$scope.increase = function(id, amount){
 			AdminSvc.increase(id,amount);
 		};
 		$scope.decrease = AdminSvc.decrease;
+		$scope.wordsList = TranslateSvc.wordsList;
 	}]);
 'use strict';
 
 angular
   .module('shipFullOfGhosts.controllers')
-  .controller('CartCtrl', ['$scope', 'AccountSvc', 'CartSvc', function($scope, AccountSvc, CartSvc) {
+  .controller('CartCtrl', ['$scope', 'AccountSvc', 'CartSvc', '$uibModal', function($scope, AccountSvc, CartSvc, $uibModal) {
     $scope.expandText = '◀';
 
     $scope.cart = CartSvc.getCart();
@@ -80,10 +118,67 @@ angular
 
     $scope.user = AccountSvc.getUser();
 
+    $scope.checkout = function() {
+      var checkoutModal = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'checkout.html',
+        controller: 'CheckoutCtrl'
+      });
+    };
+
     $scope.$watch('cart', function() {
       $scope.totalPrice = CartSvc.getTotalPrice();
     }, true);
   }]);
+'use strict';
+
+angular
+  .module('shipFullOfGhosts.controllers')
+    .controller('CheckoutCtrl', ['$scope', '$uibModalInstance', 'CartSvc', '$location', function($scope, $uibModalInstance, CartSvc, $location) {
+      $scope.cart = CartSvc.getCart();
+
+      $scope.totalPrice = CartSvc.getTotalPrice();
+
+      $scope.close = function() {
+        $uibModalInstance.dismiss('cancel');
+      };
+
+      $scope.confirm = function() {
+        CartSvc.clear();
+        $location.path('/thankyou');
+        $uibModalInstance.dismiss('cancel');
+      };
+    }]);
+'use strict';
+
+angular
+  .module('shipFullOfGhosts.controllers')
+    .controller('DrinksInfoCtrl', [
+      '$scope',
+      '$http',
+      '$uibModalInstance',
+      'drinkId',
+      'CartSvc',
+      function($scope, $http, $uibModalInstance, drinkId, CartSvc) {
+        $http.get('js/drinks.json')
+          .then(function(res) {
+            var allItems = res.data.payload;
+            allItems.forEach(function(item) {
+              if (item.beer_id === drinkId) {
+                $scope.drink = item;
+              }
+            });
+          });
+
+        $scope.close = function() {
+          $uibModalInstance.dismiss('cancel');
+        };
+
+        $scope.buy = function() {
+          CartSvc.addItem(drinkId);
+          $uibModalInstance.dismiss('cancel');
+        };
+      }]);
 'use strict';
 
 angular
@@ -121,14 +216,18 @@ angular
 angular
   .module('shipFullOfGhosts.controllers')
     .controller('ProductsCtrl', [
-      '$scope', 
-      '$http', 
-      'AccountSvc', 
-      '$window', 
-      '$timeout', 
-      'CartSvc', 
-      function($scope, $http, AccountSvc, $window, $timeout, CartSvc) {
+      '$scope',
+      '$http',
+      'AccountSvc',
+      '$window',
+      '$timeout',
+      'CartSvc',
+      '$uibModal',
+      'TranslateSvc',
+      function($scope, $http, AccountSvc, $window, $timeout, CartSvc, $uibModal, TranslateSvc) {
         $scope.user = AccountSvc.getUser();
+
+        $scope.wordsList = TranslateSvc.wordsList;
 
         $scope.canDrop = false;
         $scope.dragging = false;
@@ -138,51 +237,64 @@ angular
           .then(function(res){
               $scope.items = res.data.payload;
           });
-          $scope.predicate = 'namn';
-          $scope.predicateName = 'Name a-ö';
-          $scope.order = function(item, predicate, reverse) {
-              if(reverse) {
-                  predicate = '-' + predicate;
+        $scope.predicate = 'namn';
+        $scope.predicateName = 'Name a-ö';
+        $scope.order = function(item, predicate, reverse) {
+            if(reverse) {
+                predicate = '-' + predicate;
+            }
+            $scope.predicate = predicate;
+            $scope.reverse = reverse;
+            $scope.predicateName = item.currentTarget.textContent;
+        };
+        $scope.allergy = 'No';
+        $scope.allergies = {
+            'gluten': false,
+            'alcohol': false
+        };
+        $scope.allergyfn = function(allergy) {
+            if($scope.allergies[allergy] == false) {
+                $scope.allergies[allergy] = true;
+            } else {
+                $scope.allergies[allergy] = false;
+            }
+            var allergies = ''
+            angular.forEach($scope.allergies, function(value, key) {
+                if(value) {
+                    if(allergies == '') {
+                        allergies = key;
+                    } else {
+                        allergies = allergies + ', ' + key;
+                    }
+                }
+            });
+            if(allergies == '') {
+                allergies = 'No';
+            }
+            $scope.allergy = allergies;
+        };
+        $scope.filterAlcohol = function(item) {
+            var keep = true;
+            angular.forEach($scope.allergies, function(value, key) {
+                if(value && item.allergy.indexOf(key) > -1) {
+                    keep = false;
+                }
+            });
+            return keep;
+        };
+
+        $scope.showDrinksInfo = function(id) {
+          var drinksInfoModal = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'drinksInfo.html',
+            controller: 'DrinksInfoCtrl',
+            resolve: {
+              drinkId: function () {
+                return id;
               }
-              $scope.predicate = predicate;
-              $scope.reverse = reverse;
-              $scope.predicateName = item.currentTarget.textContent;
-          };
-          $scope.allergy = 'No';
-          $scope.allergies = {
-              'gluten': false,
-              'alcohol': false
-          };
-          $scope.allergyfn = function(allergy) {
-              if($scope.allergies[allergy] == false) {
-                  $scope.allergies[allergy] = true;
-              } else {
-                  $scope.allergies[allergy] = false;
-              }
-              var allergies = ''
-              angular.forEach($scope.allergies, function(value, key) {
-                  if(value) {
-                      if(allergies == '') {
-                          allergies = key;
-                      } else {
-                          allergies = allergies + ', ' + key;
-                      }
-                  }
-              });
-              if(allergies == '') {
-                  allergies = 'No';
-              }
-              $scope.allergy = allergies;
-          };
-          $scope.filterAlcohol = function(item) {
-              var keep = true;
-              angular.forEach($scope.allergies, function(value, key) {
-                  if(value && item.allergy.indexOf(key) > -1) {
-                      keep = false;
-                  }
-              });
-              return keep;
-          };
+            }
+          });
+        };
 
         var selectElement = function(identifier) {
           return angular.element(document.querySelectorAll(identifier));
@@ -251,19 +363,39 @@ angular
 'use strict';
 
 angular
-  .module('shipFullOfGhosts.controllers')
-  .controller('SigninCtrl', ['$scope', '$timeout', 'AccountSvc', 'TranslateSvc', function($scope, $timeout, AccountSvc, TranslateSvc) {
-    $scope.signIn = function(username, password) {
-      AccountSvc.signIn(username, password);
-      console.log(username + ' has signed in!');
-    };
-    $scope.wordsList = TranslateSvc.wordsList;
+.module('shipFullOfGhosts.controllers')
+.controller('SigninCtrl', ['$scope', '$timeout', 'AccountSvc', 'TranslateSvc', function($scope, $timeout, AccountSvc, TranslateSvc) {
+  $scope.signIn = function(username, password) {
+    AccountSvc.signIn(username, password);
+    console.log(username + ' has signed in!');
+  };
+  $scope.wordsList = TranslateSvc.wordsList;
 
-    $scope.showWrong = false;
-	$scope.$timeout = $timeout;
-	$scope.show = function() {
-		$scope.showWrong=true;
-	}
+  $scope.showWrong = false;
+  $scope.$timeout = $timeout;
+  $scope.show = function() {
+    $scope.showWrong=true;
+  }
+}]);
+'use strict';
+
+angular
+  .module('shipFullOfGhosts.controllers')
+  .controller('ThankYouCtrl', ['$scope', 'AccountSvc', '$timeout', '$location', '$interval', function($scope, AccountSvc, $timeout, $location, $interval) {
+    $scope.countdown = 5;
+
+    $interval(function() {
+      $scope.countdown --;
+    }, 1000);
+
+    $scope.user = AccountSvc.getUser();
+    if ($scope.user.isSignedIn) {
+      $scope.username = ' ' + 'some user I don\'t know';
+    }
+
+    $timeout(function() {
+      $location.path('/');
+    }, 5000);
   }]);
 'use strict';
 
@@ -341,8 +473,8 @@ angular
 	AdminSvc.increase = function(id,num){
 		if(isInteger(num)){
 		for(var i = 0; i<AdminSvc.stock.drinks.length;i++){
-			if(id==AdminSvc.stock.drinks[i].beer_id){
-				AdminSvc.stock.drinks[i].count =  parseInt(AdminSvc.stock.drinks[i].count)+num;				
+			if(id==AdminSvc.stock.drinks[i].beer_id && AdminSvc.stock.drinks[i].count+num>=0){
+				AdminSvc.stock.drinks[i].count =  AdminSvc.stock.drinks[i].count+num;				
 			}
 		}
 	}
@@ -350,8 +482,8 @@ angular
 		AdminSvc.decrease = function(id,num){
 		if(isInteger(num)){
 		for(var i = 0; i<AdminSvc.stock.drinks.length;i++){
-			if(id==AdminSvc.stock.drinks[i].beer_id){
-				AdminSvc.stock.drinks[i].count =  parseInt(AdminSvc.stock.drinks[i].count)-num;				
+			if(id==AdminSvc.stock.drinks[i].beer_id && AdminSvc.stock.drinks[i].count-num>=0){
+				AdminSvc.stock.drinks[i].count =  AdminSvc.stock.drinks[i].count-num;				
 			}
 		}
 	}
@@ -378,9 +510,7 @@ angular
       });
 
     CartSvc.cart = {
-      items: {
-
-      },
+      items: {},
       isExpanded: false,
       undoable: false,
       redoable: false
@@ -434,7 +564,7 @@ angular
             CartSvc.cart.items[id] = {
               beer_id: id,
               namn: item.namn,
-              price: item.sbl_price,
+              price: item.pub_price,
               quantity: 1
             };
             itemFound = true;
@@ -487,6 +617,15 @@ angular
       }
 
       return totalPrice;
+    };
+
+    CartSvc.clear = function() {
+      CartSvc.cart = {
+        items: {},
+        isExpanded: false,
+        undoable: false,
+        redoable: false
+      };
     }
 
     return CartSvc;
@@ -524,8 +663,63 @@ angular
       "swedishText": "Lösenord"},
       "id_8":{
       "englishText": "Login",
-      "swedishText": "Logga in"}
+      "swedishText": "Logga in"},
+      "id_9":{
+      "englishText": "Invalid username or password",
+      "swedishText": "Ogiltigt använarnamn eller lösenord"},
+      "id_10":{
+      "englishText": "Low stock of the following products(s)",
+      "swedishText": "Få varor i lagret av följande produkt(er)"},
+      "id_11":{
+      "englishText": "Stock adjustments",
+      "swedishText": "Justering av lager"},
+      "id_12":{
+      "englishText": "Select the beverage you want to adjust",
+      "swedishText": "Välj drycken du vill justera"},
+      "id_13":{
+      "englishText": "Left",
+      "swedishText": "Kvar"},
+      "id_14":{
+      "englishText": "Allergy",
+      "swedishText": "Allergi"},
+      "id_15":{
+      "englishText": "Sort by",
+      "swedishText": "Sortera efter"},
+      "id_16":{
+      "englishText": "Name a-ö",
+      "swedishText": "Namn a-ö"},
+      "id_17":{
+      "englishText": "Price low-high",
+      "swedishText": "Pris lågt-högt"},
+      "id_18":{
+      "englishText": "Price high-low",
+      "swedishText": "Pris högt-lågt"},
+      "id_19":{
+      "englishText": "Search term...",
+      "swedishText": "Sök..."},
+      "id_20":{
+      "englishText": "Redo",
+      "swedishText": "Gör om"},
+      "id_21":{
+      "englishText": "Undo",
+      "swedishText": "Ångra"},
+      "id_22":{
+      "englishText": "Checkout",
+      "swedishText": "Betala"},
+      "id_23":{
+      "englishText": "Alcohol",
+      "swedishText": "Alkohol"},
+      "id_24":{
+      "englishText": "No",
+      "swedishText": "Nej"},
+      "id_25":{
+      "englishText": "Name ö-a",
+      "swedishText": "Namn ö-a"},
+      "id_26":{
+      "englishText": "amount",
+      "swedishText": "mängd"}
       },
+
       isSwedish:false
     };
 
