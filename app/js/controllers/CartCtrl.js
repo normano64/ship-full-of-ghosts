@@ -2,7 +2,8 @@
 
 angular
   .module('shipFullOfGhosts.controllers')
-  .controller('CartCtrl', ['$scope', 'AccountSvc', 'CartSvc', '$uibModal', function($scope, AccountSvc, CartSvc, $uibModal) {
+    .controller('CartCtrl', ['$scope', 'AccountSvc', 'CartSvc', '$uibModal', 'TranslateSvc', function($scope, AccountSvc, CartSvc, $uibModal, TranslateSvc) {
+    $scope.translation = TranslateSvc.translation;
     $scope.expandText = '◀';
 
     $scope.cart = CartSvc.getCart();

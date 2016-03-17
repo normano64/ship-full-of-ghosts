@@ -150,7 +150,7 @@
     <div class="modal-body customized-modal-body">
       <div class="detail">
         <div class="detail-attribute">
-          saljstart
+          {{translation.words['RELEASED'] | translate}}
         </div>
         <div class="detail-value">
           {{ drink.detail.saljstart }}
@@ -159,7 +159,7 @@
 
       <div class="detail">
         <div class="detail-attribute">
-          varugrupp
+          {{translation.words['PRODUCT_GROUP'] | translate}}
         </div>
         <div class="detail-value">
           {{ drink.detail.varugrupp }}
@@ -168,7 +168,7 @@
 
       <div class="detail">
         <div class="detail-attribute">
-          forpackning
+          {{translation.words['PACKAGING'] | translate}}
         </div>
         <div class="detail-value">
           {{ drink.detail.forpackning }}
@@ -177,7 +177,7 @@
 
       <div class="detail">
         <div class="detail-attribute">
-          ursprung
+          {{translation.words['ORIGIN'] | translate}}
         </div>
         <div class="detail-value">
           {{ drink.detail.ursprung }}
@@ -186,7 +186,7 @@
 
       <div class="detail">
         <div class="detail-attribute">
-          ursprunglandnamn
+          {{translation.words['ORIGIN_NAME'] | translate}}
         </div>
         <div class="detail-value">
           {{ drink.detail.ursprunglandnamn }}
@@ -195,7 +195,7 @@
 
       <div class="detail">
         <div class="detail-attribute">
-          producent
+          {{translation.words['PRODUCER'] | translate}}
         </div>
         <div class="detail-value">
           {{ drink.detail.producent }}
@@ -204,7 +204,7 @@
 
       <div class="detail">
         <div class="detail-attribute">
-          leverantor
+          {{translation.words['SUPPLIER'] | translate}}
         </div>
         <div class="detail-value">
           {{ drink.detail.leverantor }}
@@ -213,7 +213,7 @@
 
       <div class="detail">
         <div class="detail-attribute">
-          alkoholhalt
+          {{translation.words['ALCOHOL_STRENGTH'] | translate}}
         </div>
         <div class="detail-value">
           {{ drink.detail.alkoholhalt }}
@@ -222,7 +222,7 @@
 
       <div class="detail">
         <div class="detail-attribute">
-          sortiment
+          {{translation.words['SELECTION'] | translate}}
         </div>
         <div class="detail-value">
           {{ drink.detail.sortiment }}
@@ -231,7 +231,7 @@
 
       <div class="detail">
         <div class="detail-attribute">
-          ekologisk
+          {{translation.words['ORGANIC'] | translate}}
         </div>
         <div class="detail-value">
           {{ drink.detail.ekologisk }}
@@ -240,7 +240,7 @@
 
       <div class="detail">
         <div class="detail-attribute">
-          koscher
+          {{translation.words['KOSHER'] | translate}}
         </div>
         <div class="detail-value">
           {{ drink.detail.koscher }}
@@ -248,31 +248,31 @@
       </div>
     </div>
     <div class="modal-footer customized-modal-footer">
-      <button class="btn btn-primary" type="button" data-ng-click="close()">close</button>
-      <button class="btn btn-success" type="button" data-ng-click="buy()">buy</button>
+        <button class="btn btn-primary" type="button" data-ng-click="close()">{{translation.words['CLOSE'] | translate}}</button>
+        <button class="btn btn-success" type="button" data-ng-click="buy()">{{translation.words['BUY'] | translate}}</button>
     </div>
   </script>
 
   <script type="text/ng-template" id="checkout.html">
     <div class="modal-header customized-modal-header">
-      <h3 class="modal-title">Checkout</span></h3>
+        <h3 class="modal-title">{{translation.words['CHECKOUT'] | translate}}</span></h3>
     </div>
     <div class="modal-body customized-modal-body">
       <div class="checkout-row checkout-header">
         <div class="checkout-name">
-          Name
+          {{translation.words['NAME'] | translate}}
         </div>
 
         <div class="checkout-price">
-          Price
+          {{translation.words['PRICE'] | translate}}
         </div>
 
         <div class="checkout-quantity">
-          Quantity
+          {{translation.words['QUANTITY'] | translate}}
         </div>
 
         <div class="checkout-total-price">
-          Total price
+          {{translation.words['TOTAL_PRICE'] | translate}}
         </div>
       </div>
 
@@ -296,7 +296,7 @@
 
       <div class="checkout-row checkout-total">
         <div class="checkout-name">
-          Total
+          {{translation.words['TOTAL'] | translate}}
         </div>
 
         <div class="checkout-price">
@@ -311,8 +311,8 @@
       </div>
     </div>
     <div class="modal-footer customized-modal-footer">
-      <button class="btn btn-primary" type="button" data-ng-click="close()">close</button>
-      <button class="btn btn-success" type="button" data-ng-click="confirm()">confirm</button>
+        <button class="btn btn-primary" type="button" data-ng-click="close()">{{translation.words['CLOSE'] | translate}}</button>
+        <button class="btn btn-success" type="button" data-ng-click="confirm()">{{translation.words['CONFIRM'] | translate}}</button>
     </div>
   </script>
 </div>

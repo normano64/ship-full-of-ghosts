@@ -90,7 +90,73 @@ angular
                 'swedish': 'Kostnad'},
             'NONE': {
                 'english': 'None',
-                'swedish': 'Ingen'}
+                'swedish': 'Ingen'},
+            'RELEASED': {
+                'english': 'Released',
+                'swedish': 'Säljstart'},
+            'PRODUCT_GROUP': {
+                'english': 'Product group',
+                'swedish': 'Varugrupp'},
+            'PACKAGING': {
+                'english': 'Packaging',
+                'swedish': 'Förpackning'},
+            'ORIGIN': {
+                'english': 'Origin',
+                'swedish': 'Ursprung'},
+            'ORIGIN_NAME': {
+                'english': 'Origin name',
+                'swedish': 'Ursprungsnamn'},
+            'PRODUCER': {
+                'english': 'Producer',
+                'swedish': 'Producent'},
+            'SUPPLIER': {
+                'english': 'Supplier',
+                'swedish': 'Leverantör'},
+            'ALCOHOL_STRENGTH': {
+                'english': 'Alcohol strength',
+                'swedish': 'Alkoholhalt'},
+            'SELECTION': {
+                'english': 'Selection',
+                'swedish': 'Sortiment'},
+            'ORGANIC': {
+                'english': 'Organic',
+                'swedish': 'Ekologisk'},
+            'KOSHER': {
+                'english': 'Kosher',
+                'swedish': 'Koscher'},
+            'CLOSE': {
+                'english': 'Close',
+                'swedish': 'Stäng'},
+            'BUY': {
+                'english': 'Buy',
+                'swedish': 'Köp'},
+            'NAME': {
+                'english': 'Name',
+                'swedish': 'Namn'},
+            'PRICE': {
+                'english': 'Price',
+                'swedish': 'Pris'},
+            'QUANTITY': {
+                'english': 'Quantity',
+                'swedish': 'Kvantitet'},
+            'TOTAL_PRICE': {
+                'english': 'Total price',
+                'swedish': 'Totalbelopp'},
+            'TOTAL': {
+                'english': 'Total',
+                'swedish': 'Total'},
+            'CONFIRM': {
+                'english': 'Confirm',
+                'swedish': 'Bekräfta'},
+            'THANK_YOU': {
+                'english': 'Thank you',
+                'swedish': 'Tack'},
+            'YOU_WILL_BE_REDIRECTED': {
+                'english': 'You will be redirect to home page in',
+                'swedish': 'Du kommer att skickas till startsidan om'},
+            'SECONDS': {
+                'english': 'seconds',
+                'swedish': 'sekunder'}
         },
           language: 'english',
           languages: ['english', 'swedish']

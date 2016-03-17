@@ -8,7 +8,10 @@ angular
       '$uibModalInstance',
       'drinkId',
       'CartSvc',
-      function($scope, $http, $uibModalInstance, drinkId, CartSvc) {
+      'TranslateSvc',
+      function($scope, $http, $uibModalInstance, drinkId, CartSvc, TranslateSvc) {
+        $scope.translation = TranslateSvc.translation;
+
         $http.get('js/drinks.json')
           .then(function(res) {
             var allItems = res.data.payload;

@@ -2,7 +2,8 @@
 
 angular
   .module('shipFullOfGhosts.controllers')
-    .controller('CheckoutCtrl', ['$scope', '$uibModalInstance', 'CartSvc', '$location', function($scope, $uibModalInstance, CartSvc, $location) {
+    .controller('CheckoutCtrl', ['$scope', '$uibModalInstance', 'CartSvc', '$location', 'TranslateSvc', function($scope, $uibModalInstance, CartSvc, $location, TranslateSvc) {
+      $scope.translation = TranslateSvc.translation;
       $scope.cart = CartSvc.getCart();
 
       $scope.totalPrice = CartSvc.getTotalPrice();
