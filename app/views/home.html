@@ -3,14 +3,14 @@
 		<div class="container">
 			<div class="login">
 				<i class="fa fa-user"></i>
-				<p>  {{wordsList.isSwedish ? wordsList.words.id_8.swedishText : wordsList.words.id_8.englishText}}  </p>
+				<p>  {{translation.words['LOGIN'] | translate}}  </p>
 				
 			</div>
 		</a>
 		<a href="#/products">
 			<div class="guest">
 				<i class="fa fa-binoculars"></i>
-				<p> {{wordsList.isSwedish ? wordsList.words.id_4.swedishText : wordsList.words.id_4.englishText}}
+				<p> {{translation.words['GUEST'] | translate}}
 			</div>
 		</div>
 	</a>

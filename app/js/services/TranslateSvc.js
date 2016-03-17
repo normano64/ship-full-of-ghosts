@@ -5,104 +5,106 @@ angular
   .service('TranslateSvc', ['API', '$http', function(API, $http) {
     var TranslateSvc = {};
 
-    TranslateSvc.wordsList = {
+      TranslateSvc.translation = {
         words:{
-            "id_1": {
-                "englishText": "Beer",
-                "swedishText": "Öl"},
-            "id_2": {
-                "englishText": "Wine",
-                "swedishText": "Vin"},
-            "id_3": {
-                "englishText": "Whiskey",
-                "swedishText": "Whisky"},
-            "id_4": {
-                "englishText": "Guest",
-                "swedishText": "Gäst"},
-            "id_5": {
-                "englishText": "Beverages",
-                "swedishText": "Drycker"},
-            "id_6": {
-                "englishText": "Username",
-                "swedishText": "Användarnamn"},
-            "id_7": {
-                "englishText": "Password",
-                "swedishText": "Lösenord"},
-            "id_8": {
-                "englishText": "Login",
-                "swedishText": "Logga in"},
-            "id_9": {
-                "englishText": "Invalid username or password",
-                "swedishText": "Ogiltigt använarnamn eller lösenord"},
-            "id_10": {
-                "englishText": "Low stock of the following products(s)",
-                "swedishText": "Få varor i lagret av följande produkt(er)"},
-            "id_11": {
-                "englishText": "Stock adjustments",
-                "swedishText": "Justering av lager"},
-            "id_12": {
-                "englishText": "Select the beverage you want to adjust",
-                "swedishText": "Välj drycken du vill justera"},
-            "id_13": {
-                "englishText": "Left",
-                "swedishText": "Kvar"},
-            "id_14": {
-                "englishText": "Allergy",
-                "swedishText": "Allergi"},
-            "id_15": {
-                "englishText": "Sort by",
-                "swedishText": "Sortera efter"},
-            "id_16": {
-                "englishText": "Name a-ö",
-                "swedishText": "Namn a-ö"},
-            "id_17": {
-                "englishText": "Price low-high",
-                "swedishText": "Pris lågt-högt"},
-            "id_18": {
-                "englishText": "Price high-low",
-                "swedishText": "Pris högt-lågt"},
-            "id_19": {
-                "englishText": "Search...",
-                "swedishText": "Sök..."},
-            "id_20": {
-                "englishText": "Redo",
-                "swedishText": "Gör om"},
-            "id_21": {
-                "englishText": "Undo",
-                "swedishText": "Ångra"},
-            "id_22": {
-                "englishText": "Checkout",
-                "swedishText": "Betala"},
-            "id_23": {
-                "englishText": "Alcohol",
-                "swedishText": "Alkohol"},
-            "id_24": {
-                "englishText": "None",
-                "swedishText": "Ingen"},
-            "id_25": {
-                "englishText": "Name ö-a",
-                "swedishText": "Namn ö-a"},
-            "id_26": {
-                "englishText": "amount",
-                "swedishText": "mängd"},
-            "id_27": {
-                "englishText": "None",
-                "swedishText": "Ingen"}
+            'BEER': {
+                'english': 'Beer',
+                'swedish': 'Öl'},
+            'WINE': {
+                'english': 'Wine',
+                'swedish': 'Vin'},
+            'WHISKEY': {
+                'english': 'Whiskey',
+                'swedish': 'Whisky'},
+            'GUEST': {
+                'english': 'Guest',
+                'swedish': 'Gäst'},
+            'BEVERAGE': {
+                'english': 'Beverages',
+                'swedish': 'Drycker'},
+            'USERNAME': {
+                'english': 'Username',
+                'swedish': 'Användarnamn'},
+            'PASSWORD': {
+                'english': 'Password',
+                'swedish': 'Lösenord'},
+            'LOGIN': {
+                'english': 'Login',
+                'swedish': 'Logga in'},
+            'INVALID_USERNAME_OR_PASSWORD': {
+                'english': 'Invalid username or password',
+                'swedish': 'Ogiltigt använarnamn eller lösenord'},
+            'LOW_STOCK': {
+                'english': 'Low stock of the following products(s)',
+                'swedish': 'Få varor i lagret av följande produkt(er)'},
+            'STOCK_ADJUSTMENTS': {
+                'english': 'Stock adjustments',
+                'swedish': 'Justering av lager'},
+            'SELECT_BEVERAGE': {
+                'english': 'Select the beverage you want to adjust',
+                'swedish': 'Välj drycken du vill justera'},
+            'LEFT': {
+                'english': 'Left',
+                'swedish': 'Kvar'},
+            'ALLERGY': {
+                'english': 'Allergy',
+                'swedish': 'Allergi'},
+            'SORT_BY': {
+                'english': 'Sort by',
+                'swedish': 'Sortera efter'},
+            'NAME_AO': {
+                'english': 'Name a-ö',
+                'swedish': 'Namn a-ö'},
+            'NAME_OA': {
+                'english': 'Name ö-a',
+                'swedish': 'Namn ö-a'},
+            'PRICE_LOW_HIGH': {
+                'english': 'Price low-high',
+                'swedish': 'Pris lågt-högt'},
+            'PRICE_HIGH_LOW': {
+                'english': 'Price high-low',
+                'swedish': 'Pris högt-lågt'},
+            'SEARCH': {
+                'english': 'Search...',
+                'swedish': 'Sök...'},
+            'REDO': {
+                'english': 'Redo',
+                'swedish': 'Gör om'},
+            'UNDO': {
+                'english': 'Undo',
+                'swedish': 'Ångra'},
+            'CHECKOUT': {
+                'english': 'Checkout',
+                'swedish': 'Betala'},
+            'ALCOHOL': {
+                'english': 'Alcohol',
+                'swedish': 'Alkohol'},
+            'GLUTEN': {
+                'english': 'Gluten',
+                'swedish': 'Gluten'},
+            'NONE': {
+                'english': 'None',
+                'swedish': 'Ingen'},
+            'AMOUNT': {
+                'english': 'Amount',
+                'swedish': 'Kostnad'},
+            'NONE': {
+                'english': 'None',
+                'swedish': 'Ingen'}
         },
-        isSwedish:false
-    };
+          language: 'english',
+          languages: ['english', 'swedish']
+      };
 
-    TranslateSvc.getWords = function() {
-      return TranslateSvc.wordsList;
-    };
+      TranslateSvc.getWords = function() {
+          return TranslateSvc.translation;
+      };
 
-    TranslateSvc.translateSwe = function(){
-      TranslateSvc.wordsList.isSwedish = true;
-    };
-
-    TranslateSvc.translateEng = function(){
-      TranslateSvc.wordsList.isSwedish = false;
-    }
+      TranslateSvc.translate = function(language){
+          if(TranslateSvc.translation.languages.indexOf(language) > -1) {
+              TranslateSvc.translation.language = language;
+          }
+      };
 
     return TranslateSvc;
   }]);

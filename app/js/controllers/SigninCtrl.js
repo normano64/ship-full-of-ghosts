@@ -7,7 +7,7 @@ angular
     AccountSvc.signIn(username, password);
     console.log(username + ' has signed in!');
   };
-  $scope.wordsList = TranslateSvc.wordsList;
+  $scope.translation = TranslateSvc.translation;
 
   $scope.showWrong = false;
   $scope.$timeout = $timeout;

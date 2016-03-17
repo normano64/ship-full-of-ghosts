@@ -8,5 +8,5 @@ angular
 	'AccountSvc',
 	'TranslateSvc',
 	function($scope, $http, AccountSvc, TranslateSvc) {
-		$scope.wordsList = TranslateSvc.wordsList;
+	    $scope.translation = TranslateSvc.translation;
     }]);

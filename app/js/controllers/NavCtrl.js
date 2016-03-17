@@ -7,18 +7,18 @@ angular
       AccountSvc.signOut();
     };
 
-   $scope.translateSwe = function(){
-    	TranslateSvc.translateSwe();
+    $scope.translateSwe = function(){
+          TranslateSvc.translate('swedish');
     }
 
     $scope.translateEng = function(){
-    	TranslateSvc.translateEng();
+          TranslateSvc.translate('english');
     }
 
     $scope.user = AccountSvc.getUser();
     
   }]).filter('translate', ['TranslateSvc', function(TranslateSvc) {
-      return function(id) {
-          return TranslateSvc.wordsList.isSwedish ? id.swedishText : id.englishText;
+      return function(text_id) {
+          return text_id[TranslateSvc.translation.language];
       };
   }]);

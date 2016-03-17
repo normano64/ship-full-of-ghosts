@@ -1,19 +1,19 @@
 <div class="container-signin">
-  <div class="form form-signin">
-    <h2 class="slogan-signin">
-      <p> {{wordsList.isSwedish ? wordsList.words.id_8.swedishText : wordsList.words.id_8.englishText}}</p>
-    </h2>
-    <div ng-class="{ 'hidden': ! showWrong }">{{wordsList.isSwedish ? wordsList.words.id_9.swedishText : wordsList.words.id_9.englishText}}</div>
-    <form ng-submit="signIn(username, password)">
-      <div class="form-group">
-        <input type="string" class="form-control" data-ng-model="username" placeholder="{{wordsList.isSwedish ? wordsList.words.id_6.swedishText : wordsList.words.id_6.englishText}}">
-      </div>
-      <div class="form-group">
-        <input type="password" class="form-control" data-ng-model="password" placeholder="{{wordsList.isSwedish ? wordsList.words.id_7.swedishText : wordsList.words.id_7.englishText}}">
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-default signin-button" ng-click="$timeout(show,100);"><i class="fa fa-sign-in"></i></button>
-      </div>
-    </form>
-  </div>
+    <div class="form form-signin">
+        <h2 class="slogan-signin">
+            <p> {{translation.words['LOGIN'] | translate}}</p>
+        </h2>
+        <div ng-class="{ 'hidden': ! showWrong }">{{translation.words['INVALID_USERNAME_OR_PASSWORD'] | translate}}</div>
+        <form ng-submit="signIn(username, password)">
+            <div class="form-group">
+                <input type="string" class="form-control" data-ng-model="username" placeholder="{{translation.words['USERNAME'] | translate}}">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" data-ng-model="password" placeholder="{{translation.words['PASSWORD'] | translate}}">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default signin-button" ng-click="$timeout(show,100);"><i class="fa fa-sign-in"></i></button>
+            </div>
+        </form>
+    </div>
 </div>
