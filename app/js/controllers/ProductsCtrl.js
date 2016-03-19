@@ -75,7 +75,7 @@ angular
           $scope.$watch(function() {
               return selectElement('.products-items')[0].childNodes.length;
           }, function (newValue, oldValue) {
-              if (newValue !== oldValue) {
+              if (newValue > oldValue) {
                   var cartElement = selectElement('.cart');
                   var cartPhantomElement = selectElement('.cart-phantom');
                   var productsItemElement = selectElement('.products-item');
