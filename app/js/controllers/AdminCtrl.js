@@ -1,3 +1,7 @@
+/**
+* Controller used for the "Admin page". Declares the necessary variables.
+*/
+
 'use strict';
 
 angular

@@ -1,9 +1,17 @@
+/**
+* Service used for the translation
+*/
+
 'use strict';
 
 angular
   .module('shipFullOfGhosts.services')
   .service('TranslateSvc', ['API', '$http', function(API, $http) {
     var TranslateSvc = {};
+
+/**
+* Object containing English and Swedish version of an words. Each word identified by an unique id. 
+*/
 
       TranslateSvc.translation = {
         words:{
@@ -161,11 +169,15 @@ angular
           language: 'english',
           languages: ['english', 'swedish']
       };
-
+    /**
+    * Returns the object the different words.
+    */
       TranslateSvc.getWords = function() {
           return TranslateSvc.translation;
       };
-
+    /**
+    * Changes the language to be either English or Swedish.
+    */
       TranslateSvc.translate = function(language){
           if(TranslateSvc.translation.languages.indexOf(language) > -1) {
               TranslateSvc.translation.language = language;

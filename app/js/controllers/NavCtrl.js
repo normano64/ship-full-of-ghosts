@@ -1,3 +1,7 @@
+/**
+* Controller used for the navigation. Declares the necessary variables.
+*/
+
 'use strict';
 
 angular

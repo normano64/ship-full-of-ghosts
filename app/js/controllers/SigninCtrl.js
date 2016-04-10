@@ -1,3 +1,7 @@
+/**
+* Controller used for the "Sign in page". Declares the necessary variables.
+*/
+
 'use strict';
 
 angular
