@@ -19,25 +19,31 @@ angular
         $scope.canDrop = false;
         $scope.dragging = false;
 
+          /* Loads all drinks from json file and store in $scope
+             variable. */
         $scope.items = null;
         $http.get('js/drinks.json')
           .then(function(res){
               $scope.items = res.data.payload;
           });
-
+          /* The default predicate is by name, order function changes
+             predicate and ascending or descending. */
           $scope.predicate = 'namn';
           $scope.order = function(predicate, reverse) {
               $scope.predicate = (reverse ? '-' : '') + predicate;
               $scope.reverse = reverse;
           };
 
+          /* By default allergies are set to false. */
           $scope.allergies = {
               'gluten': false,
               'alcohol': false
           };
+          /* Inverts the value of the given allergy. */
           $scope.allergyfn = function(allergy) {
               $scope.allergies[allergy] = !$scope.allergies[allergy];
           };
+          /* Sets all allergies to false*/
           $scope.allergyreset = function() {
               $scope.allergies = {
                   'gluten': false,
@@ -45,6 +51,9 @@ angular
               };
           };
 
+          /* Returns true if product doesn't clash with the current
+          allergy settings, else false. Used as a filter function on a
+          list in a view to filter out none matching products */
         $scope.filterAlcohol = function(item) {
             var keep = true;
             angular.forEach($scope.allergies, function(value, key) {
