@@ -1,3 +1,8 @@
+/**
+* Controller used for the Cart component. 
+* handling the interaction between the view and the cart service
+*/
+
 'use strict';
 
 angular
@@ -8,6 +13,7 @@ angular
 
     $scope.cart = CartSvc.getCart();
 
+    // this method is used for show and hide the cart from the side menu
     $scope.toggleCart = function() {
       $scope.cart.isExpanded = !$scope.cart.isExpanded;
       $scope.expandText = $scope.cart.isExpanded ? '▶' : '◀';
@@ -20,6 +26,7 @@ angular
 
     $scope.user = AccountSvc.getUser();
 
+    // checkout method, opening a new modal for handling the checkout procedure
     $scope.checkout = function() {
       var checkoutModal = $uibModal.open({
         animation: $scope.animationsEnabled,
@@ -28,6 +35,7 @@ angular
       });
     };
 
+    // once the cart is changed, we need to update the total price
     $scope.$watch('cart', function() {
       $scope.totalPrice = CartSvc.getTotalPrice();
     }, true);

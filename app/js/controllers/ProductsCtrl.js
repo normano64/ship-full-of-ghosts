@@ -88,31 +88,41 @@ angular
           var cartDropIconElement = selectElement('.cart-drop-icon');
 
           var initialOffset = parseInt(cartElement.css('margin-top'));
+
+          // handling drag and drop in the product page
+
+          // when dropping an item on the 'cart drop' icon, fire the addItem event to add new item into the cart
           cartDropIconElement.bind('drop', function(ev) {
               var selectedId = ev.originalEvent.dataTransfer.getData('id');
               CartSvc.addItem(selectedId);
           });
 
+          // when the drinks are dragging over the icon, update the style of the icon to indicate the user that this is droppable
           cartDropIconElement.bind('dragover', function() {
               $scope.canDrop = true;
               $scope.$apply();
               return false;
           });
 
+          // on dragleave event, change the style back to non-droppable state
           cartDropIconElement.bind('dragleave', function() {
               $scope.canDrop = false;
               $scope.$apply();
               return false;
           });
 
+          // this is a positioning hack for keeping the cart component in the right place
           angular.element($window).bind("scroll", function() {
               cartPhantomElement.css('margin-top', initialOffset + this.pageYOffset + 'px');
           });
+          // when the products list is changed, we need to re-bind the drag event for the drinks item
           $scope.$watch(function() {
               return selectElement('.products-items')[0].childNodes.length;
           }, function (newValue, oldValue) {
               if (newValue > oldValue) {
                   var productsItemElement = selectElement('.products-item');
+
+                  // on drag start, hide the other elements and display the drop area
                   productsItemElement.bind('dragstart', function(ev) {
                       ev.originalEvent.dataTransfer.setData('id', angular.element(this).attr('id').slice('products-item-'.length));
 
@@ -129,6 +139,7 @@ angular
                       cartDropWrapperElement.css('display', 'flex');
                   });
 
+                  // on drag end, show back the rest of drinks, and hide the drop area
                   productsItemElement.bind('dragend', function() {
                       $scope.canDrop = false;
                       $scope.dragging = false;

@@ -1,3 +1,6 @@
+/**
+* Controller used for the Drinks information modal. 
+*/
 'use strict';
 
 angular
@@ -12,6 +15,7 @@ angular
       function($scope, $http, $uibModalInstance, drinkId, CartSvc, TranslateSvc) {
         $scope.translation = TranslateSvc.translation;
 
+        // we need to grasp a copy of all the drinks information and store it for performance's sake
         $http.get('js/drinks.json')
           .then(function(res) {
             var allItems = res.data.payload;

@@ -1,3 +1,6 @@
+/**
+* Controller used for the Checkout modal. 
+*/
 'use strict';
 
 angular
