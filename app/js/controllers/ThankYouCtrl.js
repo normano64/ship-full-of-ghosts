@@ -1,3 +1,6 @@
+/**
+* Controller used for the "Thank you page". Declares the necessary variables.
+*/
 'use strict';
 
 angular
