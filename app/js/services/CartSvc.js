@@ -56,6 +56,7 @@ angular
       } else {
         // push the current state into the undo stack
         pushUndo();
+        // if the item is completely removed from the cart, i.e. the quantity is decreased to 0
         if (!(-- CartSvc.cart.items[id].quantity)) {
           // remove it from the cart
           CartSvc.cart.items[id] = undefined;
@@ -74,6 +75,7 @@ angular
         var itemFound = false;
         for (var i = 0; i < allItems.length; i ++) {
           var item = allItems[i];
+          // item found
           if (item.beer_id === id) {
             // push the current state into the undo stack
             pushUndo();
@@ -86,6 +88,7 @@ angular
               quantity: 1
             };
             itemFound = true;
+            // break in halfway to save time
             break;
           }
         }
@@ -106,6 +109,7 @@ angular
       if (undoItemsStack.length > 0) {
         // checking if it's undoable currently
         redoItemsStack.push(clone(CartSvc.cart.items));
+        // we only support for up to 5 undo/redo steps
         redoItemsStack = redoItemsStack.slice(-5);
         CartSvc.cart.items = undoItemsStack.pop();
         CartSvc.cart.redoable = true;
@@ -121,6 +125,7 @@ angular
       if (redoItemsStack.length > 0) {
         // checking if it's redoable currently
         undoItemsStack.push(clone(CartSvc.cart.items));
+        // we only support for up to 5 undo/redo steps
         undoItemsStack = undoItemsStack.slice(-5);
         CartSvc.cart.items = redoItemsStack.pop();
         CartSvc.cart.undoable = true;
